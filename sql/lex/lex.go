@@ -1,5 +1,9 @@
 package lex
 
+import (
+    "../../log"
+)
+
 var (
     accept []bool
     array [][]int
@@ -38,6 +42,7 @@ func init() {
     ac = make(map[string][]int)
     defineTokens()
     class, array, accept = dfa.toArray()
+    log.WriteLogSync("sys", "lex module ready")
 }
 
 func numberNfa() *nfa {
@@ -60,6 +65,7 @@ func letterNfa() *nfa {
 }
 
 func defineTokens() {
+    log.WriteLogSync("sys", "Start making DFA")
     DefineToken("float", links(repeat(numberNfa()), single('.'), chosable(repeat(numberNfa()))))
     DefineToken("int", repeat(numberNfa()))
     DefineToken("identical", links(repeat(letterNfa()), chosable(repeat(or(numberNfa(), letterNfa())))))
@@ -84,9 +90,12 @@ func defineTokens() {
     DefineToken("more", single('>'))
     DefineToken("less", single('<'))
     DefineToken("notEqual", link(single('<'), single('>')))
+    log.WriteLogSync("sys", "DFA prepared")
 }
 
 func Parse(input ByteReader) ([]Token, error) {
+    log.WriteLogSync("query", "Parser:" + string(input.data))
+    defer log.WriteLogSync("query", "Parser finished")
     t := make([]Token, 0)
     in := ByteReader {
         data:   input.data,

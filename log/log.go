@@ -26,8 +26,7 @@ func checkFileIsExist(filename string) (bool) {
 func writeLog(kind string, content interface{}) {
     var f *os.File
     var err error
-    filename := common.FixPath(common.GetCurrentDirectory() + "\\log\\" + kind + ".log")
-    fmt.Println(filename)
+    filename := common.FixPath(".\\log\\" + kind + ".log")
     if checkFileIsExist(filename) {
         f, err = os.OpenFile(filename, os.O_APPEND, 0666)
     }else {
@@ -38,8 +37,8 @@ func writeLog(kind string, content interface{}) {
     }
     defer f.Close()
     datetime := time.Now().String()
-    fmt.Fprintf(f, "[ %s ]", datetime)
-    fmt.Fprint(f, content)
+    fmt.Fprintf(f, "[ %s ] ", datetime)
+    fmt.Fprintln(f, content)
 }
 
 func run() {
@@ -70,4 +69,9 @@ func Stop() {
         abort: true,
     }
 }
+
+func WriteLogSync(kind string, content interface{}) {
+    writeLog(kind, content)
+}
+
 //TODO: Test
