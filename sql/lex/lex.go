@@ -62,7 +62,7 @@ func letterNfa() *nfa {
 func defineTokens() {
     DefineToken("float", links(repeat(numberNfa()), single('.'), chosable(repeat(numberNfa()))))
     DefineToken("int", repeat(numberNfa()))
-    DefineToken("identify", links(repeat(letterNfa()), chosable(repeat(or(numberNfa(), letterNfa())))))
+    DefineToken("identical", links(repeat(letterNfa()), chosable(repeat(or(numberNfa(), letterNfa())))))
     DefineToken("split", or(single(' '), single('\t'), single('\n')))
     DefineToken("select", or(strings([]byte("select")), strings([]byte("SELECT"))))
     DefineToken("from", or(strings([]byte("from")), strings([]byte("FROM"))))
@@ -76,6 +76,14 @@ func defineTokens() {
     DefineToken("delete", or(strings([]byte("delete")), strings([]byte("DELETE"))))
     DefineToken("unReference", single('`'))
     DefineToken("reference", single('\''))
+    DefineToken("dot", single(','))
+    DefineToken("spot", single('.'))
+    DefineToken("equal", single('='))
+    DefineToken("lessEqual", link(single('<'), single('=')))
+    DefineToken("moreEqual", link(single('>'), single('=')))
+    DefineToken("more", single('>'))
+    DefineToken("less", single('<'))
+    DefineToken("notEqual", link(single('<'), single('>')))
 }
 
 func Parse(input ByteReader) ([]Token, error) {

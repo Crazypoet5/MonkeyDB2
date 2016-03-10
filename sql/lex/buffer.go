@@ -25,3 +25,9 @@ func (br *ByteReader) Read() (byte, error) {
 func (br *ByteReader) Empty() bool {
     return br.pos >= len(br.data)
 }
+
+func NewByteReader(bytes []byte) *ByteReader {
+    return &ByteReader {
+        data:   bytes,
+    }
+}

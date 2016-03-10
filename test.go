@@ -1,16 +1,11 @@
 package main 
 import (
-    "fmt"
-    "bytes"
+    "./log"
+    "time"
 )
 
 func main() {
-    b := []byte{'a', 'b'}
-    buff := make([]byte, 1)
-    input := bytes.NewReader(b)
-    input2 := input
-    input.Read(buff)
-    fmt.Println(buff)
-    input2.Read(buff)
-    fmt.Println(buff)
+    log.WriteLog("test", "123")
+    time.Sleep(time.Second * 2)
+    log.Stop()
 }
