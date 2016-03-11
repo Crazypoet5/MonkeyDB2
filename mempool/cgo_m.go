@@ -1,15 +1,17 @@
 package mempool
-//#include <stdlib.h>
-import "C"
+
 import (
     "unsafe"
     "reflect"
     "./heap"
+    "time"
+    "syscall"
+    "strconv"
 )
 
-const MAX_LEVEL = 13        //It means we can use 1k, 2k, ... , 2^12 * 1k
+const MAX_LEVEL = 15        //It means we can use 1k, 2k, ... , 2^14 * 1k
 
-const MAX_BLOCKS_LIMIT = 10 //When free max blocks more than MAX_BLOCKS_LIMIT, when release memory, we will free them  
+const MAX_BLOCKS_LIMIT = 1  //When free max blocks more than MAX_BLOCKS_LIMIT, when release memory, we will free them  
 
 type blocks [][]byte
 
@@ -56,11 +58,35 @@ type _pool struct {
 
 var pool _pool
 
+type fileImage struct {
+    fileHandle  syscall.Handle
+    imageHandle syscall.Handle
+    fileName    string
+}
+
+//malloc table record which address was based on which file
+var mallocTable = make(map[uintptr]fileImage)
+
 // Please use GetFree instead or you might make an error
 func Malloc(size int) []byte{
+    datetime := strconv.Itoa(int(time.Now().Unix()))
+    filename := ".\\image\\" + datetime
+    h := CreateFile(filename, OPEN_ALWAYS)
+    hI := CreateFileMapping(h, 0, uint(size), "img" + datetime)
+    ip := MapViewOfFile(hI, uint(size))
+    mallocTable[ip] = fileImage {
+        fileHandle: h,
+        imageHandle:hI,
+        fileName:   filename,
+    }
+    FlushViewOfFile(ip, uint(size))
+    //UnmapViewOfFile(ip)
+    //CloseHandle(hI)
+    //CloseHandle(h)
+
     var ret []byte
     header := (*reflect.SliceHeader)(unsafe.Pointer(&ret))
-    header.Data = uintptr(unsafe.Pointer(C.malloc(C.size_t(size))))
+    header.Data = ip
     header.Len = size
     header.Cap = size
     return ret
@@ -69,11 +95,17 @@ func Malloc(size int) []byte{
 // Please use Free instead or you might make an error
 func Free(p []byte) {
     header := (*reflect.SliceHeader)(unsafe.Pointer(&p))
-    C.free(unsafe.Pointer(header.Data))
+    UnmapViewOfFile(header.Data)
+    CloseHandle(mallocTable[header.Data].imageHandle)
+    CloseHandle(mallocTable[header.Data].fileHandle)
+    delete(mallocTable, header.Data)
+    header.Len = 0
+    header.Cap = 0
+    header.Len = 0
 }
 
 func init() {
-    for i := 0;i < MAX_LEVEL;i++ {
+    for i := 0;i < MAX_BLOCKS_LIMIT;i++ {
         heap.Push(&pool.list[i], Malloc(1024 << uint(i)))
     }
 }

@@ -1,4 +1,4 @@
-package csbt
+package mempool
 
 import "testing"
 import "unsafe"
@@ -23,7 +23,6 @@ func TestCreateFileMapping(t *testing.T) {
     CloseHandle(h)
     h = CreateFile("./a.img", OPEN_ALWAYS)
     hI = CreateFileMapping(h, 0, 32768, "img")
-    ip = MapViewOfFile(hI, 4)
     ip = MapViewOfFile(hI, 4)
     p = (*int)(unsafe.Pointer(ip))
     if *p != 5 {
