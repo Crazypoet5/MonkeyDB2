@@ -12,14 +12,22 @@ import (
 
 const (
     CACHE_LINE = 64
-    NODE_NUM = (CACHE_LINE - 16) / 8
-    ALLOCATE = 2048
+    NODE_NUM = (CACHE_LINE - 24) / 8
+    ALLOCATE = 16 * 1024
+    LEAF_SIZE = (NODE_NUM / 3) * 24 + 24
 )
 
+//interface{} with a 8 byte data is sized with 16 bytes in GOlang
+
+type IndexHeader struct {
+    root    interface{}
+    min,max *CSBTLeaf
+}
+
 type DCSBT struct {
-    root interface{}
-    data []byte
-    free int
+    indexHeader *IndexHeader
+    baseAddr uintptr
+    freePos     uintptr
 }
 
 type CSBTNode struct {
@@ -30,16 +38,48 @@ type CSBTNode struct {
 
 type CSBTLeaf struct {
     keyNum int
-    key [NODE_NUM / 2]uint
-    data [NODE_NUM / 2]uint
+    key [NODE_NUM / 3]uint
+    data [NODE_NUM / 3]uint
+    base [NODE_NUM / 3]uintptr
     left, right *CSBTLeaf
 }
 
-func NewCSBT() *CSBTLeaf {
-    return &CSBTLeaf {}
+func makeBytes(p uintptr, n int) []byte {
+    var b []byte
+    header := (*reflect.SliceHeader)(unsafe.Pointer(&b))
+    header.Cap = n
+    header.Len = n
+    header.Data = p
+    return b
 }
 
-func binarySearchL(target uint, array [NODE_NUM / 2]uint, l, r, w int) (int, bool) {
+func newCDBTLeaf(freePos uintptr) *CSBTLeaf {
+    r := makeBytes(freePos, LEAF_SIZE)
+    root := (*CSBTLeaf)(unsafe.Pointer(&r[0]))
+    return root
+}
+
+func NewDCSBT() *DCSBT {
+    malloc := mempool.Malloc(ALLOCATE)
+    freePos := uintptr(unsafe.Pointer(&malloc[0]))
+    baseAddr := freePos
+    bytes := makeBytes(freePos, 32)
+    indexHeader := (*IndexHeader)(unsafe.Pointer(&bytes[0]))
+    freePos += 32
+    root := newCDBTLeaf(freePos)
+    freePos += LEAF_SIZE
+    if unsafe.Sizeof(*root) != LEAF_SIZE {
+        panic(int(unsafe.Sizeof(*root)))
+    }
+    indexHeader.root = root
+    return &DCSBT {
+        indexHeader:    indexHeader,
+        baseAddr:       baseAddr,
+        freePos:        freePos,
+    }
+}
+
+func binarySearchL(target uint, array [NODE_NUM / 3]uint, l, r, w int) (int, bool) {
     if l > r {
         if l >= w {
             return l, false
@@ -120,8 +160,8 @@ func bytes2leaf(b []byte) *CSBTLeaf {
     ))
 }
 
-func insertToFree(tree *interface{}, key uint, value uint) (error) {
-    l, k, b := selectCSBTNode(*tree, key)
+func insertToDCSBT(tree *DCSBT, key uint, value uint, base uintptr) (error) {
+    l, k, b := selectCSBTNode(tree.indexHeader.root, key)
     if b {
         return errors.New("already exist key:" + string(key))
     }
@@ -131,27 +171,41 @@ func insertToFree(tree *interface{}, key uint, value uint) (error) {
         }
         l.key[k] = key
         l.data[k] = value
+        l.base[k] = base
         l.keyNum++
         return nil
     }
-    if root, ok := (*tree).(*CSBTLeaf);ok { //Root is leaf, key must in root
-        splited := 
-        splited[0] := &CSBTLeaf {
-            keyNum:     NODE_NUM / 4,
+    if root, ok := tree.indexHeader.root.(*CSBTLeaf);ok { //Root is leaf, key must in root
+        sp1 := makeBytes(tree.freePos, (NODE_NUM / 3) * 24 + 24)
+        splited1 := (*CSBTLeaf)(unsafe.Pointer(&sp1[0]))
+        tree.freePos += unsafe.Sizeof(splited1)
+        if unsafe.Sizeof(splited1) != (NODE_NUM / 3) * 24 + 24 {
+            panic("serialize RAM address error!")
         }
-        splited[1] := &CSBTLeaf {
-            keyNum:     NODE_NUM / 2 - NODE_NUM / 4,
+        sp2 := makeBytes(tree.freePos, (NODE_NUM / 3) * 24 + 24)
+        splited2 := (*CSBTLeaf)(unsafe.Pointer(&sp2[0]))
+        tree.freePos += unsafe.Sizeof(splited2)
+        splited1.keyNum = NODE_NUM / 6 
+        splited2.keyNum = NODE_NUM / 3 - NODE_NUM / 6
+        for i := 0;i < NODE_NUM / 6;i++ {
+            splited1.key[i] = root.key[i]
+            splited1.base[i] = root.base[i]
+            splited1.data[i] = root.data[i]
         }
-        for i := 0;i < NODE_NUM/4;i++ {
-            splited[0].key[i] = root.key[i]
+        for i := root.keyNum - 1;i > NODE_NUM/6 - 1;i-- {
+            splited1.key[i] = root.key[i]
         }
-        for i := root.keyNum - 1;i > NODE_NUM/4 - 1;i-- {
-            splited[1].key[i] = root.key[i]
-        }
-        
-        newRoot := &CSBTNode {
-            keyNum:     2,
-        }
-        newRoot.child
+        r := makeBytes(tree.freePos, NODE_NUM * 8 + 24)
+        newRoot := (*CSBTNode)(unsafe.Pointer(&r))
+        newRoot.keyNum = 2
+        newRoot.key[0] = splited1.key[splited1.keyNum - 1]
+        newRoot.key[1] = splited2.key[splited2.keyNum - 1]
+        newRoot.child = splited1
+        tree.indexHeader.root = newRoot
+        splited1.key[splited1.keyNum] = key
+        splited1.data[splited1.keyNum] = value
+        splited1.base[splited1.keyNum] = base
+        return nil
     }
+    return nil
 }

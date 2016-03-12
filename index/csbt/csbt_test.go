@@ -1,6 +1,7 @@
 package csbt
 
 import "testing"
+import "fmt"
 
 func expect(exp int, real int, t *testing.T) {
     if real != exp {
@@ -8,12 +9,9 @@ func expect(exp int, real int, t *testing.T) {
     }
 }
 
-func Test_binarySearch(t *testing.T) {
-    array := []uint{1, 3, 5, 7, 9, 11, 13, 15, 17}
-    i, _ := binarySearch(0, array, 0, 8)
-    expect(-1, i, t)
-    i, _ = binarySearch(18, array, 0, 8)
-    expect(9, i, t)
-    i, _ = binarySearch(10, array, 0, 8)
-    expect(4, i, t)
+func Test_searchCSBTNode(t *testing.T) {
+    tree := NewDCSBT()
+    searchCSBTNode(tree.indexHeader.root, 0)
+    insertToDCSBT(tree, 156, 188, 165)
+    fmt.Println(searchCSBTNode(tree.indexHeader.root, 156))
 }

@@ -11,7 +11,7 @@ import (
 
 const MAX_LEVEL = 15        //It means we can use 1k, 2k, ... , 2^14 * 1k
 
-const MAX_BLOCKS_LIMIT = 1  //When free max blocks more than MAX_BLOCKS_LIMIT, when release memory, we will free them  
+const MAX_BLOCKS_LIMIT = 2  //When free max blocks more than MAX_BLOCKS_LIMIT, when release memory, we will free them  
 
 type blocks [][]byte
 
@@ -52,11 +52,11 @@ func assign(header_t *reflect.SliceHeader, header_i reflect.SliceHeader) {
     header_t.Cap = header_i.Cap
 }
 
-type _pool struct {
+type Pool struct {
     list        [MAX_LEVEL]blocks
 }
 
-var pool _pool
+var pool Pool
 
 type fileImage struct {
     fileHandle  syscall.Handle
@@ -65,49 +65,52 @@ type fileImage struct {
 }
 
 //malloc table record which address was based on which file
-var mallocTable = make(map[uintptr]fileImage)
+var MallocTable = make(map[uintptr]fileImage)
 
 // Please use GetFree instead or you might make an error
 func Malloc(size int) []byte{
-    datetime := strconv.Itoa(int(time.Now().Unix()))
-    filename := ".\\image\\" + datetime
+    datetime := strconv.Itoa(int(time.Now().UnixNano()))
+    filename := ".\\image" + datetime
     h := CreateFile(filename, OPEN_ALWAYS)
     hI := CreateFileMapping(h, 0, uint(size), "img" + datetime)
     ip := MapViewOfFile(hI, uint(size))
-    mallocTable[ip] = fileImage {
+    MallocTable[ip] = fileImage {
         fileHandle: h,
         imageHandle:hI,
         fileName:   filename,
     }
-    FlushViewOfFile(ip, uint(size))
-    //UnmapViewOfFile(ip)
-    //CloseHandle(hI)
-    //CloseHandle(h)
-
-    var ret []byte
-    header := (*reflect.SliceHeader)(unsafe.Pointer(&ret))
+    var header reflect.SliceHeader
     header.Data = ip
     header.Len = size
     header.Cap = size
-    return ret
+    b := *(*[]byte)(unsafe.Pointer(&header))
+    for i := 0;i < size;i++ {
+        b[i] = 0
+    }
+    FlushViewOfFile(ip, uint(size))
+    //UnmapViewOfFile(ip)
+    // CloseHandle(hI)
+    CloseHandle(h)
+    return b
 }
 
 // Please use Free instead or you might make an error
 func Free(p []byte) {
     header := (*reflect.SliceHeader)(unsafe.Pointer(&p))
     UnmapViewOfFile(header.Data)
-    CloseHandle(mallocTable[header.Data].imageHandle)
-    CloseHandle(mallocTable[header.Data].fileHandle)
-    delete(mallocTable, header.Data)
+    CloseHandle(MallocTable[header.Data].imageHandle)
+    //CloseHandle(MallocTable[header.Data].fileHandle)
+    delete(MallocTable, header.Data)
     header.Len = 0
     header.Cap = 0
     header.Len = 0
 }
 
 func init() {
-    for i := 0;i < MAX_BLOCKS_LIMIT;i++ {
-        heap.Push(&pool.list[i], Malloc(1024 << uint(i)))
-    }
+    // for i := 0;i < MAX_LEVEL;i++ {
+    //     heap.Push(&pool.list[i], Malloc(1024 << uint(i)))
+    //     time.Sleep(time.Nanosecond * (1024 << uint(i)))
+    // }
 }
 
 func canMerge(b1, b2 []byte) bool {
@@ -118,14 +121,13 @@ func canMerge(b1, b2 []byte) bool {
 }
 
 func merge(prev, back []byte) []byte {
-    var ret []byte
-    header := (*reflect.SliceHeader)(unsafe.Pointer(&ret))
+    var header reflect.SliceHeader
     header1 := (*reflect.SliceHeader)(unsafe.Pointer(&prev))
     header2 := (*reflect.SliceHeader)(unsafe.Pointer(&back))
     header.Cap = header1.Cap + header2.Cap
     header.Len = header.Cap
     header.Data = header1.Data
-    return ret
+    return *(*[]byte)(unsafe.Pointer(&header))
 }
 
 /*
@@ -156,16 +158,15 @@ func InsertFree(n int, b []byte) {
 
 func slice(full []byte) ([]byte, []byte) {
     header := (*reflect.SliceHeader)(unsafe.Pointer(&full))
-    var half1, half2 []byte
-    header1 := (*reflect.SliceHeader)(unsafe.Pointer(&half1))
-    header2 := (*reflect.SliceHeader)(unsafe.Pointer(&half2))
+    var header1, header2 reflect.SliceHeader
     header1.Cap = header.Cap / 2
     header1.Len = header1.Cap
     header1.Data = header.Data
     header2.Cap = header1.Cap
     header2.Len = header2.Cap
     header2.Data = uintptr(int(header1.Data) + header1.Len)
-    return half1, half2
+    return *(*[]byte)(unsafe.Pointer(&header1)),
+    *(*[]byte)(unsafe.Pointer(&header2))
 }
 
 /*
