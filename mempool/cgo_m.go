@@ -89,7 +89,7 @@ func Malloc(size int) []byte{
     }
     FlushViewOfFile(ip, uint(size))
     //UnmapViewOfFile(ip)
-    // CloseHandle(hI)
+    //CloseHandle(hI)
     CloseHandle(h)
     return b
 }
