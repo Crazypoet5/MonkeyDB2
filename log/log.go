@@ -44,7 +44,7 @@ func writeLog(kind string, content interface{}) {
 func run() {
     for {
         m := <- queue
-        fmt.Println(m.kind)
+        //fmt.Println(m.kind)
         if m.abort {
             return
         }

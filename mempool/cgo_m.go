@@ -7,6 +7,7 @@ import (
     "time"
     "syscall"
     "strconv"
+    "../log"
 )
 
 const MAX_LEVEL = 15        //It means we can use 1k, 2k, ... , 2^14 * 1k
@@ -74,6 +75,8 @@ func Malloc(size int) []byte{
     h := CreateFile(filename, OPEN_ALWAYS)
     hI := CreateFileMapping(h, 0, uint(size), "img" + datetime)
     ip := MapViewOfFile(hI, uint(size))
+    //Use the sync File IO appears to make OS refresh map view
+    log.WriteLogSync("sys", "MapViewOfFile return:" + strconv.Itoa(int(ip)))
     MallocTable[ip] = fileImage {
         fileHandle: h,
         imageHandle:hI,
@@ -107,10 +110,10 @@ func Free(p []byte) {
 }
 
 func init() {
-    // for i := 0;i < MAX_LEVEL;i++ {
-    //     heap.Push(&pool.list[i], Malloc(1024 << uint(i)))
-    //     time.Sleep(time.Nanosecond * (1024 << uint(i)))
-    // }
+    for i := 0;i < MAX_LEVEL;i++ {
+        heap.Push(&pool.list[i], Malloc(1024 << uint(i)))
+        time.Sleep(time.Nanosecond * (1024 << uint(i)))
+    }
 }
 
 func canMerge(b1, b2 []byte) bool {
