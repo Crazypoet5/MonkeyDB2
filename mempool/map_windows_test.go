@@ -25,11 +25,14 @@ func TestCreateFileMapping(t *testing.T) {
     hI = CreateFileMapping(h, 0, 32768, "img")
     ip = MapViewOfFile(hI, 4)
     p = (*int)(unsafe.Pointer(ip))
+    
+    
     if *p != 5 {
         t.Error("Failed to check img file and RAM.\n")
-        CloseHandle(hI)
-        CloseHandle(h)
     }
+    *p = 6
+    UnmapViewOfFile(ip)
+    FlushViewOfFile(ip, 8)
     CloseHandle(hI)
     CloseHandle(h)
 }

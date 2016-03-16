@@ -65,9 +65,12 @@ type fileImage struct {
 
 
 func init() {
+    if RECOVERY && Recovery() {
+        return
+    }
     for i := 0;i < MAX_LEVEL;i++ {
         heap.Push(&pool.list[i], Malloc(1024 << uint(i)))
-        time.Sleep(time.Millisecond)
+        time.Sleep(time.Second)
     }
 }
 
