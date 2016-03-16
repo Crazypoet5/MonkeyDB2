@@ -1,6 +1,7 @@
 package mempool
 
 import "testing"
+import "time"
 
 func TestGetFree(t *testing.T) {
     sum := 0
@@ -8,6 +9,7 @@ func TestGetFree(t *testing.T) {
         r := GetFree(1024 << uint(i % 14))
         r[i] = byte(i)
         sum += int(r[i])
+        time.Sleep(time.Millisecond)    //If too fast then it will failed!
         Release(r)
     }
     t.Error(int(sum))
