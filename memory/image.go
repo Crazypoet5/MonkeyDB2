@@ -5,17 +5,18 @@ import "C"
 
 import (
     "strconv"
-    "time"
     "../common"
     "unsafe"
     "os"
 )
 
 var commonBuffer = make([]byte, 1024 * 1024)    // To clear the file quickly
+var count = 0   // Windows only support 100ns level
 
 // CreateImage creates a image file and returns the address
 func CreateImage(size int) (ip uintptr, err error) {
-    filename := common.COMMON_DIR + "\\image\\" + strconv.Itoa(int(time.Now().UnixNano()))
+    filename := common.COMMON_DIR + "\\image\\" + strconv.Itoa(count)
+    count++
     ip = uintptr(C.malloc(C.size_t(size)))
     file, err := os.Create(filename)
     defer file.Close()
@@ -30,10 +31,13 @@ func CreateImage(size int) (ip uintptr, err error) {
     return
 }
 
-// ReallocImage creates a new bigger image file and returns the new address, but not copy
+// ReallocImage creates a new bigger image file and returns the new address,
+// TODO: WriteBarrier to thread-safe copy
 func ReallocImage(ip uintptr, size int) (uintptr, error) {
-    filename := common.COMMON_DIR + "\\image\\" + strconv.Itoa(int(time.Now().UnixNano()))
-    C.free(unsafe.Pointer(ip))
+    filename := common.COMMON_DIR + "\\image\\" + strconv.Itoa(count)
+    count++
+    os.Remove(ImageTable[ip])
+    C.free(unsafe.Pointer(ip))  // Malloc may return a address the same as prev
     ipNew := uintptr(C.malloc(C.size_t(size)))
     file, err := os.Create(filename)
     defer file.Close()
@@ -47,8 +51,8 @@ func ReallocImage(ip uintptr, size int) (uintptr, error) {
             file.Write(commonBuffer)
         }
     }
-    ImageTable[ipNew] = filename
     delete(ImageTable, ip)
+    ImageTable[ipNew] = filename
     return ipNew, nil
 }
 
