@@ -22,6 +22,6 @@ func Test_DefineTokens(t *testing.T) {
 }
 
 func TestParse(t *testing.T) {
-    raw := []byte("select `name`,kk from `table` where a= 123 and 1.4>")
+    raw := []byte("select `name`,kk from `table` where a>= 123 and 1.4>")
     fmt.Println(Parse(ByteReader{data: raw}))
 }

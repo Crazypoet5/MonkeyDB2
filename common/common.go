@@ -7,6 +7,10 @@ import (
     "os"
 )
 
+const (
+    COMMON_DIR      =       "c:\\users\\inszva\\monkeydb2\\data"
+)
+
 func GetCurrentDirectory() string {
     dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
     if err != nil {
