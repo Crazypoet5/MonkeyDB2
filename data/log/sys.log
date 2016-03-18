@@ -1,0 +1,20 @@
+[ 2016-03-18 13:38:17.6872236 +0800 CST ] Save image table to file.
+[ 2016-03-18 13:46:00.144 +0800 CST ] Recovery 2 image files.
+[ 2016-03-18 13:46:00.1596004 +0800 CST ] Save image table to file.
+[ 2016-03-18 13:46:01.1471001 +0800 CST ] Recovery 6 image files.
+[ 2016-03-18 13:47:37.8023788 +0800 CST ] Recovery 4 image files.
+[ 2016-03-18 13:47:37.8179797 +0800 CST ] Save image table to file.
+[ 2016-03-18 13:47:38.8130852 +0800 CST ] Recovery 10 image files.
+[ 2016-03-18 13:51:50.1262041 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
+[ 2016-03-18 13:51:50.1418286 +0800 CST ] Save image table to file.
+[ 2016-03-18 13:51:50.1418286 +0800 CST ] Save image table to file.
+[ 2016-03-18 13:51:51.1283648 +0800 CST ] Recovery 2 image files.
+[ 2016-03-18 13:52:17.6334704 +0800 CST ] Recovery 2 image files.
+[ 2016-03-18 13:52:17.6334704 +0800 CST ] Save image table to file.
+[ 2016-03-18 13:52:18.6335672 +0800 CST ] Recovery 4 image files.
+[ 2016-03-18 14:03:51.1184644 +0800 CST ] Recovery 2 image files.
+[ 2016-03-18 14:03:51.1340737 +0800 CST ] Save image table to file.
+[ 2016-03-18 14:03:52.1203234 +0800 CST ] Recovery 6 image files.
+[ 2016-03-18 14:04:32.9747778 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
+[ 2016-03-18 14:04:32.9907499 +0800 CST ] Save image table to file.
+[ 2016-03-18 14:04:33.9842294 +0800 CST ] Recovery 2 image files.
