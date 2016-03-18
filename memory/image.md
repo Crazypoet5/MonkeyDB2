@@ -20,3 +20,13 @@ When you want to reallocate its size, use RellocImage before you change your poi
                             // PrimaryKey.A.datablock.Write(15, []byte{6, 9, 5, 7})
     PrimaryKey.A.Datablock = pNew
 ```
+
+### Backup
+
+When you create, realloc or release a image, a signal to sync all image will be sent to backup.
+It will also be called when the system is shutdown or you mantually call `SyncAllImageFile`
+
+### Recovery
+
+When the system launch, it will detect the `imageTable.json` and reload every image file to a new address.
+After this, an RecoveryTable old -> new will be created.

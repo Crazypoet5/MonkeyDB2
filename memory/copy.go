@@ -3,7 +3,6 @@ package memory
 import (
 	"unsafe"
 	"reflect"
-    "fmt"
 )
 
 var CopyTable = make(map[*DataBlock]*DataBlock) //Src -> Dst
@@ -61,6 +60,5 @@ func Copy(dst, src *DataBlock) (int, error) {
         return 0, err
     }
     delete(CopyTable, src)
-    fmt.Println(data)
     return dst.Write(0, data)
 }
