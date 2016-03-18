@@ -1,10 +1,11 @@
 package memory
 
 import (
-    "testing"
-    "time"
+    //"testing"
+    //"time"
+    //"fmt"
 )
-
+/*
 func Test_signalBackup(t *testing.T) {
     CreateImage(1024)
     CreateImage(512)
@@ -18,4 +19,6 @@ func TestRecovery(t *testing.T) {
     if len(RecoveryTable) != 2 {
         t.Error("Recovery num error!")
     }
-}
+    fmt.Println(RecoveryTable)
+    fmt.Println(ImageTable)
+}*/

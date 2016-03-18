@@ -10,6 +10,7 @@ import (
     "../common"
     "reflect"
     "unsafe"
+    "fmt"
 )
 
 const (
@@ -56,6 +57,7 @@ func SaveImageTable() {
     }
     data, _ := json.Marshal(tempTable)
     ioutil.WriteFile(common.COMMON_DIR + "\\image\\imageTable.json", data, 0666)
+    ioutil.WriteFile(common.COMMON_DIR + "\\image\\count", []byte(strconv.Itoa(count)), 0666)
     log.WriteLog("sys", "Save image table to file.")
 }
 
@@ -97,6 +99,13 @@ func LoadImage(filename string) *DataBlock {
 }
 
 func Recovery() {
+    fmt.Println("R")
+    countS, err := ioutil.ReadFile(common.COMMON_DIR + "\\image\\count")
+    if err != nil {
+        log.WriteLog("sys", "Recovery abort:" + err.Error())
+        return
+    }
+    count, _ = strconv.Atoi(string(countS))
     data, err := ioutil.ReadFile(common.COMMON_DIR + "\\image\\imageTable.json")
     if err != nil {
         log.WriteLog("sys", "Recovery abort:" + err.Error())

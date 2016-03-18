@@ -8,6 +8,7 @@ import (
 var I *DataBlock
 
 func TestCreateImage(t *testing.T) {
+    oldLen := DataBlockList.Len()
     I, err := CreateImage(1024)
     if err != nil {
         t.Error(err)
@@ -16,13 +17,14 @@ func TestCreateImage(t *testing.T) {
     if _, ok := ImageTable[I.RawPtr];!ok {
         t.Error("Not in map")
     }
-    if DataBlockList.Len() != 1 {
+    if DataBlockList.Len() != oldLen + 1 {
         t.Error("Not in list")
     }
     ReleaseImage(I)
 }
 
 func TestReallocImage(t *testing.T) {
+    oldLen := DataBlockList.Len()
     I, err := CreateImage(1024)
     if err != nil {
         t.Error(err)
@@ -48,7 +50,7 @@ func TestReallocImage(t *testing.T) {
     if _, ok := ImageTable[newI.RawPtr];!ok {
         t.Error("New not in map")
     }
-    if DataBlockList.Len() != 1 {
+    if DataBlockList.Len() != oldLen + 1 {
         t.Error("Not in list")
     }
     ReleaseImage(newI)
@@ -64,8 +66,9 @@ func TestReleaseImage(t *testing.T) {
     if _, ok := ImageTable[I.RawPtr];!ok {
         t.Error("Not in map")
     }
+    oldLen := DataBlockList.Len()
     ReleaseImage(I)
-    if DataBlockList.Len() != 0 {
+    if DataBlockList.Len() != oldLen - 1 {
         t.Error("Released in list")
     }
     if _, ok := ImageTable[I.RawPtr];ok {
