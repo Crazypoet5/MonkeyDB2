@@ -70,8 +70,6 @@ func BackupRoutine() {
         <- startBackup
         SaveImageTable()
         SyncAllImageToFile()
-        close(startBackup)
-        startBackup = make(chan bool, MAX_BAK_CHAN_SIZE)
     }
 }
 

@@ -8,7 +8,7 @@ import (
     "syscall"
 )
 
-const MAX_LEVEL = 15        //It means we can use 1k, 2k, ... , 2^14 * 1k
+const MAX_LEVEL = 20        //It means we can use 1, 2, ... , 2^14 * 64Bytes
 
 const MAX_BLOCKS_LIMIT = 2  //When free max blocks more than MAX_BLOCKS_LIMIT, when release memory, we will free them  
 
@@ -65,11 +65,8 @@ type fileImage struct {
 
 
 func init() {
-    if RECOVERY && Recovery() {
-        return
-    }
     for i := 0;i < MAX_LEVEL;i++ {
-        heap.Push(&pool.list[i], Malloc(1024 << uint(i)))
+        heap.Push(&pool.list[i], Malloc(64 << uint(i)))
         time.Sleep(time.Second)
     }
 }
@@ -138,7 +135,7 @@ func Slice(n int) []byte {
         panic("Unexpected block applied to slice!")
     }
     if n == MAX_LEVEL {
-        return Malloc(1024 << (MAX_LEVEL - 1))
+        return Malloc(64 << (MAX_LEVEL - 1))
     }
     full := getFree(n)
     half1, half2 := slice(full)
@@ -154,7 +151,7 @@ func getFree(n int) []byte {
 }
 
 func GetFree(size int) []byte {
-    n := size >> 10
+    n := size >> 5
     i := 0
     for n > 0 {
         n >>= 1
@@ -166,7 +163,7 @@ func GetFree(size int) []byte {
 // Warning: DONOT release a []byte created by Go
 func Release(buffer []byte) {
     header := (*reflect.SliceHeader)(unsafe.Pointer(&buffer))
-    n := header.Cap >> 10
+    n := header.Cap >> 5
     i := 0
     for n > 0 {
         n >>= 1

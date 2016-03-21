@@ -5,10 +5,10 @@ import "time"
 
 func TestGetFree(t *testing.T) {
     sum := 0
-    for i := 0;i < 1024;i++ {
-        r := GetFree(1024 << uint(i % 14))
-        r[i] = byte(i)
-        sum += int(r[i])
+    for i := 0;i < 100;i++ {
+        r := GetFree(64 << uint(i % 14))
+        r[25] = byte(i)
+        sum += int(r[25])
         time.Sleep(time.Millisecond)    //If too fast then it will failed!
         Release(r)
     }
