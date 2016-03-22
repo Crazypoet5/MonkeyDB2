@@ -83,7 +83,7 @@ func LoadImage(filename string) *DataBlock {
     size := len(data)
     ip := &DataBlock {
         RawPtr:     uintptr(C.malloc(C.size_t(size))),
-        Size:       size,
+        Size:       uint(size),
     }
     var header reflect.SliceHeader
     header.Data = uintptr(ip.RawPtr)

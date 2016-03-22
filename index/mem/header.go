@@ -11,25 +11,7 @@ const (
     MAX_POINTER_OFFSET      =       16
 )
 
-func uint2bytes(p uintptr) []byte {
-    b := make([]byte, 8)
-    for i := 0;i < 8;i++ {
-         b[i] = (byte)(p)
-         p >>= 8
-    }
-    return b
-}
-
-func bytes2uint(b []byte) uintptr {
-    p := uintptr(0)
-    for i := 7;i >= 0;i-- {
-        p <<= 8
-        p |= uintptr(b[i])
-    }
-    return p
-}
-
-func (mb *ManagedBlock) GetRoot() uintptr {
+func (mb *ManagedBlock) GetRoot() uint {
     data, err := mb.db.Read(ROOT_POINTER_OFFSET, 8)
     if err != nil {
         log.WriteLog("err", err.Error())
@@ -37,7 +19,7 @@ func (mb *ManagedBlock) GetRoot() uintptr {
     return bytes2uint(data)
 }
 
-func (mb *ManagedBlock) SetRoot(r uintptr) {
+func (mb *ManagedBlock) SetRoot(r uint) {
     data := uint2bytes(r)
     _, err := mb.db.Write(ROOT_POINTER_OFFSET, data)
     if err != nil {
@@ -45,7 +27,7 @@ func (mb *ManagedBlock) SetRoot(r uintptr) {
     }
 }
 
-func (mb *ManagedBlock) GetMin() uintptr {
+func (mb *ManagedBlock) GetMin() uint {
     data, err := mb.db.Read(MIN_POINTER_OFFSET, 8)
     if err != nil {
         log.WriteLog("err", err.Error())
@@ -53,7 +35,7 @@ func (mb *ManagedBlock) GetMin() uintptr {
     return bytes2uint(data)
 }
 
-func (mb *ManagedBlock) SetMin(p uintptr) {
+func (mb *ManagedBlock) SetMin(p uint) {
     data := uint2bytes(p)
     _, err := mb.db.Write(MIN_POINTER_OFFSET, data)
     if err != nil {
@@ -61,7 +43,7 @@ func (mb *ManagedBlock) SetMin(p uintptr) {
     }
 }
 
-func (mb *ManagedBlock) GetMax() uintptr {
+func (mb *ManagedBlock) GetMax() uint {
     data, err := mb.db.Read(MAX_POINTER_OFFSET, 8)
     if err != nil {
         log.WriteLog("err", err.Error())
@@ -69,7 +51,7 @@ func (mb *ManagedBlock) GetMax() uintptr {
     return bytes2uint(data)
 }
 
-func (mb *ManagedBlock) SetMax(p uintptr) {
+func (mb *ManagedBlock) SetMax(p uint) {
     data := uint2bytes(p)
     _, err := mb.db.Write(MAX_POINTER_OFFSET, data)
     if err != nil {

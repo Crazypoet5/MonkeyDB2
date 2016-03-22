@@ -18,6 +18,24 @@ const (
 
 //interface{} with a 8 byte data is sized with 16 bytes in GOlang
 
+type Node struct {
+    IsLeaf      byte
+    Reversed    byte
+    KeyNum      uint16
+    Key         [13]uint32
+    Child       uintptr
+}
+
+type Leaf struct {
+    IsLeaf      byte
+    KeyNum      byte
+    Key         [3]uint32
+    Value       [3]uintptr
+    Left,Right  uintptr
+    Reversed    uint32
+    Reversed2   uint16
+}
+
 type IndexHeader struct {
     root    interface{}
     min,max *CSBTLeaf

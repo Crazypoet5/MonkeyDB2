@@ -10,7 +10,7 @@ type node struct {
     reversed    byte
     keyNum      uint16
     key         [13]uint32
-    child       uintptr
+    child       uint
 }
 
 type leaf struct {
@@ -19,8 +19,8 @@ type leaf struct {
     key         [3]uint32
     value       [3]uintptr
     left,right  uintptr
-    reverse     uint32
-    reverse2    uint16
+    reversed    uint32
+    reversed2   uint16
 }
 
 func main() {

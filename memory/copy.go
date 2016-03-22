@@ -7,24 +7,24 @@ import (
 
 var CopyTable = make(map[*DataBlock]*DataBlock) //Src -> Dst
 
-func (b *DataBlock) read(offset, size int) ([]byte, error) {
+func (b *DataBlock) read(offset, size uint) ([]byte, error) {
     if offset + size > b.Size {
         return nil, OUT_OF_SIZE
     }
     var header reflect.SliceHeader
     header.Data = uintptr(b.RawPtr + uintptr(offset))
-    header.Len = size
-    header.Cap = size
+    header.Len = int(size)
+    header.Cap = int(size)
     return *(*[]byte)(unsafe.Pointer(&header)), nil
 }
 
-func (b *DataBlock) Read(offset, size int) ([]byte, error) {
+func (b *DataBlock) Read(offset, size uint) ([]byte, error) {
     b.RWMutex.RLock()
     defer b.RWMutex.RUnlock()
     return b.read(offset, size)
 }
 
-func (b *DataBlock) write(offset int, data []byte) (int, error) {
+func (b *DataBlock) write(offset uint, data []byte) (int, error) {
     var header reflect.SliceHeader
     size := len(data)
     header.Data = uintptr(b.RawPtr + uintptr(offset))
@@ -32,8 +32,8 @@ func (b *DataBlock) write(offset int, data []byte) (int, error) {
     header.Cap = size
     d := *(*[]byte)(unsafe.Pointer(&header))
     var n int
-    if offset + size > b.Size {
-        n = b.Size - offset
+    if offset + uint(size) > b.Size {
+        n = int(b.Size - offset)
     } else {
         n = size
     }
@@ -41,7 +41,7 @@ func (b *DataBlock) write(offset int, data []byte) (int, error) {
     return n, nil
 }
 
-func (b *DataBlock) Write(offset int, data []byte) (int, error) {
+func (b *DataBlock) Write(offset uint, data []byte) (int, error) {
     b.RWMutex.Lock()
     defer b.RWMutex.Unlock()
     var copies *DataBlock

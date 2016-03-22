@@ -22,7 +22,7 @@ func CreateImage(size int) (ip *DataBlock, err error) {
     count++
     ip = &DataBlock {
         RawPtr:     uintptr(C.malloc(C.size_t(size))),
-        Size:       size,
+        Size:       uint(size),
     }
     file, err := os.Create(filename)
     defer file.Close()
@@ -46,7 +46,7 @@ func ReallocImage(ip *DataBlock, size int) (*DataBlock, error) {
     os.Remove(ImageTable[ip.RawPtr])
     ipNew := &DataBlock {
         RawPtr:     uintptr(C.malloc(C.size_t(size))),
-        Size:       size,
+        Size:       uint(size),
     }
     file, err := os.Create(filename)
     defer file.Close()

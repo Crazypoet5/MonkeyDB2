@@ -8,6 +8,6 @@ var ImageTable = make(map[uintptr]string)
 
 type DataBlock struct {
     RawPtr      uintptr
-    Size        int
+    Size        uint
     RWMutex     sync.RWMutex
 }
