@@ -12,6 +12,7 @@ type Indexer interface {
     Select(key uint, n int) []uint
     Insert(key, value uint, base uintptr) error 
     InsertBat(key, value []uint, base []uintptr) error
+    Recovery(oldPtr uintptr) error
 }
 
 type Index struct {
