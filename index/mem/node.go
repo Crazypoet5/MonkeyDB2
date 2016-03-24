@@ -13,7 +13,7 @@ type Node struct {
 }
 
 func (mb *ManagedBlock) InitNode(p uint) {
-    mb.db.Write(p, make([]byte, 64))
+    mb.Write(p, make([]byte, 64))
 }
 
 func (mb *ManagedBlock) NewNodes(n int) uint {
@@ -25,11 +25,11 @@ func (mb *ManagedBlock) NewNodes(n int) uint {
 }
 
 func (mb *ManagedBlock) SetNodeKey(node uint, index int, key uint32) {
-    mb.db.Write(node + 4 + uint(index) * 4, uint322bytes(key))
+    mb.Write(node + 4 + uint(index) * 4, uint322bytes(key))
 }
 
 func (mb *ManagedBlock) GetNodeKey(node uint, index int) uint32 {
-    data, err := mb.db.Read(node + 4 + uint(index) * 4, 4)
+    data, err := mb.Read(node + 4 + uint(index) * 4, 4)
     if err != nil {
         log.WriteLog("err", err.Error())
     }
@@ -37,7 +37,7 @@ func (mb *ManagedBlock) GetNodeKey(node uint, index int) uint32 {
 }
 
 func (mb *ManagedBlock) GetNodeKeyNum(node uint) int {
-    data, err := mb.db.Read(uint(node + 2), 2)
+    data, err := mb.Read(uint(node + 2), 2)
     if err != nil {
         log.WriteLog("err", err.Error())
     }
@@ -46,11 +46,11 @@ func (mb *ManagedBlock) GetNodeKeyNum(node uint) int {
 
 func (mb *ManagedBlock) SetNodeKeyNum(node uint, keyNum int) {
     data := uint162bytes(uint16(keyNum))
-    mb.db.Write(uint(node + 2), data)
+    mb.Write(uint(node + 2), data)
 }
 
 func (mb *ManagedBlock) GetChild(node uint, index int) uint {
-    data, err := mb.db.Read(uint(node + 56), 8)
+    data, err := mb.Read(uint(node + 56), 8)
     if err != nil {
         log.WriteLog("err", err.Error())
     }

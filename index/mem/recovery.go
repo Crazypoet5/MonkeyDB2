@@ -6,7 +6,7 @@ import (
 
 func LoadManagedBlockFromDataBlock(db *memory.DataBlock) *ManagedBlock {
     return &ManagedBlock {
-        db:         db,
+        DataBlock:      *db,
     }
 }
 
@@ -25,7 +25,7 @@ func LoadManagedBlockFromOldUintptr(p uintptr) *ManagedBlock {
         db := l.Value.(*memory.DataBlock)
         if db.RawPtr == newPtr {
             return &ManagedBlock {
-                db:         db,
+                DataBlock:         *db,
             }
         }
     }

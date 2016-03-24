@@ -15,11 +15,11 @@ type leaf struct {
 }
 
 func (mb *ManagedBlock) InitLeaf(p uint) {
-    mb.db.Write(p, make([]byte, 64))
+    mb.Write(p, make([]byte, 64))
 }
 
 func (mb *ManagedBlock) IsLeaf(p uint) bool {
-    data, err := mb.db.Read(p, 1)
+    data, err := mb.Read(p, 1)
     if err != nil {
         log.WriteLog("err", err.Error())
     }
@@ -35,7 +35,7 @@ func (mb *ManagedBlock) NewLeaves(n int) uint {
 }
 
 func (mb *ManagedBlock) GetLeafKeyNum(leaf uint) int {
-    data, err := mb.db.Read(leaf + 1, 1)
+    data, err := mb.Read(leaf + 1, 1)
     if err != nil {
         log.WriteLog("err", err.Error())
     }
@@ -43,11 +43,11 @@ func (mb *ManagedBlock) GetLeafKeyNum(leaf uint) int {
 }
 
 func (mb *ManagedBlock) SetLeafKeyNum(leaf uint, keyNum int) {
-    mb.db.Write(leaf + 1, []byte{byte(keyNum)})
+    mb.Write(leaf + 1, []byte{byte(keyNum)})
 }
 
 func (mb *ManagedBlock) GetLeafKey(leaf uint, index int) uint32 {
-    data, err := mb.db.Read(leaf + 4 + uint(index) * 4, 4)
+    data, err := mb.Read(leaf + 4 + uint(index) * 4, 4)
     if err != nil {
         log.WriteLog("err", err.Error())
     }
@@ -55,11 +55,11 @@ func (mb *ManagedBlock) GetLeafKey(leaf uint, index int) uint32 {
 }
 
 func (mb *ManagedBlock) SetLeafKey(leaf uint, index int, key uint32) {
-    mb.db.Write(leaf + 4 + uint(index) * 4, uint322bytes(key))
+    mb.Write(leaf + 4 + uint(index) * 4, uint322bytes(key))
 }
 
 func (mb *ManagedBlock) GetLeafValue(leaf uint, index int) uintptr {
-    data, err := mb.db.Read(leaf + 16 + uint(index) * 8, 8)
+    data, err := mb.Read(leaf + 16 + uint(index) * 8, 8)
     if err != nil {
         log.WriteLog("err", err.Error())
     }
@@ -67,11 +67,11 @@ func (mb *ManagedBlock) GetLeafValue(leaf uint, index int) uintptr {
 }
 
 func (mb *ManagedBlock) SetLeafValue(leaf uint, index int, value uintptr) {
-    mb.db.Write(leaf + 16 + uint(index) * 8, uint2bytes(uint(value)))
+    mb.Write(leaf + 16 + uint(index) * 8, uint2bytes(uint(value)))
 }
 
 func (mb *ManagedBlock) GetLeafLeft(leaf uint) uint {
-    data, err := mb.db.Read(leaf + 40, 8)
+    data, err := mb.Read(leaf + 40, 8)
     if err != nil {
         log.WriteLog("err", err.Error())
     }
@@ -79,11 +79,11 @@ func (mb *ManagedBlock) GetLeafLeft(leaf uint) uint {
 }
 
 func (mb *ManagedBlock) SetLeafLeft(leaf, left uint) {
-    mb.db.Write(leaf + 40, uint2bytes(uint(left)))
+    mb.Write(leaf + 40, uint2bytes(uint(left)))
 }
 
 func (mb *ManagedBlock) GetLeafRight(leaf uint) uint {
-    data, err := mb.db.Read(leaf + 48, 8)
+    data, err := mb.Read(leaf + 48, 8)
     if err != nil {
         log.WriteLog("err", err.Error())
     }
@@ -91,5 +91,5 @@ func (mb *ManagedBlock) GetLeafRight(leaf uint) uint {
 }
 
 func (mb *ManagedBlock) SetLeafRight(leaf, right uint) {
-    mb.db.Write(leaf + 48, uint2bytes(uint(right)))
+    mb.Write(leaf + 48, uint2bytes(uint(right)))
 }
