@@ -2,12 +2,12 @@ package table
 
 type Value []byte
 
-func (v *Value) Len() {
-    return len(Value)
+func (v *Value) Len() int {
+    return len(*v)
 }
 
 func (v *Value) AsInt() int {
-    return bytes2int(v)
+    return int(bytes2uint(*v))
 }
 
 func (v *Value) AsFloat() float64 {
@@ -15,5 +15,5 @@ func (v *Value) AsFloat() float64 {
 }
 
 func (v *Value) AsString() string {
-    return string(v)
+    return string(*v)
 }

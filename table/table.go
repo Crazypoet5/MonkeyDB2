@@ -16,7 +16,7 @@ type Table struct {
     Name        string
     Fields      []Field
     Indexs      []Index
-    FirstPage   
+    FirstPage   *Page 
 }
 
 type Index struct {

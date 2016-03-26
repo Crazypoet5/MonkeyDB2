@@ -1,7 +1,8 @@
 package main
 
 import (
-    _"./sql"
+    _"./sql/lex"
+    _"./sql/syntax"
     _"./table"
     _"./index"
     _"./log"

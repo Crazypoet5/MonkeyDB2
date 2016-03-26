@@ -2,7 +2,6 @@ package table
 
 import (
     "../memory"
-    "../table"
     "unsafe"
 )
 
@@ -22,9 +21,9 @@ type page struct {
     next  uintptr
 }
 
-func (p *Page) GetTable() *table.Table {
+func (p *Page) GetTable() *Table {
     ptr, _ := p.Read(0, 8)
-    return (*table.Table)(unsafe.Pointer(uintptr(bytes2uint(ptr))))
+    return (*Table)(unsafe.Pointer(uintptr(bytes2uint(ptr))))
 }
 
 func NewPage() *Page {

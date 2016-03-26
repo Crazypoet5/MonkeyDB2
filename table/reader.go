@@ -13,20 +13,21 @@ func (p *Page) NewReader() *Reader {
 }
 
 func (p *Reader) PeekRecord() Relation {
-    ret := make(Relation)
+    ret := make(Relation, 0)
     table := p.currentPage.GetTable()
-    row := make([]Value)
-    for f := range table.Fields {
+    row := make([]Value, 0)
+    for _, f := range table.Fields {
         if f.FixedSize {
-            v := p.currentPage.Read(p.currentPtr, f.Size)
-            ret = append(row, v)
-            p.currentPtr += f.Size
+            v, _ := p.currentPage.Read(p.currentPtr, uint(f.Size))
+            row = append(row, v)
+            p.currentPtr += uint(f.Size)
         } else {
-            size := bytes2uint32(p.currentPage.Read(p.currentPtr, 4))
+            data, _ := p.currentPage.Read(p.currentPtr, 4)
+            size := bytes2uint32(data)
             p.currentPtr += 4
-            v := p.currentPage.Read(p.currentPtr, int(size))
-            ret = append(row, v)
-             p.currentPtr += int(size)
+            v, _ := p.currentPage.Read(p.currentPtr, uint(size))
+            row = append(row, v)
+            p.currentPtr += uint(size)
         }
     }
     ret = append(ret, row)
