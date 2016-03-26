@@ -50,9 +50,13 @@ func (mb *ManagedBlock) SetNodeKeyNum(node uint, keyNum int) {
 }
 
 func (mb *ManagedBlock) GetChild(node uint, index int) uint {
-    data, err := mb.Read(uint(node + 56), 8)
+    data, err := mb.Read(node + 56, 8)
     if err != nil {
         log.WriteLog("err", err.Error())
     }
-    return bytes2uint(data)
+    return bytes2uint(data) + 64 * uint(index)
+}
+
+func (mb *ManagedBlock) SetChildren(node uint, p uint) {
+    mb.Write(node + 56, uint2bytes(p))
 }

@@ -2,15 +2,17 @@ package csbt
 
 import (
     "time"
+    "../msg"
 )
 
-func (t *DCSBT) Insert(key uint32, value uintptr) *Msg {
+func (t *DCSBT) Insert(key uint32, value uintptr) *msg.Msg {
     start := time.Now().UnixNano()
     l, p, i, b := t.selecT(t.mb.GetRoot(), 0, key)
     if b {
-        return &Msg {
+        return &msg.Msg {
             Info:   "Data already exist.",
             Time:   time.Now().UnixNano() - start,
+            Success:   true,
         }
     }
     if t.mb.GetLeafKeyNum(l) < 3 {
@@ -18,9 +20,10 @@ func (t *DCSBT) Insert(key uint32, value uintptr) *Msg {
     } else {
         t.splitFullLeafAndInsert(l, i, p, key, value)
     }
-    return &Msg {
+    return &msg.Msg {
         Info:   "Insert ok.",
         Time:   time.Now().UnixNano() - start,
+        Success:   true,
     }
 }
 
@@ -39,10 +42,9 @@ func (t *DCSBT) insertToFreeLeaf(leaf uint, index int, key uint32, value uintptr
 
 func (t *DCSBT) splitFullLeafAndInsert(leaf uint, index int, p uint, key uint32, value uintptr) {
     if p == 0 {     //Leaf node is root
-        p = t.mb.NewNodes(2)
+        p = t.mb.NewNodes(1)
         t.mb.SetRoot(p)
         t.mb.SetChildren(p, leaf)
-        t.mb.SetNodeKeyNum(p, 1)
     }
     keyNum := t.mb.GetNodeKeyNum(p)
     if keyNum < 13 {
@@ -60,7 +62,7 @@ func (t *DCSBT) splitFullLeafAndInsert(leaf uint, index int, p uint, key uint32,
         k1 := t.mb.GetLeafKey(leaf, 1)
         k2 := t.mb.GetLeafKey(leaf, 2)
         v0 := t.mb.GetLeafValue(leaf, 0)
-        v1 := t.mb.GetLeafValue(leaf, 2)
+        v1 := t.mb.GetLeafValue(leaf, 1)
         v2 := t.mb.GetLeafValue(leaf, 2)
         switch(index) {
             case -1:
@@ -69,9 +71,9 @@ func (t *DCSBT) splitFullLeafAndInsert(leaf uint, index int, p uint, key uint32,
             t.mb.SetLeafKey(new1, 1, k0)
             t.mb.SetLeafValue(new1, 1, v0)
             t.mb.SetLeafKeyNum(new1, 2)
-            t.mb.SetLeafKey(new1, 0, k1)
+            t.mb.SetLeafKey(new2, 0, k1)
             t.mb.SetLeafValue(new2, 0, v1)
-            t.mb.SetLeafKey(new1, 0, k2)
+            t.mb.SetLeafKey(new2, 1, k2)
             t.mb.SetLeafValue(new2, 1, v2)
             t.mb.SetLeafKeyNum(new2, 2)
             case 0:
@@ -80,9 +82,9 @@ func (t *DCSBT) splitFullLeafAndInsert(leaf uint, index int, p uint, key uint32,
             t.mb.SetLeafKey(new1, 1, key)
             t.mb.SetLeafValue(new1, 1, value)
             t.mb.SetLeafKeyNum(new1, 2)
-            t.mb.SetLeafKey(new1, 0, k1)
+            t.mb.SetLeafKey(new2, 0, k1)
             t.mb.SetLeafValue(new2, 0, v1)
-            t.mb.SetLeafKey(new1, 0, k2)
+            t.mb.SetLeafKey(new2, 1, k2)
             t.mb.SetLeafValue(new2, 1, v2)
             t.mb.SetLeafKeyNum(new2, 2)
             case 1:
@@ -91,9 +93,9 @@ func (t *DCSBT) splitFullLeafAndInsert(leaf uint, index int, p uint, key uint32,
             t.mb.SetLeafKey(new1, 1, k1)
             t.mb.SetLeafValue(new1, 1, v1)
             t.mb.SetLeafKeyNum(new1, 2)
-            t.mb.SetLeafKey(new1, 0, key)
+            t.mb.SetLeafKey(new2, 0, key)
             t.mb.SetLeafValue(new2, 0, value)
-            t.mb.SetLeafKey(new1, 0, k2)
+            t.mb.SetLeafKey(new2, 1, k2)
             t.mb.SetLeafValue(new2, 1, v2)
             t.mb.SetLeafKeyNum(new2, 2)
             case 2:
@@ -102,10 +104,10 @@ func (t *DCSBT) splitFullLeafAndInsert(leaf uint, index int, p uint, key uint32,
             t.mb.SetLeafKey(new1, 1, k1)
             t.mb.SetLeafValue(new1, 1, v1)
             t.mb.SetLeafKeyNum(new1, 2)
-            t.mb.SetLeafKey(new1, 0, key)
-            t.mb.SetLeafValue(new2, 0, value)
-            t.mb.SetLeafKey(new1, 0, k2)
-            t.mb.SetLeafValue(new2, 1, v2)
+            t.mb.SetLeafKey(new2, 0, k2)
+            t.mb.SetLeafValue(new2, 0, v2)
+            t.mb.SetLeafKey(new2, 1, key)
+            t.mb.SetLeafValue(new2, 1, value)
             t.mb.SetLeafKeyNum(new2, 2)
         }
         //Repair left, right and isLeaf
@@ -121,6 +123,17 @@ func (t *DCSBT) splitFullLeafAndInsert(leaf uint, index int, p uint, key uint32,
         if p == t.mb.GetRoot() {
             t.mb.SetMin(g0)
             t.mb.SetMax(g0 + 64 * uint(keyNum))
+        }
+        //Repair keys
+        for i := 0;i < keyNum + 1;i++ {
+            c := t.mb.GetChild(p, i)
+            k := uint32(0)
+            if t.mb.IsLeaf(c) {
+                k = t.mb.GetLeafKey(c, i)
+            } else {
+                k = t.mb.GetNodeKey(c, i)
+            }
+            t.mb.SetNodeKey(p, i, k)
         }
         return
     }
@@ -148,7 +161,7 @@ func (t *DCSBT) splitFullLeafAndInsert(leaf uint, index int, p uint, key uint32,
 func (t *DCSBT) splitNode(node, p uint) {
     f := t.mb.GetChild(p, 0)
     keyNum := t.mb.GetNodeKeyNum(p)
-    g0 := t.mb.NewNodes(keyNum + 2)
+    g0 := t.mb.NewNodes(keyNum + 1)
     prevNode, _ := t.mb.Read(f, node - f)
     t.mb.Write(g0, prevNode)
     new1 := g0 + uint(len(prevNode))

@@ -16,6 +16,11 @@ type leaf struct {
 
 func (mb *ManagedBlock) InitLeaf(p uint) {
     mb.Write(p, make([]byte, 64))
+    mb.Write(p, []byte{1})
+}
+
+func (mb *ManagedBlock) SetLeaf(p uint) {
+    mb.Write(p, []byte{1})
 }
 
 func (mb *ManagedBlock) IsLeaf(p uint) bool {
@@ -23,7 +28,7 @@ func (mb *ManagedBlock) IsLeaf(p uint) bool {
     if err != nil {
         log.WriteLog("err", err.Error())
     }
-    return data[0] >= 0
+    return data[0] > 0
 }
 
 func (mb *ManagedBlock) NewLeaves(n int) uint {

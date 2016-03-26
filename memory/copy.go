@@ -49,8 +49,8 @@ func (b *DataBlock) Write(offset uint, data []byte) (int, error) {
     if !ok {
         return b.write(offset, data)
     }
-    copies.Write(offset, data)
-    return b.Write(offset, data)
+    copies.write(offset, data)
+    return b.write(offset, data)
 }
 
 func Copy(dst, src *DataBlock) (int, error) {

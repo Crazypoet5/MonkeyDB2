@@ -1,4 +1,4 @@
-package csbt
+package msg
 
 import (
     "fmt"
@@ -8,6 +8,7 @@ import (
 type Msg struct {
     Info    string
     Time    int64
+    Success bool
 }
 
 func (m *Msg) Print() {
