@@ -15,7 +15,7 @@ func (t *DCSBT) selecT(start, parent uint, key uint32) (uint, uint, int, bool) {
                 return start, parent, i - 1, false
             }
         }
-        return start, parent, -1, false
+        return start, parent, keyNum, false
     }
     keyNum := t.mb.GetNodeKeyNum(start)
     for i := 0;i < keyNum;i++ {
