@@ -29,3 +29,16 @@ func (r *TokenReader) Fork() *TokenReader {
         pos:    r.pos,
     }
 }
+
+func (r *TokenReader) Next(n int) {
+    for i := 0;i < n;i++ {
+        r.Read()
+    }
+}
+
+func NewTokenReader(data []lex.Token) *TokenReader {
+    return &TokenReader {
+        data:   data,
+        pos:    0,
+    }
+}

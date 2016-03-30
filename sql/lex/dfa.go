@@ -292,8 +292,14 @@ func _inBag(v int, bag []int) bool {
 } 
 
 func convert(bag1, bag2 []int) []int {
-    r := make([]int, len(bag1))
-    for i, _ := range bag1 {
+    bag1max := bag1[0]
+    for i := range bag1 {
+        if bag1[i] > bag1max {
+            bag1max = bag1[i]
+        }
+    }
+    r := make([]int, bag1max + 1)
+    for i := range bag1 {
         r[bag1[i]] = bag2[i]
     }
     return r

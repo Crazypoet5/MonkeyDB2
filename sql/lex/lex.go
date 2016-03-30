@@ -8,7 +8,7 @@ var (
     accept []bool
     array [][]int
     class []int
-    ac map[string][]int
+    ac map[int]string
     dfa *preDfa
 )
 
@@ -18,28 +18,26 @@ type Token struct {
 }
 
 func DefineToken(token string, g *nfa) {
-    if _, ok := ac[token];ok {
-        return
-    }
     if len(ac) == 0 {
         fork := g.fork()
         fork.Simplify()
         dfa = fork.toDfa()
-        ac[token] = make([]int, 0)
         for i, v := range dfa.v {
             if v {
-                ac[token] = append(ac[token], i)
+                ac[i] = token
             }
         }
     } else {
         fork := g.fork()
         fork.Simplify()
-        ac[token] = dfa.addDfa(fork.toDfa())
+        for _, v := range dfa.addDfa(fork.toDfa()) {
+            ac[v] = token
+        }
     }
 }
 
 func init() {
-    ac = make(map[string][]int)
+    ac = make(map[int]string)
     defineTokens()
     class, array, accept = dfa.toArray()
     log.WriteLogSync("sys", "lex module ready")
@@ -64,32 +62,33 @@ func letterNfa() *nfa {
     return or(nfas...)
 }
 
+func stringsToken(tokens ...string) *nfa {
+    ret := make([]*nfa, 0)
+    for _, v := range tokens {
+        ret = append(ret, strings([]byte(v)))
+    }
+    return or(ret...)
+}
+
 func defineTokens() {
     log.WriteLogSync("sys", "Start making DFA")
-    DefineToken("float", links(repeat(numberNfa()), single('.'), chosable(repeat(numberNfa()))))
-    DefineToken("int", repeat(numberNfa()))
+    keyword := stringsToken("select", "from", "where", "update", "delete", "create", "insert", "into", "table", "order", "by")
+    logical := stringsToken("and", "or", "not")
+    structs := stringsToken("(", ")", ";", ",", ".")
+    split := stringsToken(" ", "\t", "\n")
+    relations := stringsToken(">", "<", ">=", "<=", "=", "<>")
+    types := stringsToken("int", "float", "varchar", "object", "array")
+    DefineToken("floatval", links(repeat(numberNfa()), single('.'), chosable(repeat(numberNfa()))))
+    DefineToken("intval", repeat(numberNfa()))
     DefineToken("identical", links(repeat(letterNfa()), chosable(repeat(or(numberNfa(), letterNfa())))))
-    DefineToken("split", or(single(' '), single('\t'), single('\n')))
-    DefineToken("select", or(strings([]byte("select")), strings([]byte("SELECT"))))
-    DefineToken("from", or(strings([]byte("from")), strings([]byte("FROM"))))
-    DefineToken("where", or(strings([]byte("where")), strings([]byte("WHERE"))))
-    DefineToken("and", or(strings([]byte("and")), strings([]byte("AND"))))
-    DefineToken("or", or(strings([]byte("or")), strings([]byte("OR"))))
-    DefineToken("order", or(strings([]byte("order")), strings([]byte("ORDER"))))
-    DefineToken("by", or(strings([]byte("by")), strings([]byte("BY"))))
-    DefineToken("insert", or(strings([]byte("insert")), strings([]byte("INSERT"))))
-    DefineToken("update", or(strings([]byte("update")), strings([]byte("UPDATE"))))
-    DefineToken("delete", or(strings([]byte("delete")), strings([]byte("DELETE"))))
+    DefineToken("keyword", keyword)
+    DefineToken("logical", logical)
+    DefineToken("structs", structs)
+    DefineToken("split", split)
+    DefineToken("relations", relations)
+    DefineToken("types", types)
     DefineToken("unReference", single('`'))
     DefineToken("reference", single('\''))
-    DefineToken("dot", single(','))
-    DefineToken("spot", single('.'))
-    DefineToken("equal", single('='))
-    DefineToken("lessEqual", link(single('<'), single('=')))
-    DefineToken("moreEqual", link(single('>'), single('=')))
-    DefineToken("more", single('>'))
-    DefineToken("less", single('<'))
-    DefineToken("notEqual", link(single('<'), single('>')))
     log.WriteLogSync("sys", "DFA prepared")
 }
 
@@ -107,16 +106,13 @@ func Parse(input ByteReader) ([]Token, error) {
             pos:    in.pos,
         }
         s, b, err := RunDFA(class, array, accept, fork)
-        token := Token {}
-        for k, v := range ac {
-            for _, i := range v {
-                if i == s {
-                    token.Kind = k
-                    goto escape
-                }
-            }
+        if b == nil {
+            break
         }
-        escape:
+        token := Token {}
+        if k, ok := ac[s];ok {
+            token.Kind = k
+        }
         token.Raw = b
         t = append(t, token)
         if err == nil {

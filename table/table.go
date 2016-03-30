@@ -4,6 +4,10 @@ import (
     "../index"
 )
 
+const (
+    FIELD_TYPE_INT  =   iota
+)
+
 type Field struct {
     Name        string
     FixedSize   bool
