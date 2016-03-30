@@ -306,6 +306,7 @@ func convert(bag1, bag2 []int) []int {
 }
 
 //add additional dfa to a exist dfa, and return accept states of additional dfa
+//DFA合并不可取 会出现identical回退到其他token的情况
 func (g *preDfa) addDfa(add *preDfa) []int {
     bag1, bag2 := findBag(g, add)
     convert := convert(bag2, bag1)
@@ -323,7 +324,6 @@ func (g *preDfa) addDfa(add *preDfa) []int {
             accept = append(accept, bag1[i])
         }
     }
-    
     eNew := list.List{}
     for al := add.e.Front();al != nil;al = al.Next() {
         ap := al.Value.(path)
@@ -332,17 +332,17 @@ func (g *preDfa) addDfa(add *preDfa) []int {
             continue
         }
         if xInB {
-            eNew.PushBack(path {
-                x:  convert[ap.x],
-                y:  base + ap.y,
-                c:  ap.c,
-            })
+                eNew.PushBack(path {
+                    x:  convert[ap.x],
+                    y:  base + ap.y,
+                    c:  ap.c,
+                })
         } else if yInB {
-            eNew.PushBack(path {
-                x:  base + ap.x,
-                y:  convert[ap.y],
-                c:  ap.c,
-            })
+                eNew.PushBack(path {
+                    x:  base + ap.x,
+                    y:  convert[ap.y],
+                    c:  ap.c,
+                })
         } else {
             eNew.PushBack(path {
                 x:  base + ap.x,

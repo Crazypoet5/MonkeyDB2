@@ -142,3 +142,113 @@
 [ 2016-03-30 12:56:54.9480085 +0800 CST ] Parser finished
 [ 2016-03-30 12:57:52.5724599 +0800 CST ] Parser: create table aaa (  name int. code int); 
 [ 2016-03-30 12:57:52.5724599 +0800 CST ] Parser finished
+[ 2016-03-30 13:02:58.4396083 +0800 CST ] Parser:create table(  ; 
+[ 2016-03-30 13:02:58.4551864 +0800 CST ] Parser finished
+[ 2016-03-30 13:04:13.0076442 +0800 CST ] Parser:create table student (  code int,  score int); 
+[ 2016-03-30 13:04:13.0076442 +0800 CST ] Parser finished
+[ 2016-03-30 13:04:55.90331 +0800 CST ] Parser: create table aaa (  code int,  score int); 
+[ 2016-03-30 13:04:55.90331 +0800 CST ] Parser finished
+[ 2016-03-30 13:05:37.6235638 +0800 CST ] Parser: create table bbb (  code int,  score int,  level int); 
+[ 2016-03-30 13:05:37.6235638 +0800 CST ] Parser finished
+[ 2016-03-30 16:01:24.1329034 +0800 CST ] Parser: select `a`, `b` from a;
+[ 2016-03-30 16:01:24.2266424 +0800 CST ] Parser finished
+[ 2016-03-30 16:03:34.3530686 +0800 CST ] Parser: select `id` from students where `name` = 'a';
+[ 2016-03-30 16:03:34.3530686 +0800 CST ] Parser finished
+[ 2016-03-30 16:07:10.2770328 +0800 CST ] Parser: create table student ()  ;
+[ 2016-03-30 16:07:10.2770328 +0800 CST ] Parser finished
+[ 2016-03-30 16:07:56.1521005 +0800 CST ] Parser:  student  ;
+[ 2016-03-30 16:07:56.1521005 +0800 CST ] Parser finished
+[ 2016-03-30 16:08:48.2379789 +0800 CST ] Parser:  exit;
+[ 2016-03-30 16:08:48.2379789 +0800 CST ] Parser finished
+[ 2016-03-30 16:08:51.4369571 +0800 CST ] Parser:  exit;
+[ 2016-03-30 16:08:51.4369571 +0800 CST ] Parser finished
+[ 2016-03-30 16:11:19.5122576 +0800 CST ] Parser: student  ;
+[ 2016-03-30 16:11:19.5122576 +0800 CST ] Parser finished
+[ 2016-03-30 16:11:35.5448623 +0800 CST ] Parser:  sql  ;
+[ 2016-03-30 16:11:35.5448623 +0800 CST ] Parser finished
+[ 2016-03-30 16:11:38.0702228 +0800 CST ] Parser:  sqlmap;
+[ 2016-03-30 16:11:38.0858491 +0800 CST ] Parser finished
+[ 2016-03-30 16:11:43.165193 +0800 CST ] Parser:  selectt;
+[ 2016-03-30 16:11:43.165193 +0800 CST ] Parser finished
+[ 2016-03-30 16:11:46.787352 +0800 CST ] Parser:  selec;
+[ 2016-03-30 16:11:46.787352 +0800 CST ] Parser finished
+[ 2016-03-30 16:11:54.3921761 +0800 CST ] Parser:  std;
+[ 2016-03-30 16:11:54.3921761 +0800 CST ] Parser finished
+[ 2016-03-30 16:52:17.3680197 +0800 CST ] Parser: std;
+[ 2016-03-30 16:52:17.3680197 +0800 CST ] Parser finished
+[ 2016-03-30 16:52:20.8395917 +0800 CST ] Parser:  and;
+[ 2016-03-30 16:52:20.855185 +0800 CST ] Parser finished
+[ 2016-03-30 16:52:28.3756836 +0800 CST ] Parser:  select;
+[ 2016-03-30 16:52:28.3756836 +0800 CST ] Parser finished
+[ 2016-03-30 16:52:35.1716275 +0800 CST ] Parser:  or;
+[ 2016-03-30 16:52:35.1716275 +0800 CST ] Parser finished
+[ 2016-03-30 16:53:21.1412812 +0800 CST ] Parser:  (;
+[ 2016-03-30 16:53:21.1412812 +0800 CST ] Parser finished
+[ 2016-03-30 16:53:23.2065844 +0800 CST ] Parser:  );
+[ 2016-03-30 16:53:23.2065844 +0800 CST ] Parser finished
+[ 2016-03-30 16:53:24.8788294 +0800 CST ] Parser:  and;
+[ 2016-03-30 16:53:24.8788294 +0800 CST ] Parser finished
+[ 2016-03-30 16:54:39.4271347 +0800 CST ] Parser: and;
+[ 2016-03-30 16:54:39.4271347 +0800 CST ] Parser finished
+[ 2016-03-30 16:54:41.2752411 +0800 CST ] Parser:  std;
+[ 2016-03-30 16:54:41.2752411 +0800 CST ] Parser finished
+[ 2016-03-30 16:54:45.0976051 +0800 CST ] Parser:  identical;
+[ 2016-03-30 16:54:45.0976051 +0800 CST ] Parser finished
+[ 2016-03-30 16:54:48.1351989 +0800 CST ] Parser:  select;
+[ 2016-03-30 16:54:48.1351989 +0800 CST ] Parser finished
+[ 2016-03-30 16:54:50.4012322 +0800 CST ] Parser:  from;
+[ 2016-03-30 16:54:50.4012322 +0800 CST ] Parser finished
+[ 2016-03-30 16:58:41.8963228 +0800 CST ] Parser: amd;
+[ 2016-03-30 16:58:41.8963228 +0800 CST ] Parser finished
+[ 2016-03-30 16:58:44.2934953 +0800 CST ] Parser:  and;
+[ 2016-03-30 16:58:44.2934953 +0800 CST ] Parser finished
+[ 2016-03-30 16:58:46.372032 +0800 CST ] Parser:  std;
+[ 2016-03-30 16:58:46.372032 +0800 CST ] Parser finished
+[ 2016-03-30 16:58:49.3099797 +0800 CST ] Parser:  select;
+[ 2016-03-30 16:58:49.3255654 +0800 CST ] Parser finished
+[ 2016-03-30 17:03:50.9856025 +0800 CST ] Parser: std;
+[ 2016-03-30 17:03:50.9856025 +0800 CST ] Parser finished
+[ 2016-03-30 17:03:52.2284657 +0800 CST ] Parser:  and;
+[ 2016-03-30 17:03:52.2284657 +0800 CST ] Parser finished
+[ 2016-03-30 17:03:54.9906281 +0800 CST ] Parser:  select;
+[ 2016-03-30 17:03:54.9906281 +0800 CST ] Parser finished
+[ 2016-03-30 17:25:03.9231571 +0800 CST ] Parser: std;
+[ 2016-03-30 17:25:03.9231571 +0800 CST ] Parser finished
+[ 2016-03-30 17:25:06.2831937 +0800 CST ] Parser:  select;
+[ 2016-03-30 17:25:06.2831937 +0800 CST ] Parser finished
+[ 2016-03-30 17:25:09.9119112 +0800 CST ] Parser:  and;
+[ 2016-03-30 17:25:09.9119112 +0800 CST ] Parser finished
+[ 2016-03-30 17:25:18.656154 +0800 CST ] Parser:  );
+[ 2016-03-30 17:25:18.656154 +0800 CST ] Parser finished
+[ 2016-03-30 17:25:22.2039586 +0800 CST ] Parser:  ,;
+[ 2016-03-30 17:25:22.2039586 +0800 CST ] Parser finished
+[ 2016-03-30 17:25:26.4097975 +0800 CST ] Parser:  `;
+[ 2016-03-30 17:25:26.4097975 +0800 CST ] Parser finished
+[ 2016-03-30 17:25:29.7551913 +0800 CST ] Parser:  ';
+[ 2016-03-30 17:25:29.7551913 +0800 CST ] Parser finished
+[ 2016-03-30 17:25:31.5369075 +0800 CST ] Parser:  ,;
+[ 2016-03-30 17:25:31.5369075 +0800 CST ] Parser finished
+[ 2016-03-30 17:25:33.5842375 +0800 CST ] Parser:  >=;
+[ 2016-03-30 17:25:33.5842375 +0800 CST ] Parser finished
+[ 2016-03-30 17:25:36.3034828 +0800 CST ] Parser:  <>;
+[ 2016-03-30 17:25:36.3034828 +0800 CST ] Parser finished
+[ 2016-03-30 17:25:38.8076916 +0800 CST ] Parser:  =;
+[ 2016-03-30 17:25:38.8076916 +0800 CST ] Parser finished
+[ 2016-03-30 17:25:40.7302117 +0800 CST ] Parser:  ==;
+[ 2016-03-30 17:25:40.7302117 +0800 CST ] Parser finished
+[ 2016-03-30 21:53:15.7621217 +0800 CST ] Parser:select `name`,kk from `table` where a>= 123 and 1.4>
+[ 2016-03-30 21:53:15.7631088 +0800 CST ] Parser finished
+[ 2016-03-30 21:53:55.3113427 +0800 CST ] Parser: ant;
+[ 2016-03-30 21:53:55.3113427 +0800 CST ] Parser finished
+[ 2016-03-30 21:53:57.3668225 +0800 CST ] Parser:  and;
+[ 2016-03-30 21:53:57.3688275 +0800 CST ] Parser finished
+[ 2016-03-30 21:54:06.8996426 +0800 CST ] Parser:  std;
+[ 2016-03-30 21:54:06.8996426 +0800 CST ] Parser finished
+[ 2016-03-30 21:55:34.6598736 +0800 CST ] Parser: ant;
+[ 2016-03-30 21:55:34.6598736 +0800 CST ] Parser finished
+[ 2016-03-30 21:55:36.0283224 +0800 CST ] Parser:  std;
+[ 2016-03-30 21:55:36.0283224 +0800 CST ] Parser finished
+[ 2016-03-30 21:55:43.0852088 +0800 CST ] Parser:  select;
+[ 2016-03-30 21:55:43.0852088 +0800 CST ] Parser finished
+[ 2016-03-30 21:55:49.2827346 +0800 CST ] Parser:  ())))>><<;
+[ 2016-03-30 21:55:49.2983198 +0800 CST ] Parser finished

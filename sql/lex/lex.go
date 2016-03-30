@@ -4,12 +4,18 @@ import (
     "../../log"
 )
 
-var (
+type DFA struct {
     accept []bool
     array [][]int
-    class []int
+    class []int 
+}
+
+var (
+    reservesDfa DFA
+    normalDfa DFA
     ac map[int]string
-    dfa *preDfa
+    dfaKeyword *preDfa
+    dfaOther *preDfa
 )
 
 type Token struct {
@@ -18,11 +24,11 @@ type Token struct {
 }
 
 func DefineToken(token string, g *nfa) {
-    if len(ac) == 0 {
+    if dfaKeyword == nil {
         fork := g.fork()
         fork.Simplify()
-        dfa = fork.toDfa()
-        for i, v := range dfa.v {
+        dfaKeyword = fork.toDfa()
+        for i, v := range dfaKeyword.v {
             if v {
                 ac[i] = token
             }
@@ -30,7 +36,26 @@ func DefineToken(token string, g *nfa) {
     } else {
         fork := g.fork()
         fork.Simplify()
-        for _, v := range dfa.addDfa(fork.toDfa()) {
+        for _, v := range dfaKeyword.addDfa(fork.toDfa()) {
+            ac[v] = token
+        }
+    }
+}
+
+func DefineCommon(token string, g *nfa) {
+    if dfaOther == nil {
+        fork := g.fork()
+        fork.Simplify()
+        dfaOther = fork.toDfa()
+        for i, v := range dfaOther.v {
+            if v {
+                ac[i] = token
+            }
+        }
+    } else {
+        fork := g.fork()
+        fork.Simplify()
+        for _, v := range dfaOther.addDfa(fork.toDfa()) {
             ac[v] = token
         }
     }
@@ -39,7 +64,8 @@ func DefineToken(token string, g *nfa) {
 func init() {
     ac = make(map[int]string)
     defineTokens()
-    class, array, accept = dfa.toArray()
+    reservesDfa.class, reservesDfa.array, reservesDfa.accept = dfaKeyword.toArray()
+    normalDfa.class, normalDfa.array, normalDfa.accept = dfaOther.toArray()
     log.WriteLogSync("sys", "lex module ready")
 }
 
@@ -78,15 +104,15 @@ func defineTokens() {
     split := stringsToken(" ", "\t", "\n")
     relations := stringsToken(">", "<", ">=", "<=", "=", "<>")
     types := stringsToken("int", "float", "varchar", "object", "array")
-    DefineToken("floatval", links(repeat(numberNfa()), single('.'), chosable(repeat(numberNfa()))))
-    DefineToken("intval", repeat(numberNfa()))
-    DefineToken("identical", links(repeat(letterNfa()), chosable(repeat(or(numberNfa(), letterNfa())))))
+    DefineCommon("floatval", links(repeat(numberNfa()), single('.'), chosable(repeat(numberNfa()))))
+    DefineCommon("intval", repeat(numberNfa()))
+    DefineCommon("identical", identicalNfa())
     DefineToken("keyword", keyword)
+    DefineToken("types", types)
     DefineToken("logical", logical)
     DefineToken("structs", structs)
     DefineToken("split", split)
     DefineToken("relations", relations)
-    DefineToken("types", types)
     DefineToken("unReference", single('`'))
     DefineToken("reference", single('\''))
     log.WriteLogSync("sys", "DFA prepared")
@@ -105,9 +131,12 @@ func Parse(input ByteReader) ([]Token, error) {
             data:   input.data,
             pos:    in.pos,
         }
-        s, b, err := RunDFA(class, array, accept, fork)
+        s, b, err := RunDFA(reservesDfa.class, reservesDfa.array, reservesDfa.accept, fork)
         if b == nil {
-            break
+            s, b, err = RunDFA(normalDfa.class, normalDfa.array, normalDfa.accept, fork)
+            if b == nil {
+                break
+            }
         }
         token := Token {}
         if k, ok := ac[s];ok {
