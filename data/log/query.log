@@ -252,3 +252,45 @@
 [ 2016-03-30 21:55:43.0852088 +0800 CST ] Parser finished
 [ 2016-03-30 21:55:49.2827346 +0800 CST ] Parser:  ())))>><<;
 [ 2016-03-30 21:55:49.2983198 +0800 CST ] Parser finished
+[ 2016-03-30 22:24:21.9526502 +0800 CST ] Parser:create table "a" (  a int); 
+[ 2016-03-30 22:24:21.9526502 +0800 CST ] Parser finished
+[ 2016-03-30 22:32:45.0008076 +0800 CST ] Parser: create table a (a int); 
+[ 2016-03-30 22:32:45.0164008 +0800 CST ] Parser finished
+[ 2016-03-30 22:32:57.9303061 +0800 CST ] Parser: create table " aaa " (a int); 
+[ 2016-03-30 22:32:57.9303061 +0800 CST ] Parser finished
+[ 2016-03-30 22:33:19.2230434 +0800 CST ] Parser: create table " "" " (a int); 
+[ 2016-03-30 22:33:19.2386318 +0800 CST ] Parser finished
+[ 2016-03-30 22:35:15.5137914 +0800 CST ] Parser:create table "a" (a int); 
+[ 2016-03-30 22:35:15.5137914 +0800 CST ] Parser finished
+[ 2016-03-30 22:35:29.5587594 +0800 CST ] Parser: "; 
+[ 2016-03-30 22:35:29.5587594 +0800 CST ] Parser finished
+[ 2016-03-30 22:35:54.0920413 +0800 CST ] Parser: create table 'a' (a int); 
+[ 2016-03-30 22:35:54.0920413 +0800 CST ] Parser finished
+[ 2016-03-31 10:08:13.0218156 +0800 CST ] Parser: create table 'abc' ( a varchar, b int);
+[ 2016-03-31 10:08:13.0374776 +0800 CST ] Parser finished
+[ 2016-03-31 10:08:36.1010274 +0800 CST ] Parser:  create table 'abc' ( a varchar unique, b int);
+[ 2016-03-31 10:08:36.1010274 +0800 CST ] Parser finished
+[ 2016-03-31 10:11:00.996038 +0800 CST ] Parser:create table 'abc' (a int primary key,b varchar unique); 
+[ 2016-03-31 10:11:00.996038 +0800 CST ] Parser finished
+[ 2016-03-31 10:41:23.2861279 +0800 CST ] Parser:create aa; 
+[ 2016-03-31 10:41:23.3329969 +0800 CST ] Parser finished
+[ 2016-03-31 10:41:28.3383738 +0800 CST ] Parser: create table 'aaa'; 
+[ 2016-03-31 10:41:28.3383738 +0800 CST ] Parser finished
+[ 2016-03-31 10:42:48.1906 +0800 CST ] Parser:create table 'aaaaa'; 
+[ 2016-03-31 10:42:48.1906 +0800 CST ] Parser finished
+[ 2016-03-31 10:46:07.7512815 +0800 CST ] Parser:create table 'abdf' (  id int primary key,  name varchar); 
+[ 2016-03-31 10:46:07.7512815 +0800 CST ] Parser finished
+[ 2016-03-31 10:48:51.1415162 +0800 CST ] Parser:create table 'afg' (  id int primary key,  code int unique,  name varchar); 
+[ 2016-03-31 10:48:51.1415162 +0800 CST ] Parser finished
+[ 2016-03-31 15:19:16.4038218 +0800 CST ] Parser:create table 'aa' (  a int); 
+[ 2016-03-31 15:19:16.4130109 +0800 CST ] Parser finished
+[ 2016-03-31 15:19:51.5714085 +0800 CST ] Parser: quit  ; 
+[ 2016-03-31 15:19:51.5724099 +0800 CST ] Parser finished
+[ 2016-03-31 15:20:25.7120941 +0800 CST ] Parser:create table 'aa' (  a int); 
+[ 2016-03-31 15:20:25.7140955 +0800 CST ] Parser finished
+[ 2016-03-31 15:21:55.8020493 +0800 CST ] Parser:create table 'aaa' (  aa int); 
+[ 2016-03-31 15:21:55.8040542 +0800 CST ] Parser finished
+[ 2016-03-31 15:22:20.2562662 +0800 CST ] Parser: create table 'name' (  id int primary key,  name string  ); 
+[ 2016-03-31 15:22:20.2582712 +0800 CST ] Parser finished
+[ 2016-03-31 15:23:10.3583642 +0800 CST ] Parser:create table 'name' (  id int primary key,  code float); 
+[ 2016-03-31 15:23:10.3603491 +0800 CST ] Parser finished

@@ -4,15 +4,15 @@ import (
     "errors"
 )
 
-func expressionParser(tr *TokenReader) (*syntaxTreeNode, error) {
+func expressionParser(tr *TokenReader) (*SyntaxTreeNode, error) {
     fork := tr.Fork()
     t := fork.Read()
     if t.Kind == "identical" {
         tr.Next(1)
-        return &syntaxTreeNode {
-            name:   "identical",
-            value:  t.Raw,
-            valueType:  NAME,
+        return &SyntaxTreeNode {
+            Name:   "identical",
+            Value:  t.Raw,
+            ValueType:  NAME,
         }, nil
     }
     if t.Kind == "unReference" {
@@ -21,44 +21,44 @@ func expressionParser(tr *TokenReader) (*syntaxTreeNode, error) {
             return nil, errors.New("You have a SQL syntax error near:" + string(i.Raw))
         }
         tr.Next(3)
-        return &syntaxTreeNode {
-            name:   "identical",
-            value:  t.Raw,
-            valueType: NAME,
+        return &SyntaxTreeNode {
+            Name:   "identical",
+            Value:  t.Raw,
+            ValueType: NAME,
         }, nil
     }
     stn, err := valueParser(tr)
     if err != nil {
         return nil, err
     }
-    value, valueType := stn.value, stn.valueType
-    return &syntaxTreeNode {
-        name:   "identical",
-        value:  value,
-        valueType:  valueType,
+    value, valueType := stn.Value, stn.ValueType
+    return &SyntaxTreeNode {
+        Name:   "identical",
+        Value:  value,
+        ValueType:  valueType,
     }, nil
 }
 
-func valueParser(tr *TokenReader) (*syntaxTreeNode, error) {
+func valueParser(tr *TokenReader) (*SyntaxTreeNode, error) {
     t := tr.Read()
     if t.Kind == "intval" {
-        return &syntaxTreeNode {
-            name:   "value",
-            value:  calculateInt(t.Raw),
-            valueType:  INT,
+        return &SyntaxTreeNode {
+            Name:   "value",
+            Value:  calculateInt(t.Raw),
+            ValueType:  INT,
         }, nil
     }
     if t.Kind == "floatval" {
-        return &syntaxTreeNode {
-            name:   "value",
-            value:  calculateFloat(t.Raw),
-            valueType:  FLOAT,
+        return &SyntaxTreeNode {
+            Name:   "value",
+            Value:  calculateFloat(t.Raw),
+            ValueType:  FLOAT,
         }, nil
     }
     return nil, errors.New("You have a syntax error near:" + string(t.Raw))
 }
 
-func filedParser(tr *TokenReader) (*syntaxTreeNode, error) {
+func filedParser(tr *TokenReader) (*SyntaxTreeNode, error) {
     fork := tr.Fork()
     t := fork.Read()
     if t.Kind == "identical" {
@@ -70,23 +70,23 @@ func filedParser(tr *TokenReader) (*syntaxTreeNode, error) {
             if err != nil {
                 return nil, err
             }
-            return &syntaxTreeNode {
-                name:   "spot",
-                value:  nil,
-                child:  []*syntaxTreeNode{
-                     &syntaxTreeNode {
-                        name:   "identcial",
-                        value:  t.Raw,
-                        valueType:  NAME,
+            return &SyntaxTreeNode {
+                Name:   "spot",
+                Value:  nil,
+                Child:  []*SyntaxTreeNode{
+                     &SyntaxTreeNode {
+                        Name:   "identcial",
+                        Value:  t.Raw,
+                        ValueType:  NAME,
                     },
                     snt,
                 },
             }, nil
         }
-        return &syntaxTreeNode {
-            name:   "identcial",
-            value:  t.Raw,
-            valueType:  NAME,
+        return &SyntaxTreeNode {
+            Name:   "identcial",
+            Value:  t.Raw,
+            ValueType:  NAME,
         }, nil
     }
     return nil, errors.New("You have a syntax error near:" + string(t.Raw))

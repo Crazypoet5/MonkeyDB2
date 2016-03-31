@@ -1,6 +1,6 @@
 package syntax
 
-func Parser(tr *TokenReader) (*syntaxTreeNode, error) {
+func Parser(tr *TokenReader) (*SyntaxTreeNode, error) {
     fork := tr.Fork()
     node, err := createtableParser(fork)
     // node, err := filedParser(tr)

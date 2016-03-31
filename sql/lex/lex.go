@@ -96,28 +96,6 @@ func stringsToken(tokens ...string) *nfa {
     return or(ret...)
 }
 
-func defineTokens() {
-    log.WriteLogSync("sys", "Start making DFA")
-    keyword := stringsToken("select", "from", "where", "update", "delete", "create", "insert", "into", "table", "order", "by")
-    logical := stringsToken("and", "or", "not")
-    structs := stringsToken("(", ")", ";", ",", ".")
-    split := stringsToken(" ", "\t", "\n")
-    relations := stringsToken(">", "<", ">=", "<=", "=", "<>")
-    types := stringsToken("int", "float", "varchar", "object", "array")
-    DefineCommon("floatval", links(repeat(numberNfa()), single('.'), chosable(repeat(numberNfa()))))
-    DefineCommon("intval", repeat(numberNfa()))
-    DefineCommon("identical", identicalNfa())
-    DefineToken("keyword", keyword)
-    DefineToken("types", types)
-    DefineToken("logical", logical)
-    DefineToken("structs", structs)
-    DefineToken("split", split)
-    DefineToken("relations", relations)
-    DefineToken("unReference", single('`'))
-    DefineToken("reference", single('\''))
-    log.WriteLogSync("sys", "DFA prepared")
-}
-
 func Parse(input ByteReader) ([]Token, error) {
     log.WriteLogSync("query", "Parser:" + string(input.data))
     defer log.WriteLogSync("query", "Parser finished")

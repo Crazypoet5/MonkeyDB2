@@ -6,6 +6,8 @@ import (
 
 const (
     FIELD_TYPE_INT  =   iota
+    FIELD_TYPE_FLOAT
+    FIELD_TYPE_VARCHAR
 )
 
 type Field struct {
