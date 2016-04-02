@@ -2,37 +2,57 @@ package plan
 
 import (
 	"errors"
-	"fmt"
 	"strconv"
+
+	"../exe"
+
+	"../index/csbt"
+	"../table"
 
 	"../sql/syntax"
 )
 
-func CreatePlan(stn *syntax.SyntaxTreeNode) (*Relation, *Result, error) {
+func CreatePlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	result := NewResult()
 	if stn.Name != "createtable" {
 		return nil, nil, errors.New("Expected createtable but get " + stn.Name)
 	}
-	r, _, err := StringPlan(stn.Child[0])
+	r, _, err := IdenticalPlan(stn.Child[0])
 	if err != nil {
 		return nil, nil, err
 	}
 	tableName := string(r.Rows[0][0].Raw)
-	fmt.Println(tableName)
+	t := table.CreateTable(tableName)
 	r, _, err = ColumnDefinesPlan(stn.Child[1])
 	if err != nil {
 		return nil, nil, err
 	}
 	for _, v := range r.Rows {
-		fmt.Println(v)
+		tp, _ := strconv.Atoi(string(v[1].Raw))
+		size := 0
+		fixed := false
+		switch tp {
+		case exe.INT:
+			size = 8
+		case exe.FLOAT:
+			size = 8
+		case exe.STRING:
+			fixed = false
+		case exe.ARRAY:
+			fixed = false
+		case exe.OBJECT:
+			size = 8
+		}
+		t.AddFiled(string(v[0].Raw), fixed, size, tp)
 	}
+	csbt.NewDCSBT()
 	result.SetResult(0)
 	return nil, result, nil
 }
 
-func ColumnDefinesPlan(stn *syntax.SyntaxTreeNode) (*Relation, *Result, error) {
+func ColumnDefinesPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	result := NewResult()
-	relation := NewRelation()
+	relation := exe.NewRelation()
 	switch stn.Name {
 	case "ColumnDefine":
 		if stn.Child[0].Name != "identical" {
@@ -42,8 +62,8 @@ func ColumnDefinesPlan(stn *syntax.SyntaxTreeNode) (*Relation, *Result, error) {
 		if stn.Child[1].Name != "type" {
 			return nil, nil, errors.New("Expected type but get " + stn.Child[1].Name)
 		}
-		varType := StringToType(string(stn.Child[1].Value.([]byte)))
-		row := NewRow([]Value{NewValue(STRING, varName), NewValue(INT, []byte(strconv.Itoa(varType)))})
+		varType := exe.StringToType(string(stn.Child[1].Value.([]byte)))
+		row := exe.NewRow([]exe.Value{exe.NewValue(exe.STRING, varName), exe.NewValue(exe.INT, []byte(strconv.Itoa(varType)))})
 		relation.AddRow(row)
 		result.SetResult(1)
 		return relation, result, nil

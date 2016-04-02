@@ -1,4 +1,4 @@
-package plan
+package exe
 
 const (
 	INT = iota

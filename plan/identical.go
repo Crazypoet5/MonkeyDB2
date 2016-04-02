@@ -7,10 +7,10 @@ import (
 	"../sql/syntax"
 )
 
-func StringPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
+func IdenticalPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	result := NewResult()
-	if stn.Name != "string" {
-		return nil, nil, errors.New("Expect string, but get " + stn.Name)
+	if stn.Name != "identical" {
+		return nil, nil, errors.New("Expect indentical, but get " + stn.Name)
 	}
 	relation := exe.NewRelation()
 	value := exe.NewValue(exe.STRING, stn.Value.([]byte))

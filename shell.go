@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"strings"
@@ -18,24 +19,35 @@ func welcome() {
 func loop() bool {
 	fmt.Print("Monkey>>")
 	command := ""
+	inReader := bufio.NewReader(os.Stdin)
+	i := 0
 	for !strings.Contains(command, ";") {
-		buff := ""
-		fmt.Scanf("%s", &buff)
-		command += buff + " "
+		if i > 0 {
+			fmt.Print("      ->")
+		}
+		cmd, _ := inReader.ReadString('\n')
+		command += cmd
+		i++
 	}
-	if command == " quit; " {
+	if strings.Contains(command, "quit;") {
 		return false
 	}
-	//fmt.Println(command)
+	//	fmt.Println(command)
 	ts, _ := lex.Parse(*lex.NewByteReader([]byte(command)))
-	//fmt.Println(ts)
+	//	fmt.Println(ts)
 	stn, err := syntax.Parser(syntax.NewTokenReader(ts))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())
-	} else {
-		stn.Print(1)
+		return true
 	}
-	fmt.Println(plan.CreatePlan(stn))
+	//	stn.Print(1)
+	r, re, err := plan.CreatePlan(stn)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err.Error())
+		return true
+	}
+	r.Print()
+	fmt.Println(re.AffectedRows, " row(s) affected in ", (float64)(re.UsedTime)/1000000000, "s.")
 	return true
 }
 

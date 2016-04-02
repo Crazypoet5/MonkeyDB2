@@ -294,3 +294,70 @@
 [ 2016-03-31 15:22:20.2582712 +0800 CST ] Parser finished
 [ 2016-03-31 15:23:10.3583642 +0800 CST ] Parser:create table 'name' (  id int primary key,  code float); 
 [ 2016-03-31 15:23:10.3603491 +0800 CST ] Parser finished
+[ 2016-03-31 23:10:25.7948722 +0800 CST ] Parser:create table 'student' (  id int primary key,  name string unique); 
+[ 2016-03-31 23:10:25.8112508 +0800 CST ] Parser finished
+[ 2016-03-31 23:18:00.9904375 +0800 CST ] Parser:quit; 
+[ 2016-03-31 23:18:00.9904375 +0800 CST ] Parser finished
+[ 2016-03-31 23:45:26.8841566 +0800 CST ] Parser:create table 'student' (  id int primary key,  name string unique,  gpa float); 
+[ 2016-03-31 23:45:26.9310108 +0800 CST ] Parser finished
+[ 2016-03-31 23:46:14.0735989 +0800 CST ] Parser:create table 'student' (  id int primary key,  name string unique,  gpa float); 
+[ 2016-03-31 23:46:14.0735989 +0800 CST ] Parser finished
+[ 2016-03-31 23:46:48.4135061 +0800 CST ] Parser:create table 'student' (  id int primary key,  name string unique); 
+[ 2016-03-31 23:46:48.4290547 +0800 CST ] Parser finished
+[ 2016-03-31 23:47:13.1781262 +0800 CST ] Parser: create table 'student2' (  id int primary key,  name string unique); 
+[ 2016-03-31 23:47:13.1781262 +0800 CST ] Parser finished
+[ 2016-03-31 23:47:30.0410764 +0800 CST ] Parser: create table 'student3' (  id int primary key,  name string unique); 
+[ 2016-03-31 23:47:30.0410764 +0800 CST ] Parser finished
+[ 2016-03-31 23:50:11.9068706 +0800 CST ] Parser:create table 'student' (  i int,  b int,  c float); 
+[ 2016-03-31 23:50:11.9078546 +0800 CST ] Parser finished
+[ 2016-03-31 23:51:42.6437827 +0800 CST ] Parser:create table 'student'(  id int primary key,  name string unique,  gpa int); 
+[ 2016-03-31 23:51:42.6447796 +0800 CST ] Parser finished
+[ 2016-03-31 23:53:23.8729442 +0800 CST ] Parser:create table 'student' (  id int,  name string,  gpa float); 
+[ 2016-03-31 23:53:23.8739433 +0800 CST ] Parser finished
+[ 2016-03-31 23:55:42.6042073 +0800 CST ] Parser:create table 'student' (  id int primary key,  name string unique,  gpa float); 
+[ 2016-03-31 23:55:42.6062381 +0800 CST ] Parser finished
+[ 2016-03-31 23:56:59.5934081 +0800 CST ] Parser:create table 'student'(  id int primary key,  name string unique,  gpa float); 
+[ 2016-03-31 23:56:59.5943751 +0800 CST ] Parser finished
+[ 2016-04-02 16:05:27.7720974 +0800 CST ] Parser:create table; 
+[ 2016-04-02 16:06:06.9864489 +0800 CST ] Parser:create table table1 (  id int); 
+[ 2016-04-02 16:06:45.5617915 +0800 CST ] Parser:create table table1 (  id int); 
+[ 2016-04-02 16:08:45.3174177 +0800 CST ] Parser:create table table1 (  id int); 
+[ 2016-04-02 16:10:09.2563115 +0800 CST ] Parser:create table table1; 
+[ 2016-04-02 16:10:09.2583264 +0800 CST ] Parser finished
+[ 2016-04-02 16:12:43.6247523 +0800 CST ] Parser:create table1; 
+[ 2016-04-02 16:12:43.6257474 +0800 CST ] Parser finished
+[ 2016-04-02 16:14:34.0079559 +0800 CST ] Parser:create table table1; 
+[ 2016-04-02 16:16:47.001541 +0800 CST ] Parser:create table1; 
+[ 2016-04-02 16:20:26.0442957 +0800 CST ] Parser:create table table1; 
+[ 2016-04-02 16:20:26.0472788 +0800 CST ] Parser finished
+[ 2016-04-02 16:24:41.6653422 +0800 CST ] Parser:create table table1 (  id int); 
+[ 2016-04-02 16:24:41.6703455 +0800 CST ] Parser finished
+[ 2016-04-02 16:30:40.1331875 +0800 CST ] Parser:create table table1(
+id int);
+
+[ 2016-04-02 16:30:40.1361876 +0800 CST ] Parser finished
+[ 2016-04-02 16:30:50.1822463 +0800 CST ] Parser:quit;
+
+[ 2016-04-02 16:30:50.1842481 +0800 CST ] Parser finished
+[ 2016-04-02 16:31:57.4328818 +0800 CST ] Parser:quit;
+
+[ 2016-04-02 16:31:57.4348828 +0800 CST ] Parser finished
+[ 2016-04-02 16:33:24.5288601 +0800 CST ] Parser:create table table1(
+id int);
+
+[ 2016-04-02 16:33:24.530862 +0800 CST ] Parser finished
+[ 2016-04-02 16:34:41.0897179 +0800 CST ] Parser:quit;
+
+[ 2016-04-02 16:34:41.0906952 +0800 CST ] Parser finished
+[ 2016-04-02 16:35:49.2286222 +0800 CST ] Parser:create table table1 (
+id int primary key);
+
+[ 2016-04-02 16:35:49.2296004 +0800 CST ] Parser finished
+[ 2016-04-02 16:37:02.6583543 +0800 CST ] Parser:create table table1(
+id int);
+
+[ 2016-04-02 16:37:02.6603201 +0800 CST ] Parser finished
+[ 2016-04-02 16:38:20.2635001 +0800 CST ] Parser:create table table1(
+id int);
+
+[ 2016-04-02 16:38:20.2644993 +0800 CST ] Parser finished
