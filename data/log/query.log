@@ -361,3 +361,86 @@ id int);
 id int);
 
 [ 2016-04-02 16:38:20.2644993 +0800 CST ] Parser finished
+[ 2016-04-03 16:37:06.1512894 +0800 CST ] Parser:insert into table1 values (1,2,3)
+;
+
+[ 2016-04-03 16:37:06.2164573 +0800 CST ] Parser finished
+[ 2016-04-03 16:38:53.9556571 +0800 CST ] Parser:insert into table1 values (1,2,3);
+
+[ 2016-04-03 16:38:53.9566567 +0800 CST ] Parser finished
+[ 2016-04-03 16:39:53.949929 +0800 CST ] Parser:insert into table1 values (1,2,3);
+
+[ 2016-04-03 16:39:53.951947 +0800 CST ] Parser finished
+[ 2016-04-03 16:45:40.7596571 +0800 CST ] Parser:insert into table1 values (1);
+
+[ 2016-04-03 16:45:40.760658 +0800 CST ] Parser finished
+[ 2016-04-03 16:46:36.2812419 +0800 CST ] Parser:insert into table1 values (1),(2),(3);
+
+[ 2016-04-03 16:46:36.2832455 +0800 CST ] Parser finished
+[ 2016-04-03 20:30:42.2131663 +0800 CST ] Parser:insert into table1 values(1,2,3),(2,3,4);
+
+[ 2016-04-03 20:30:42.2141663 +0800 CST ] Parser finished
+[ 2016-04-03 20:34:27.3625377 +0800 CST ] Parser:insert into table1 values(1,2,3),(2,3,4.5);
+
+[ 2016-04-03 20:34:27.3635123 +0800 CST ] Parser finished
+[ 2016-04-03 20:40:16.7931244 +0800 CST ] Parser:insert into table1 values(1,2,3.5),('a',5,6);
+
+[ 2016-04-03 20:40:16.7951263 +0800 CST ] Parser finished
+[ 2016-04-03 21:00:23.5628913 +0800 CST ] Parser:abc.abc.efd
+[ 2016-04-03 21:00:23.5628913 +0800 CST ] Parser finished
+[ 2016-04-03 21:00:23.5638887 +0800 CST ] Parser:123.5
+[ 2016-04-03 21:00:23.5638887 +0800 CST ] Parser finished
+[ 2016-04-03 21:02:05.3781769 +0800 CST ] Parser:(123.5, 'a')
+[ 2016-04-03 21:02:05.3781769 +0800 CST ] Parser finished
+[ 2016-04-03 21:02:05.3791734 +0800 CST ] Parser:abc.abc.efd
+[ 2016-04-03 21:02:05.3791734 +0800 CST ] Parser finished
+[ 2016-04-03 21:02:05.380181 +0800 CST ] Parser:123.5
+[ 2016-04-03 21:02:05.380181 +0800 CST ] Parser finished
+[ 2016-04-03 21:04:25.2331688 +0800 CST ] Parser:insert into table1 values(1,2,3.5),('a',4,5);
+
+[ 2016-04-03 21:04:25.234172 +0800 CST ] Parser finished
+[ 2016-04-03 21:04:33.1477278 +0800 CST ] Parser:insert into table1 values(1,2,3.5);
+
+[ 2016-04-03 21:04:33.1497208 +0800 CST ] Parser finished
+[ 2016-04-03 21:05:02.9200366 +0800 CST ] Parser:insert into table1 values(1,2,'aa');
+
+[ 2016-04-03 21:05:02.9210362 +0800 CST ] Parser finished
+[ 2016-04-03 21:06:26.9852032 +0800 CST ] Parser:insert into table1 values(1,2,'aaaaa');
+
+[ 2016-04-03 21:06:26.9861956 +0800 CST ] Parser finished
+[ 2016-04-03 21:07:57.5158991 +0800 CST ] Parser:insert into table1 values(1,2),(5,6.7);
+
+[ 2016-04-03 21:07:57.5179005 +0800 CST ] Parser finished
+[ 2016-04-03 21:08:11.0342307 +0800 CST ] Parser:insert into table1 values(1,2),(5,6.7),(8.9),(6.6);
+
+[ 2016-04-03 21:08:11.0352103 +0800 CST ] Parser finished
+[ 2016-04-03 21:08:25.4680072 +0800 CST ] Parser:insert into table1 values(1,2),(5,6.7),(8.9,6.7),(6.6);
+
+[ 2016-04-03 21:08:25.4690014 +0800 CST ] Parser finished
+[ 2016-04-03 21:08:28.3285237 +0800 CST ] Parser:insert into table1 values(1,2),(5,6.7),(8.9,6.7),(6.6,7);
+
+[ 2016-04-03 21:08:28.3305233 +0800 CST ] Parser finished
+[ 2016-04-03 21:08:37.0166646 +0800 CST ] Parser:insert into table1 values(1,2),(5,6.7),(8,5);
+
+[ 2016-04-03 21:08:37.0186656 +0800 CST ] Parser finished
+[ 2016-04-03 21:12:24.0649081 +0800 CST ] Parser:insert into table1 values('aaaaa');
+
+[ 2016-04-03 21:12:24.0669086 +0800 CST ] Parser finished
+[ 2016-04-03 21:13:58.4796583 +0800 CST ] Parser:insert into table1 values(1.5,1.8);
+
+[ 2016-04-03 21:13:58.4816602 +0800 CST ] Parser finished
+[ 2016-04-03 21:14:03.0638732 +0800 CST ] Parser:insert into table1 values(1.5,1.8,5.6);
+
+[ 2016-04-03 21:14:03.0658769 +0800 CST ] Parser finished
+[ 2016-04-03 21:24:58.248003 +0800 CST ] Parser:insert into table1(a,v,c) values('a',2,4);
+
+[ 2016-04-03 21:24:58.2500035 +0800 CST ] Parser finished
+[ 2016-04-03 21:25:35.2398639 +0800 CST ] Parser:insert into table1(ssss,v,c) values('a',2,4);
+
+[ 2016-04-03 21:25:35.241864 +0800 CST ] Parser finished
+[ 2016-04-03 21:25:49.9656146 +0800 CST ] Parser:insert into table1(ssss,v) values('a',2,4);
+
+[ 2016-04-03 21:25:49.9676111 +0800 CST ] Parser finished
+[ 2016-04-03 21:26:06.703145 +0800 CST ] Parser:insert into table1(ssss,vaaa) values('a',2,4);
+
+[ 2016-04-03 21:26:06.7041522 +0800 CST ] Parser finished

@@ -34,13 +34,13 @@ func loop() bool {
 	}
 	//	fmt.Println(command)
 	ts, _ := lex.Parse(*lex.NewByteReader([]byte(command)))
-	//	fmt.Println(ts)
+	fmt.Println(ts)
 	stn, err := syntax.Parser(syntax.NewTokenReader(ts))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())
 		return true
 	}
-	//	stn.Print(1)
+	stn.Print(1)
 	r, re, err := plan.CreatePlan(stn)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())

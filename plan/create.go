@@ -6,6 +6,7 @@ import (
 
 	"../exe"
 
+	"../index"
 	"../index/csbt"
 	"../table"
 
@@ -43,7 +44,7 @@ func CreatePlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 		case exe.OBJECT:
 			size = 8
 		}
-		t.AddFiled(string(v[0].Raw), fixed, size, tp)
+		t.AddFiled(string(v[0].Raw), fixed, size, tp, index.PRIMARY)
 	}
 	csbt.NewDCSBT()
 	result.SetResult(0)
