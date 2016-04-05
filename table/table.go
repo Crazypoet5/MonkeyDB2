@@ -29,3 +29,12 @@ type Index struct {
 	Name   string
 	Fields []Field
 }
+
+func GetTableByName(name string) *Table {
+	for , v := range TableList {
+		if v.Name == name {
+			return v
+		}
+	}
+	return nil
+}

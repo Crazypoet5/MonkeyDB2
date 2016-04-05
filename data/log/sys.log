@@ -365,3 +365,21 @@ Recovery 8 image files.
 [ 2016-04-03 21:24:30.7347363 +0800 CST ] Recovery 8 image files.
 [ 2016-04-03 21:24:41.6713685 +0800 CST ] DFA prepared
 [ 2016-04-03 21:24:41.6733873 +0800 CST ] lex module ready
+[ 2016-04-05 11:17:31.4576844 +0800 CST ] [ 2016-04-05 11:17:31.458684 +0800 CST ] Start making DFA
+Recovery 8 image files.
+[ 2016-04-05 11:17:42.3547937 +0800 CST ] DFA prepared
+[ 2016-04-05 11:17:42.3567943 +0800 CST ] lex module ready
+[ 2016-04-05 11:31:14.3041066 +0800 CST ] Start making DFA
+[ 2016-04-05 11:31:14.3041066 +0800 CST ] Recovery 8 image files.
+[ 2016-04-05 11:31:24.7197439 +0800 CST ] DFA prepared
+[ 2016-04-05 11:31:24.7217431 +0800 CST ] lex module ready
+[ 2016-04-05 11:31:44.7634254 +0800 CST ] Save image table to file.
+[ 2016-04-05 11:31:44.7904185 +0800 CST ] Save image table to file.
+[ 2016-04-05 11:31:44.8369583 +0800 CST ] Save image table to file.
+[ 2016-04-05 11:31:44.8669448 +0800 CST ] Save image table to file.
+[ 2016-04-05 11:31:44.8879359 +0800 CST ] Save image table to file.
+[ 2016-04-05 11:31:44.9099369 +0800 CST ] Save image table to file.
+[ 2016-04-05 16:43:44.4651743 +0800 CST ] [ 2016-04-05 16:43:44.4651743 +0800 CST ] Start making DFA
+Recovery 14 image files.
+[ 2016-04-05 16:43:55.4757955 +0800 CST ] DFA prepared
+[ 2016-04-05 16:43:55.477796 +0800 CST ] lex module ready

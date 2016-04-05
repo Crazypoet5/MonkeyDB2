@@ -444,3 +444,25 @@ id int);
 [ 2016-04-03 21:26:06.703145 +0800 CST ] Parser:insert into table1(ssss,vaaa) values('a',2,4);
 
 [ 2016-04-03 21:26:06.7041522 +0800 CST ] Parser finished
+[ 2016-04-05 11:17:59.0011287 +0800 CST ] Parser:insert into table1(a,v) values(1,2);
+
+[ 2016-04-05 11:17:59.0418021 +0800 CST ] Parser finished
+[ 2016-04-05 11:18:11.3366872 +0800 CST ] Parser:insert into table1(id,v) values(1,2);
+
+[ 2016-04-05 11:18:11.3386717 +0800 CST ] Parser finished
+[ 2016-04-05 11:18:45.9983169 +0800 CST ] Parser:insert into table1 values(1,2);
+
+[ 2016-04-05 11:18:45.9993147 +0800 CST ] Parser finished
+[ 2016-04-05 11:19:03.3562913 +0800 CST ] Parser:insert into table1 values(1,2.8);
+
+[ 2016-04-05 11:19:03.3572682 +0800 CST ] Parser finished
+[ 2016-04-05 11:19:09.2712631 +0800 CST ] Parser:insert into table1 values(1,'asfasf');
+
+[ 2016-04-05 11:19:09.2722431 +0800 CST ] Parser finished
+[ 2016-04-05 11:31:44.6657451 +0800 CST ] Parser:create table table1(
+id int,
+str string,
+idddd int,
+adsafsa int);
+
+[ 2016-04-05 11:31:44.6667452 +0800 CST ] Parser finished

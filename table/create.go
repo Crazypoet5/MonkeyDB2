@@ -7,10 +7,12 @@ import (
 var TableList []*Table
 
 func CreateTable(tableName string) *Table {
-	return &Table{
+	ret := &Table{
 		Name:      tableName,
 		FirstPage: NewPage(),
 	}
+	TableList = append(TableList, ret)
+	return ret
 }
 
 func (t *Table) AddFiled(fieldName string, fixedSize bool, size int, ttype int, keyType int) {
