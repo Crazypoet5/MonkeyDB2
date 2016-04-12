@@ -8,9 +8,9 @@ var TableList []*Table
 
 func CreateTable(tableName string) *Table {
 	ret := &Table{
-		Name:      tableName,
-		FirstPage: NewPage(),
+		Name: tableName,
 	}
+	ret.FirstPage = ret.NewPage()
 	TableList = append(TableList, ret)
 	return ret
 }

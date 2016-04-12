@@ -13,5 +13,8 @@ func Parser(tr *TokenReader) (*SyntaxTreeNode, error) {
 	if t.Kind == "keyword" && string(t.Raw) == "insert" {
 		return insertParser(tr)
 	}
+	if t.Kind == "keyword" && string(t.Raw) == "dump" {
+		return dumpParser(tr)
+	}
 	return nil, errors.New("Unsupported syntax!")
 }

@@ -31,8 +31,9 @@ func (p *Page) GetTable() *Table {
 	return (*Table)(unsafe.Pointer(uintptr(bytes2uint(ptr))))
 }
 
-func NewPage() *Page {
+func (t *Table) NewPage() *Page {
 	db, _ := memory.CreateImage(NORMAL_PAGE_SIZE)
+	db.Write(0, uint2bytes(uint(uintptr(unsafe.Pointer(t)))))
 	db.Write(PREV_OFFSET, uint2bytes(0))
 	db.Write(NEXT_OFFSET, uint2bytes(0))
 	db.Write(FREE_P_OFFSET, uint2bytes(32))
@@ -52,7 +53,8 @@ func (p *Page) PrevPage() *Page {
 }
 
 func (p *Page) AppendPage() {
-	pNew := NewPage()
+	t := p.GetTable()
+	pNew := t.NewPage()
 	p.Write(NEXT_OFFSET, uint2bytes(uint(uintptr(unsafe.Pointer(pNew)))))
 	pNew.Write(PREV_OFFSET, uint2bytes(uint(uintptr(unsafe.Pointer(p)))))
 }
@@ -78,7 +80,7 @@ func (p *Page) AppendField(f *Field, data []byte) {
 		}
 	}
 	if !f.FixedSize {
-		p.Append(uint2bytes(uint(len(data))))
+		p.Append(uint322bytes(uint32(len(data))))
 	}
 	p.Append(data)
 }

@@ -466,3 +466,288 @@ idddd int,
 adsafsa int);
 
 [ 2016-04-05 11:31:44.6667452 +0800 CST ] Parser finished
+[ 2016-04-11 21:17:27.0567476 +0800 CST ] Parser:insert table1 (id,name) values(1,2);
+
+[ 2016-04-11 21:17:27.0677525 +0800 CST ] Parser finished
+[ 2016-04-11 21:17:33.341642 +0800 CST ] Parser:insert into table1 (id,name) values(1,2);
+
+[ 2016-04-11 21:17:33.3426425 +0800 CST ] Parser finished
+[ 2016-04-11 21:17:58.4705921 +0800 CST ] Parser:insert into table1 (id,name,name1.name3) values(1,2,5,'asda');
+
+[ 2016-04-11 21:17:58.4705921 +0800 CST ] Parser finished
+[ 2016-04-11 21:18:41.2866411 +0800 CST ] Parser:insert into table1 (id,name,name1,name3) values(1,2,5,'asda');
+
+[ 2016-04-11 21:18:41.2876407 +0800 CST ] Parser finished
+[ 2016-04-11 21:20:45.2645121 +0800 CST ] Parser:insert into table1 (id,name,name1,name3) values(1,2,5,'asda'),('ads',32.4,32,34);
+
+[ 2016-04-11 21:20:45.2645121 +0800 CST ] Parser finished
+[ 2016-04-11 21:24:56.6621051 +0800 CST ] Parser:insert into table1 (id,name,name1,name3) values(1,2,5,'asda'),('ads',32.4,32,34);
+
+[ 2016-04-11 21:24:56.6630958 +0800 CST ] Parser finished
+[ 2016-04-11 21:57:45.2341476 +0800 CST ] Parser:insert into table1(id , name) values(1,2);
+
+[ 2016-04-11 21:57:45.2351347 +0800 CST ] Parser finished
+[ 2016-04-11 22:15:13.4588851 +0800 CST ] Parser:insert into table1(id,name) values(1,'yml);
+
+[ 2016-04-11 22:15:13.4588851 +0800 CST ] Parser finished
+[ 2016-04-11 22:15:16.7174054 +0800 CST ] Parser:insert into table1(id,name) values(1,'yml');
+
+[ 2016-04-11 22:15:16.7174054 +0800 CST ] Parser finished
+[ 2016-04-11 22:15:42.6929903 +0800 CST ] Parser:create table table(
+id int primary key,
+name string);
+
+[ 2016-04-11 22:15:42.6939654 +0800 CST ] Parser finished
+[ 2016-04-11 22:15:55.5916657 +0800 CST ] Parser:create table table1(
+id int primary key,
+name string);
+
+[ 2016-04-11 22:15:55.5926501 +0800 CST ] Parser finished
+[ 2016-04-11 22:16:13.7347198 +0800 CST ] Parser:insert into table1(id, name) values(1,'yml');
+
+[ 2016-04-11 22:16:13.735736 +0800 CST ] Parser finished
+[ 2016-04-11 22:19:50.5684769 +0800 CST ] Parser:create table table1 (
+id int primary key,
+name string);
+
+[ 2016-04-11 22:19:50.5694586 +0800 CST ] Parser finished
+[ 2016-04-11 22:20:33.6985452 +0800 CST ] Parser:insert into table(id,name) values (1,'YML');
+
+[ 2016-04-11 22:20:33.6995319 +0800 CST ] Parser finished
+[ 2016-04-11 22:20:39.3514563 +0800 CST ] Parser:insert into table1(id,name) values (1,'YML');
+
+[ 2016-04-11 22:20:39.3514563 +0800 CST ] Parser finished
+[ 2016-04-11 22:22:23.3823906 +0800 CST ] Parser:create table table1(
+id name primary key,
+name ;;;;;
+
+[ 2016-04-11 22:22:23.3823906 +0800 CST ] Parser finished
+[ 2016-04-11 22:22:41.5517176 +0800 CST ] Parser:create table table1(
+id int primary key,
+name string);
+
+[ 2016-04-11 22:22:41.5517176 +0800 CST ] Parser finished
+[ 2016-04-11 22:23:01.6126844 +0800 CST ] Parser:insert into table1(id, name) values(1,'yml');
+
+[ 2016-04-11 22:23:01.6126844 +0800 CST ] Parser finished
+[ 2016-04-11 22:24:22.9095995 +0800 CST ] Parser:create table table1(id id primary key, name string);
+
+[ 2016-04-11 22:24:22.9106183 +0800 CST ] Parser finished
+[ 2016-04-11 22:24:28.2325093 +0800 CST ] Parser:create table table1(id int primary key, name string);
+
+[ 2016-04-11 22:24:28.2325093 +0800 CST ] Parser finished
+[ 2016-04-11 22:24:42.8491534 +0800 CST ] Parser:insert into table1(id,name) values(1,'yml');
+
+[ 2016-04-11 22:24:42.8491534 +0800 CST ] Parser finished
+[ 2016-04-11 22:30:46.8357338 +0800 CST ] Parser:create table table1
+(id int, name string);
+
+[ 2016-04-11 22:30:46.8367415 +0800 CST ] Parser finished
+[ 2016-04-11 22:31:14.2459789 +0800 CST ] Parser:insert into table1(id,name) values(1,'yml');
+
+[ 2016-04-11 22:31:14.2459789 +0800 CST ] Parser finished
+[ 2016-04-11 22:32:27.060101 +0800 CST ] Parser:create table table1(
+id int primary key,
+name string);
+
+[ 2016-04-11 22:32:27.060101 +0800 CST ] Parser finished
+[ 2016-04-11 22:32:40.5843852 +0800 CST ] Parser:insert into table1(id,name) values(1,'yml');
+
+[ 2016-04-11 22:32:40.5843852 +0800 CST ] Parser finished
+[ 2016-04-11 22:34:40.3676555 +0800 CST ] Parser:create table table1(
+id int primary key,
+name string);
+
+[ 2016-04-11 22:34:40.3686529 +0800 CST ] Parser finished
+[ 2016-04-11 22:34:54.8732691 +0800 CST ] Parser:insert into table1(id,name) values(1,'yml');
+
+[ 2016-04-11 22:34:54.8742928 +0800 CST ] Parser finished
+[ 2016-04-11 23:05:58.6903185 +0800 CST ] Parser:insert into table1 values(2,'yyh');
+
+[ 2016-04-11 23:05:58.6913186 +0800 CST ] Parser finished
+[ 2016-04-12 10:10:08.7157141 +0800 CST ] Parser:create table 啊(id int);
+
+[ 2016-04-12 10:10:08.751647 +0800 CST ] Parser finished
+[ 2016-04-12 10:10:30.18211 +0800 CST ] Parser:insert into abc(abc) values('啊');
+
+[ 2016-04-12 10:10:30.1830757 +0800 CST ] Parser finished
+[ 2016-04-12 10:10:46.4813387 +0800 CST ] Parser:create table table1(id int);
+
+[ 2016-04-12 10:10:46.4833183 +0800 CST ] Parser finished
+[ 2016-04-12 10:10:58.1041971 +0800 CST ] Parser:insert into table1 values(1),(2);
+
+[ 2016-04-12 10:10:58.1051766 +0800 CST ] Parser finished
+[ 2016-04-12 10:13:37.9662106 +0800 CST ] Parser:create table table1(id int);
+
+[ 2016-04-12 10:13:37.9671879 +0800 CST ] Parser finished
+[ 2016-04-12 10:13:47.7246364 +0800 CST ] Parser:insert into table1 values(1),(2);
+
+[ 2016-04-12 10:13:47.7256137 +0800 CST ] Parser finished
+[ 2016-04-12 10:15:29.3505444 +0800 CST ] Parser:create table table1(id int);
+
+[ 2016-04-12 10:15:29.3515472 +0800 CST ] Parser finished
+[ 2016-04-12 10:15:55.4810138 +0800 CST ] Parser:insert into table1 values(1),(2);
+
+[ 2016-04-12 10:15:55.4830162 +0800 CST ] Parser finished
+[ 2016-04-12 10:16:05.3624419 +0800 CST ] Parser:insert into table1(id) values(1),(2);
+
+[ 2016-04-12 10:16:05.3634089 +0800 CST ] Parser finished
+[ 2016-04-12 10:16:16.1646108 +0800 CST ] Parser:insert into table1(id) values(1),(2);
+
+[ 2016-04-12 10:16:16.1655778 +0800 CST ] Parser finished
+[ 2016-04-12 10:16:22.501843 +0800 CST ] Parser:insert into table1 values(1),(2);
+
+[ 2016-04-12 10:16:22.5038109 +0800 CST ] Parser finished
+[ 2016-04-12 11:00:18.2750779 +0800 CST ] Parser:create table t1(id int);
+
+[ 2016-04-12 11:00:18.2770931 +0800 CST ] Parser finished
+[ 2016-04-12 11:00:27.5989873 +0800 CST ] Parser:create table table1(id int);
+
+[ 2016-04-12 11:00:27.6009602 +0800 CST ] Parser finished
+[ 2016-04-12 11:00:36.1687876 +0800 CST ] Parser:create table table1( id int);
+
+[ 2016-04-12 11:00:36.1707881 +0800 CST ] Parser finished
+[ 2016-04-12 11:00:48.9055859 +0800 CST ] Parser:create table table1(
+id int);
+
+[ 2016-04-12 11:00:48.906552 +0800 CST ] Parser finished
+[ 2016-04-12 11:02:36.120229 +0800 CST ] Parser:create table table1(id int);
+
+[ 2016-04-12 11:02:36.1222063 +0800 CST ] Parser finished
+[ 2016-04-12 11:03:33.5980122 +0800 CST ] Parser:create table table1(name string);
+
+[ 2016-04-12 11:03:33.5989802 +0800 CST ] Parser finished
+[ 2016-04-12 11:03:50.2891842 +0800 CST ] Parser:insert into table1 values('asdsafa');
+
+[ 2016-04-12 11:03:50.2901834 +0800 CST ] Parser finished
+[ 2016-04-12 11:04:00.1309831 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:04:00.13196 +0800 CST ] Parser finished
+[ 2016-04-12 11:06:27.4252732 +0800 CST ] Parser:create table table1(name string);
+
+[ 2016-04-12 11:06:27.4262688 +0800 CST ] Parser finished
+[ 2016-04-12 11:06:43.2259092 +0800 CST ] Parser:insert into table1 values('sadadas'),('sdada');
+
+[ 2016-04-12 11:06:43.2279116 +0800 CST ] Parser finished
+[ 2016-04-12 11:06:49.122657 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:06:49.1246571 +0800 CST ] Parser finished
+[ 2016-04-12 11:12:03.5951603 +0800 CST ] Parser:create table table1(name string);
+
+[ 2016-04-12 11:12:03.5961616 +0800 CST ] Parser finished
+[ 2016-04-12 11:12:12.9491464 +0800 CST ] Parser:insert into table1 values('asda');
+
+[ 2016-04-12 11:12:12.9511492 +0800 CST ] Parser finished
+[ 2016-04-12 11:12:22.7490122 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:12:22.7500118 +0800 CST ] Parser finished
+[ 2016-04-12 11:12:40.2306841 +0800 CST ] Parser:insert into table1 values('asda');
+
+[ 2016-04-12 11:12:40.231685 +0800 CST ] Parser finished
+[ 2016-04-12 11:12:41.6199958 +0800 CST ] Parser:create table table1(name string);
+
+[ 2016-04-12 11:12:41.6209958 +0800 CST ] Parser finished
+[ 2016-04-12 11:12:46.6151361 +0800 CST ] Parser:
+insert into table1 values('asda');
+
+[ 2016-04-12 11:12:46.6161054 +0800 CST ] Parser finished
+[ 2016-04-12 11:12:47.9507993 +0800 CST ] Parser:insert into table1 values('asda');
+
+[ 2016-04-12 11:12:47.9527669 +0800 CST ] Parser finished
+[ 2016-04-12 11:12:51.5162335 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:12:51.5172327 +0800 CST ] Parser finished
+[ 2016-04-12 11:12:56.0561936 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:12:56.0581602 +0800 CST ] Parser finished
+[ 2016-04-12 11:12:57.4351657 +0800 CST ] Parser:insert into table1 values('asda');
+
+[ 2016-04-12 11:12:57.4361336 +0800 CST ] Parser finished
+[ 2016-04-12 11:13:00.7761388 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:13:00.7771379 +0800 CST ] Parser finished
+[ 2016-04-12 11:14:24.2021456 +0800 CST ] Parser:create table table1(name string);
+
+[ 2016-04-12 11:14:24.2031144 +0800 CST ] Parser finished
+[ 2016-04-12 11:14:31.0026182 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:14:31.0036143 +0800 CST ] Parser finished
+[ 2016-04-12 11:15:17.7992308 +0800 CST ] Parser:insert into table1 values('aaaaaaa');
+
+[ 2016-04-12 11:15:17.8012345 +0800 CST ] Parser finished
+[ 2016-04-12 11:15:21.3183926 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:15:21.3203917 +0800 CST ] Parser finished
+[ 2016-04-12 11:16:51.1418952 +0800 CST ] Parser:create table table1(name string);
+
+[ 2016-04-12 11:16:51.1438659 +0800 CST ] Parser finished
+[ 2016-04-12 11:17:20.6501087 +0800 CST ] Parser:insert into table1 values('asdfasfa'),('dadafas');
+
+[ 2016-04-12 11:17:20.6510766 +0800 CST ] Parser finished
+[ 2016-04-12 11:17:24.5692412 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:17:24.5712252 +0800 CST ] Parser finished
+[ 2016-04-12 11:24:28.0215218 +0800 CST ] Parser:create table table1(name string);
+
+[ 2016-04-12 11:24:28.0224866 +0800 CST ] Parser finished
+[ 2016-04-12 11:24:37.5889301 +0800 CST ] Parser:insert into table1 values('asdfafs'),('fasfsa);
+
+[ 2016-04-12 11:24:37.5899311 +0800 CST ] Parser finished
+[ 2016-04-12 11:24:47.1138641 +0800 CST ] Parser:insert into table1 values('asdfafs'),('fasfsa');
+
+[ 2016-04-12 11:24:47.1158419 +0800 CST ] Parser finished
+[ 2016-04-12 11:24:51.9471142 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:24:51.9481134 +0800 CST ] Parser finished
+[ 2016-04-12 11:28:03.8294401 +0800 CST ] Parser:quitl
+;
+
+[ 2016-04-12 11:28:03.8314393 +0800 CST ] Parser finished
+[ 2016-04-12 11:28:36.052973 +0800 CST ] Parser:create table table1(name string);
+
+[ 2016-04-12 11:28:36.053956 +0800 CST ] Parser finished
+[ 2016-04-12 11:28:51.2251961 +0800 CST ] Parser:insert into table1 values('asdaf'),('adfasfa');
+
+[ 2016-04-12 11:28:51.2261761 +0800 CST ] Parser finished
+[ 2016-04-12 11:28:55.5294027 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:28:55.53038 +0800 CST ] Parser finished
+[ 2016-04-12 11:30:27.2646244 +0800 CST ] Parser:create table table1(name string);
+
+[ 2016-04-12 11:30:27.265628 +0800 CST ] Parser finished
+[ 2016-04-12 11:30:38.3208442 +0800 CST ] Parser:insert into table1 values('saaf','fdsafs');
+
+[ 2016-04-12 11:30:38.321813 +0800 CST ] Parser finished
+[ 2016-04-12 11:30:44.2494154 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:30:44.2503819 +0800 CST ] Parser finished
+[ 2016-04-12 11:31:31.8525768 +0800 CST ] Parser:insert into table1 values('saaf','fdsafaaas');
+
+[ 2016-04-12 11:31:31.8545778 +0800 CST ] Parser finished
+[ 2016-04-12 11:31:36.1713352 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:31:36.1723361 +0800 CST ] Parser finished
+[ 2016-04-12 11:31:45.7980317 +0800 CST ] Parser:insert into table1 values('saafsdada','fdsafs');
+
+[ 2016-04-12 11:31:45.7990336 +0800 CST ] Parser finished
+[ 2016-04-12 11:31:48.3996741 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:31:48.4016751 +0800 CST ] Parser finished
+[ 2016-04-12 11:34:59.4335636 +0800 CST ] Parser:create table table1(name string);
+
+[ 2016-04-12 11:34:59.4355624 +0800 CST ] Parser finished
+[ 2016-04-12 11:35:13.8232475 +0800 CST ] Parser:insert into table1 values ('asdad'),('dada');
+
+[ 2016-04-12 11:35:13.8252248 +0800 CST ] Parser finished
+[ 2016-04-12 11:35:18.4863138 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:35:18.487288 +0800 CST ] Parser finished
+[ 2016-04-12 11:36:22.5929272 +0800 CST ] Parser:create table table1(name string);
+
+[ 2016-04-12 11:36:22.5949563 +0800 CST ] Parser finished
+[ 2016-04-12 11:36:39.864239 +0800 CST ] Parser:insert into table1 values('1231'),('dsada');
+
+[ 2016-04-12 11:36:39.8662003 +0800 CST ] Parser finished
+[ 2016-04-12 11:36:48.601476 +0800 CST ] Parser:dump table1;
+
+[ 2016-04-12 11:36:48.6034841 +0800 CST ] Parser finished

@@ -6,7 +6,7 @@ import (
 
 func defineTokens() {
 	log.WriteLogSync("sys", "Start making DFA")
-	keyword := stringsToken("select", "from", "where", "update", "delete", "create", "insert", "into", "table", "order", "by", "values")
+	keyword := stringsToken("select", "from", "where", "update", "delete", "create", "insert", "into", "table", "order", "by", "values", "dump")
 	logical := stringsToken("and", "or", "not")
 	structs := stringsToken("(", ")", ";", ",", ".")
 	split := stringsToken(" ", "\t", "\n", "\r\n", "\r")

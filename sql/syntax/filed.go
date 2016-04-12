@@ -57,7 +57,7 @@ func filedParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 				Value: nil,
 				Child: []*SyntaxTreeNode{
 					&SyntaxTreeNode{
-						Name:      "identcial",
+						Name:      "identical",
 						Value:     t.Raw,
 						ValueType: NAME,
 					},
@@ -66,7 +66,7 @@ func filedParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 			}, nil
 		}
 		return &SyntaxTreeNode{
-			Name:      "identcial",
+			Name:      "identical",
 			Value:     t.Raw,
 			ValueType: NAME,
 		}, nil

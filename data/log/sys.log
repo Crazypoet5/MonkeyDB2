@@ -383,3 +383,177 @@ Recovery 8 image files.
 Recovery 14 image files.
 [ 2016-04-05 16:43:55.4757955 +0800 CST ] DFA prepared
 [ 2016-04-05 16:43:55.477796 +0800 CST ] lex module ready
+[ 2016-04-11 21:17:01.2337241 +0800 CST ] [ 2016-04-11 21:17:01.2337241 +0800 CST ] Recovery 14 image files.
+Start making DFA
+[ 2016-04-11 21:17:11.6765515 +0800 CST ] DFA prepared
+[ 2016-04-11 21:17:11.6795918 +0800 CST ] lex module ready
+[ 2016-04-11 21:57:15.4165121 +0800 CST ] Recovery 14 image files.
+[ 2016-04-11 21:57:15.4165121 +0800 CST ] Start making DFA
+[ 2016-04-11 21:57:25.8391008 +0800 CST ] DFA prepared
+[ 2016-04-11 21:57:25.8410866 +0800 CST ] lex module ready
+[ 2016-04-11 22:07:47.16427 +0800 CST ] Start making DFA
+[ 2016-04-11 22:07:47.1652286 +0800 CST ] Recovery 14 image files.
+[ 2016-04-11 22:07:57.7898109 +0800 CST ] DFA prepared
+[ 2016-04-11 22:07:57.7918124 +0800 CST ] lex module ready
+[ 2016-04-11 22:14:43.3480804 +0800 CST ] Recovery 14 image files.
+[ 2016-04-11 22:14:43.3480804 +0800 CST ] Start making DFA
+[ 2016-04-11 22:14:53.8276786 +0800 CST ] DFA prepared
+[ 2016-04-11 22:14:53.8296671 +0800 CST ] lex module ready
+[ 2016-04-11 22:15:55.6309592 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:15:55.6439579 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:15:55.6519511 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:15:55.6619609 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:19:09.8477236 +0800 CST ] Recovery 18 image files.
+[ 2016-04-11 22:19:09.8477236 +0800 CST ] Start making DFA
+[ 2016-04-11 22:19:19.973296 +0800 CST ] DFA prepared
+[ 2016-04-11 22:19:19.9762952 +0800 CST ] lex module ready
+[ 2016-04-11 22:19:50.5834597 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:19:50.5944606 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:19:50.604461 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:19:50.6144614 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:21:22.1076697 +0800 CST ] Start making DFA
+[ 2016-04-11 22:21:22.1096667 +0800 CST ] Recovery 22 image files.
+[ 2016-04-11 22:21:32.2342189 +0800 CST ] DFA prepared
+[ 2016-04-11 22:21:32.2372173 +0800 CST ] lex module ready
+[ 2016-04-11 22:21:57.0984409 +0800 CST ] Start making DFA
+[ 2016-04-11 22:21:57.0984409 +0800 CST ] Recovery 22 image files.
+[ 2016-04-11 22:22:07.4100227 +0800 CST ] DFA prepared
+[ 2016-04-11 22:22:07.4120228 +0800 CST ] lex module ready
+[ 2016-04-11 22:22:41.5697822 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:22:41.5817777 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:22:41.5937832 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:22:41.6057729 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:23:59.250677 +0800 CST ] Recovery 26 image files.
+[ 2016-04-11 22:23:59.2516587 +0800 CST ] Start making DFA
+[ 2016-04-11 22:24:09.6552413 +0800 CST ] DFA prepared
+[ 2016-04-11 22:24:09.6572445 +0800 CST ] lex module ready
+[ 2016-04-11 22:24:28.249494 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:24:28.263503 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:24:28.2784996 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:24:28.2924962 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:30:20.2385493 +0800 CST ] Start making DFA
+[ 2016-04-11 22:30:20.2385493 +0800 CST ] Recovery 30 image files.
+[ 2016-04-11 22:30:30.510113 +0800 CST ] DFA prepared
+[ 2016-04-11 22:30:30.512093 +0800 CST ] lex module ready
+[ 2016-04-11 22:30:46.8417421 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:30:46.8627541 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:30:46.8787441 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:30:46.8957479 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:32:00.2477862 +0800 CST ] Start making DFA
+[ 2016-04-11 22:32:00.2497541 +0800 CST ] Recovery 34 image files.
+[ 2016-04-11 22:32:10.5043417 +0800 CST ] DFA prepared
+[ 2016-04-11 22:32:10.5083472 +0800 CST ] lex module ready
+[ 2016-04-11 22:32:27.0640869 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:32:27.0830895 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:32:27.1010893 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:32:27.1190914 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:33:34.65301 +0800 CST ] Start making DFA
+[ 2016-04-11 22:33:34.65301 +0800 CST ] Recovery 38 image files.
+[ 2016-04-11 22:33:45.7466498 +0800 CST ] DFA prepared
+[ 2016-04-11 22:33:45.7486419 +0800 CST ] lex module ready
+[ 2016-04-11 22:34:40.3776947 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:34:40.4056557 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:34:40.4266566 +0800 CST ] Save image table to file.
+[ 2016-04-11 22:34:40.4456574 +0800 CST ] Save image table to file.
+[ 2016-04-12 10:09:41.2126017 +0800 CST ] [ 2016-04-12 10:09:41.2126017 +0800 CST ] Start making DFA
+Recovery 42 image files.
+[ 2016-04-12 10:09:51.5693123 +0800 CST ] DFA prepared
+[ 2016-04-12 10:09:51.5713066 +0800 CST ] lex module ready
+[ 2016-04-12 10:10:46.4943054 +0800 CST ] Save image table to file.
+[ 2016-04-12 10:10:46.5663193 +0800 CST ] Save image table to file.
+[ 2016-04-12 10:10:46.6393457 +0800 CST ] Save image table to file.
+[ 2016-04-12 10:13:15.5560854 +0800 CST ] Recovery 45 image files.
+[ 2016-04-12 10:13:15.5560854 +0800 CST ] Start making DFA
+[ 2016-04-12 10:13:25.6587691 +0800 CST ] DFA prepared
+[ 2016-04-12 10:13:25.6607701 +0800 CST ] lex module ready
+[ 2016-04-12 10:13:37.9771861 +0800 CST ] Save image table to file.
+[ 2016-04-12 10:13:38.0561843 +0800 CST ] Save image table to file.
+[ 2016-04-12 10:13:38.1291973 +0800 CST ] Save image table to file.
+[ 2016-04-12 10:14:58.268705 +0800 CST ] Recovery 48 image files.
+[ 2016-04-12 10:14:58.2692026 +0800 CST ] Start making DFA
+[ 2016-04-12 10:15:09.3340904 +0800 CST ] DFA prepared
+[ 2016-04-12 10:15:09.3360717 +0800 CST ] lex module ready
+[ 2016-04-12 10:15:29.3605605 +0800 CST ] Save image table to file.
+[ 2016-04-12 10:15:29.3995471 +0800 CST ] Save image table to file.
+[ 2016-04-12 10:15:29.4315512 +0800 CST ] Save image table to file.
+[ 2016-04-12 10:59:58.9837897 +0800 CST ] Recovery 51 image files.
+[ 2016-04-12 10:59:58.9837897 +0800 CST ] Start making DFA
+[ 2016-04-12 11:00:09.5774112 +0800 CST ] DFA prepared
+[ 2016-04-12 11:00:09.5794162 +0800 CST ] lex module ready
+[ 2016-04-12 11:02:09.8214706 +0800 CST ] Start making DFA
+[ 2016-04-12 11:02:09.8225063 +0800 CST ] Recovery 51 image files.
+[ 2016-04-12 11:02:20.6731472 +0800 CST ] DFA prepared
+[ 2016-04-12 11:02:20.6751442 +0800 CST ] lex module ready
+[ 2016-04-12 11:03:13.5254414 +0800 CST ] Start making DFA
+[ 2016-04-12 11:03:13.5254414 +0800 CST ] Recovery 51 image files.
+[ 2016-04-12 11:03:24.6280908 +0800 CST ] DFA prepared
+[ 2016-04-12 11:03:24.6310775 +0800 CST ] lex module ready
+[ 2016-04-12 11:03:33.6100128 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:03:33.6969849 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:03:33.7790225 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:06:07.6237898 +0800 CST ] Start making DFA
+[ 2016-04-12 11:06:07.6237898 +0800 CST ] Recovery 54 image files.
+[ 2016-04-12 11:06:18.0294574 +0800 CST ] DFA prepared
+[ 2016-04-12 11:06:18.0314433 +0800 CST ] lex module ready
+[ 2016-04-12 11:06:27.4372622 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:06:27.5292993 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:06:27.6002747 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:11:41.94969 +0800 CST ] Start making DFA
+[ 2016-04-12 11:11:41.94969 +0800 CST ] Recovery 57 image files.
+[ 2016-04-12 11:11:52.417388 +0800 CST ] DFA prepared
+[ 2016-04-12 11:11:52.4203886 +0800 CST ] lex module ready
+[ 2016-04-12 11:12:03.6421655 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:12:03.7341994 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:12:03.7931842 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:12:41.6399971 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:12:41.7400131 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:12:41.8340459 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:14:01.1526293 +0800 CST ] Recovery 63 image files.
+[ 2016-04-12 11:14:01.1526293 +0800 CST ] Start making DFA
+[ 2016-04-12 11:14:11.5922596 +0800 CST ] DFA prepared
+[ 2016-04-12 11:14:11.5952415 +0800 CST ] lex module ready
+[ 2016-04-12 11:14:24.2141162 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:14:24.32112 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:14:24.4211302 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:16:32.0580665 +0800 CST ] Recovery 66 image files.
+[ 2016-04-12 11:16:32.0580665 +0800 CST ] Start making DFA
+[ 2016-04-12 11:16:42.8207142 +0800 CST ] DFA prepared
+[ 2016-04-12 11:16:42.8227031 +0800 CST ] lex module ready
+[ 2016-04-12 11:16:51.1538962 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:16:51.262881 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:16:51.3598968 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:24:09.0504155 +0800 CST ] Recovery 69 image files.
+[ 2016-04-12 11:24:09.0504155 +0800 CST ] Start making DFA
+[ 2016-04-12 11:24:19.55058 +0800 CST ] DFA prepared
+[ 2016-04-12 11:24:19.5525858 +0800 CST ] lex module ready
+[ 2016-04-12 11:24:28.0324892 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:24:28.1454938 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:24:28.2344986 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:28:17.4310097 +0800 CST ] Recovery 72 image files.
+[ 2016-04-12 11:28:17.4310097 +0800 CST ] Start making DFA
+[ 2016-04-12 11:28:27.9596199 +0800 CST ] DFA prepared
+[ 2016-04-12 11:28:27.9616209 +0800 CST ] lex module ready
+[ 2016-04-12 11:28:36.0911844 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:28:36.2111937 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:28:36.3291998 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:30:07.3085452 +0800 CST ] Recovery 75 image files.
+[ 2016-04-12 11:30:07.3085452 +0800 CST ] Start making DFA
+[ 2016-04-12 11:30:17.764165 +0800 CST ] DFA prepared
+[ 2016-04-12 11:30:17.7661655 +0800 CST ] lex module ready
+[ 2016-04-12 11:30:27.2756561 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:30:27.4026426 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:30:27.4986415 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:34:16.9472614 +0800 CST ] Start making DFA
+[ 2016-04-12 11:34:16.9472614 +0800 CST ] Recovery 78 image files.
+[ 2016-04-12 11:34:27.5928897 +0800 CST ] DFA prepared
+[ 2016-04-12 11:34:27.5948786 +0800 CST ] lex module ready
+[ 2016-04-12 11:34:59.4605345 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:34:59.588562 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:34:59.6945671 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:36:01.5844449 +0800 CST ] Start making DFA
+[ 2016-04-12 11:36:01.5844449 +0800 CST ] Recovery 81 image files.
+[ 2016-04-12 11:36:12.1830764 +0800 CST ] DFA prepared
+[ 2016-04-12 11:36:12.1850631 +0800 CST ] lex module ready
+[ 2016-04-12 11:36:22.6512725 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:36:22.7803094 +0800 CST ] Save image table to file.
+[ 2016-04-12 11:36:22.8772811 +0800 CST ] Save image table to file.

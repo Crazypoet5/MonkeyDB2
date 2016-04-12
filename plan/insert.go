@@ -1,6 +1,9 @@
 package plan
 
 import (
+	"errors"
+	"unsafe"
+
 	"../exe"
 	"../sql/syntax"
 	"../table"
@@ -25,10 +28,19 @@ func insertPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 		return nil, nil, err
 	}
 	columnNames := make([]string, 0)
-	for i := 0; i < len(r.Rows[0]); i++ {
+	for i := 0; len(r.Rows) > 0 && i < len(r.Rows[0]); i++ {
 		columnNames = append(columnNames, string(r.Rows[0][i].Raw))
 	}
-	//TODO: insert datas
+	datas := make([][][]byte, 0)
+	r, _, err = rowsPlan(stn.Child[2])
+	for _, row := range r.Rows {
+		rowD := make([][]byte, 0)
+		for i := 0; i < len(row); i++ {
+			rowD = append(rowD, row[i].Raw)
+		}
+		datas = append(datas, rowD)
+	}
+	table.Insert(columnNames, datas)
 	rel := exe.NewRelation()
 	re.SetResult(len(stn.Child[2].Child))
 	return rel, re, nil
@@ -36,19 +48,75 @@ func insertPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 
 func fieldsPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	re := NewResult()
+	r := exe.NewRelation()
+	if stn == nil {
+		re.SetResult(0)
+		return r, re, nil
+	}
 	if stn.Name != "fields" {
 		return nil, nil, errors.New("Expected fields but get " + stn.Name)
 	}
 	row := make([]exe.Value, 0)
-	for i := 0; i < len(stm.Child); i++ {
+	for i := 0; i < len(stn.Child); i++ {
 		// ignored spot case
 		if stn.Child[i].Name != "identical" {
-			return nil, nil, errors.New("Expected identical but get " + stn.Name)
+			return nil, nil, errors.New("Expected identical but get " + stn.Child[i].Name)
 		}
-		row = append(row, stn.Child[i].Value.([]byte))
+		row = append(row, exe.NewValue(exe.STRING, stn.Child[i].Value.([]byte)))
 	}
-	r := exe.NewRelation()
 	r.AddRow(row)
 	re.SetResult(0)
 	return r, re, nil
+}
+
+func rowsPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
+	re := NewResult()
+	if stn.Name != "rows" {
+		return nil, nil, errors.New("Expected rows but get " + stn.Name)
+	}
+	r := exe.NewRelation()
+	for rowIndex := 0; rowIndex < len(stn.Child); rowIndex++ {
+		rowNode := stn.Child[rowIndex]
+		if rowNode.Name != "row" {
+			return nil, nil, errors.New("Expected row but get " + stn.Name)
+		}
+		var row exe.Row
+		for i := 0; i < len(rowNode.Child); i++ {
+			v := rowNode.Child[i]
+			switch v.Name {
+			case "value":
+				var b *[8]byte
+				var kind int
+				if v.ValueType == syntax.INT {
+					i := v.Value.(int)
+					b = (*[8]byte)(unsafe.Pointer(&i))
+					kind = exe.FLOAT
+				} else {
+					f := v.Value.(float64)
+					b = (*[8]byte)(unsafe.Pointer(&f))
+					kind = exe.INT
+				}
+				var bs []byte
+				for i := 0; i < 8; i++ {
+					bs = append(bs, (*b)[i])
+				}
+				row = append(row, exe.NewValue(kind, bs))
+			case "string":
+				row = append(row, exe.NewValue(exe.STRING, v.Value.([]byte)))
+			}
+		}
+		r.AddRow(row)
+	}
+
+	re.SetResult(1)
+	return r, re, nil
+}
+
+func uint322bytes(u uint32) []byte {
+	b := make([]byte, 4)
+	for i := 0; i < 4; i++ {
+		b[i] = (byte)(u)
+		u >>= 8
+	}
+	return b
 }

@@ -41,7 +41,7 @@ func loop() bool {
 		return true
 	}
 	stn.Print(1)
-	r, re, err := plan.CreatePlan(stn)
+	r, re, err := plan.DirectPlan(stn)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())
 		return true

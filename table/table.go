@@ -31,7 +31,7 @@ type Index struct {
 }
 
 func GetTableByName(name string) *Table {
-	for , v := range TableList {
+	for _, v := range TableList {
 		if v.Name == name {
 			return v
 		}
