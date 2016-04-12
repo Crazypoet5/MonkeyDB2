@@ -88,7 +88,7 @@ func isSubSet(s []int, d []int) bool {
 	return true
 }
 
-func (g *nfa) toDfa() (*preDfa, map[int][]int) {
+func (g *nfa) toDfa() *preDfa {
 	dfa2nfa := make(map[int][]int)
 	dfa := &preDfa{}
 	L := queue{}
@@ -149,7 +149,7 @@ func (g *nfa) toDfa() (*preDfa, map[int][]int) {
 			}
 		}
 	}
-	return dfa, dfa2nfa
+	return dfa
 }
 
 //Class [ASCII] = CLASS
