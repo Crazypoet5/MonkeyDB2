@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"./plan"
+	"./recovery"
 	"./sql/lex"
 	"./sql/syntax"
 )
@@ -34,13 +35,13 @@ func loop() bool {
 	}
 	//	fmt.Println(command)
 	ts, _ := lex.Parse(*lex.NewByteReader([]byte(command)))
-	fmt.Println(ts)
+	//	fmt.Println(ts)
 	stn, err := syntax.Parser(syntax.NewTokenReader(ts))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())
 		return true
 	}
-	stn.Print(1)
+	//	stn.Print(1)
 	r, re, err := plan.DirectPlan(stn)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())
@@ -52,6 +53,7 @@ func loop() bool {
 }
 
 func bye() {
+	recovery.SafeExit()
 	fmt.Println("Bye!")
 }
 

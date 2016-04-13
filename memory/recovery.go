@@ -19,7 +19,7 @@ const (
 
 var startBackup = make(chan bool, MAX_BAK_CHAN_SIZE)
 
-var RecoveryTable = make(map[uintptr]uintptr)
+var RecoveryTable = make(map[uintptr]*DataBlock)
 
 func (b *DataBlock) SyncToFile() error {
 	data, err := b.Read(0, b.Size)
@@ -60,7 +60,7 @@ func SaveImageTable() {
 	log.WriteLog("sys", "Save image table to file.")
 }
 
-func signalBackup() {
+func SignalBackup() {
 	startBackup <- true
 }
 
@@ -73,8 +73,13 @@ func BackupRoutine() {
 }
 
 func init() {
-	Recovery()
-	go BackupRoutine()
+	//	Recovery()
+	//	go BackupRoutine()
+}
+
+func Restore() {
+	SaveImageTable()
+	SyncAllImageToFile()
 }
 
 func LoadImage(filename string) *DataBlock {
@@ -112,7 +117,7 @@ func Recovery() {
 	for k, v := range tempTable {
 		ipOld, _ := strconv.Atoi(k)
 		ipNew := LoadImage(v.(string))
-		RecoveryTable[uintptr(ipOld)] = ipNew.RawPtr
+		RecoveryTable[uintptr(ipOld)] = ipNew
 	}
 	log.WriteLog("sys", "Recovery "+strconv.Itoa(len(RecoveryTable))+" image files.")
 }

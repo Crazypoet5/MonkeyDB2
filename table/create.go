@@ -11,6 +11,7 @@ func CreateTable(tableName string) *Table {
 		Name: tableName,
 	}
 	ret.FirstPage = ret.NewPage()
+	ret.LastPage = ret.FirstPage
 	TableList = append(TableList, ret)
 	return ret
 }

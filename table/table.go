@@ -11,7 +11,6 @@ const (
 )
 
 type Field struct {
-	// Skip		uint	//in every row there is a uint skip to indicate this row was deleted and how many to skip to next record
 	Name      string
 	FixedSize bool
 	Index     *index.Index
@@ -19,10 +18,17 @@ type Field struct {
 	Type      int
 }
 
+type savedRow struct {
+	skip uint   //in every row there is a uint skip to indicate this row was deleted and how many to skip to next record
+	size uint32 //if not fixed
+	data []byte
+}
+
 type Table struct {
 	Name      string
 	Fields    []Field
 	FirstPage *Page
+	LastPage  *Page
 }
 
 type Index struct {

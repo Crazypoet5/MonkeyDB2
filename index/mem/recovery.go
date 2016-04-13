@@ -1,33 +1,17 @@
 package mem
 
 import (
-    "../../memory"
+	"../../memory"
 )
 
 func LoadManagedBlockFromDataBlock(db *memory.DataBlock) *ManagedBlock {
-    return &ManagedBlock {
-        DataBlock:      *db,
-    }
+	return &ManagedBlock{
+		DataBlock: *db,
+	}
 }
 
 func LoadManagedBlockFromOldUintptr(p uintptr) *ManagedBlock {
-    newPtr := uintptr(0)
-    for k, v := range memory.RecoveryTable {
-        if k == p {
-            newPtr = v
-            break
-        }
-    }
-    if newPtr == 0 {
-        return nil
-    }
-    for l := memory.DataBlockList.Front();l != nil;l = l.Next() {
-        db := l.Value.(*memory.DataBlock)
-        if db.RawPtr == newPtr {
-            return &ManagedBlock {
-                DataBlock:         *db,
-            }
-        }
-    }
-    return nil
+	return &ManagedBlock{
+		DataBlock: *memory.RecoveryTable[p],
+	}
 }
