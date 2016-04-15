@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	MAX_POWER      = 13
+	MAX_POWER      = 14
 	NORMAL_SIZE    = 24 + 16*1024*32
 	NORMAL_SIZE_2X = 2 * NORMAL_SIZE
 )
@@ -17,10 +17,11 @@ type ManagedBlock struct {
 
 // This struct is only to refrence to programer
 type header struct {
-	root     uint
-	min      uint
-	max      uint
-	freeList [MAX_POWER]uint
+	root uint
+	min  uint
+	max  uint
+	//freeList [MAX_POWER]uint //duplicated
+	fp uint
 }
 
 type freeListElement struct {
@@ -36,7 +37,9 @@ func NewManagedBlockWithSize(size int) *ManagedBlock {
 	mb := &ManagedBlock{ //This struct actually save 8 byte pointer only
 		DataBlock: *db,
 	}
-	mb.Init()
+	mb.SetRoot(0)
+	mb.Write(FREE_OFFSET, uint2bytes(64))
+	//mb.Init() Full CSBTree will make no garbage
 	return mb
 }
 
@@ -129,13 +132,12 @@ func (mb *ManagedBlock) Init() {
 	used := uint(24 + 8*MAX_POWER)
 	for {
 		for i := 0; i < MAX_POWER; i++ {
-			for n := 0; n < MAX_POWER-i; n++ {
-				if mb.DataBlock.Size-used < 64*uint(i+1) {
-					return
-				}
-				mb.ListPushFront(i, used)
-				used += 64 * uint(i+1)
+			if mb.DataBlock.Size-used < 64*uint(i+1) {
+				return
 			}
+			mb.ListPushFront(i, used)
+			used += 64 * uint(i+1)
 		}
 	}
+	mb.SetRoot(0)
 }

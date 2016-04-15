@@ -1,23 +1,14 @@
 package csbt
 
 import (
-    "testing"
-    "fmt"
+	"fmt"
+	"testing"
 )
 
 func TestInsert(t *testing.T) {
-    fmt.Println("S")
-    tree := NewDCSBT()
-    tree.Insert(3, 123)
-    tree.Insert(4, 123)
-    tree.Insert(1, 123)
-    tree.ListByLevel()
-    tree.Insert(5, 123)
-    tree.ListByLevel()
-    tree.Insert(6, 123)
-    tree.ListByLevel()
-    tree.Insert(8, 123)
-    tree.ListByLevel()
-    tree.Insert(4, 123)
-    tree.ListByLevel()
+	tree := NewDCSBT()
+	for i := 0; i < 100; i++ {
+		tree.Insert(uint32(i), uintptr(i))
+	}
+	fmt.Println(int(tree.Find(95)))
 }

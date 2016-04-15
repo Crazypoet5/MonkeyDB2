@@ -3,7 +3,7 @@ package table
 func (t *Table) Insert(columnNames []string, data [][][]byte) {
 	fields := t.Fields
 	for _, row := range data {
-		t.FirstPage.Append(uint2bytes(0))
+		t.LastPage.Append(uint2bytes(0))
 		columnNamesP := 0
 		for i := 0; i < len(fields); i++ {
 			if columnNames == nil || len(columnNames) == 0 ||
@@ -14,7 +14,7 @@ func (t *Table) Insert(columnNames []string, data [][][]byte) {
 					break
 				}
 			} else {
-				t.FirstPage.AppendField(&fields[i], nil)
+				t.LastPage.AppendField(&fields[i], nil)
 			}
 		}
 

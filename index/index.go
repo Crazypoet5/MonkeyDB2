@@ -2,7 +2,7 @@ package index
 
 import (
 	"./csbt"
-	"./msg"
+	//"./msg"
 )
 
 const (
@@ -11,10 +11,10 @@ const (
 )
 
 type Indexer interface {
-	Select(key uint32, n int) []uintptr
-	Insert(key uint32, value uintptr) *msg.Msg
+	//Select(key uint32, n int) []uintptr
+	//Insert(key uint32, value uintptr) *msg.Msg
 	//InsertBat(key, value []uint, base []uintptr) msg.Msg
-	Recovery()
+	//Recovery()
 }
 
 type Index struct {
