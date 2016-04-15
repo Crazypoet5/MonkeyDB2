@@ -81,8 +81,8 @@ func Recovery() {
 				Size:      int(fd["Size"].(float64)),
 				Type:      int(fd["Type"].(float64)),
 			}
-			index := (*index.Index)(unsafe.Pointer(uintptr(uint(fd["Index"].(float64)))))
-			field.Index = index //TODO: Replace to new address
+			ind := uintptr(uint(fd["Index"].(float64)))
+			field.Index = index.RecoveryTable[ind]
 			t.Fields = append(t.Fields, field)
 		}
 		firstPagePtr := uintptr(uint(v["FirstPage"].(float64)))

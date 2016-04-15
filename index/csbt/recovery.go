@@ -8,17 +8,21 @@ import (
 )
 
 func (t *DCSBT) Recovery() {
-	for l := t.mb.GetMin(); l != 0; l = t.mb.GetLeafRight(l) {
-		keyNum := t.mb.GetLeafKeyNum(l)
+	for l := t.MB.GetMin(); l != 0; l = t.MB.GetLeafRight(l) {
+		keyNum := t.MB.GetLeafKeyNum(l)
 		for i := 0; i < keyNum; i++ {
-			oldPtr := t.mb.GetLeafValue(l, i)
-			newPtr, ok := memory.RecoveryTable[oldPtr]
+			oldPtr := t.MB.GetLeafValue(l, i)
+			p := uint(oldPtr) >> 24
+			offset := uint(oldPtr) & 0x0000000000111111
+			newPtr, ok := memory.RecoveryTable[uintptr(p)]
 			if !ok {
 				log.WriteLog("err", "Recovery index error: "+strconv.Itoa(int(oldPtr)))
-				t.mb.SetLeafValue(l, i, 0)
+				t.MB.SetLeafValue(l, i, 0)
 				continue
 			}
-			t.mb.SetLeafValue(l, i, newPtr.RawPtr)
+			newV := uint(newPtr.RawPtr) << 24
+			newV |= offset
+			t.MB.SetLeafValue(l, i, uintptr(newV))
 		}
 	}
 }

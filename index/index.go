@@ -2,19 +2,22 @@ package index
 
 import (
 	"./csbt"
-	//"./msg"
+	"./cursor"
 )
 
 const (
 	PRIMARY = iota
 	UNIQUE
+	HASH //TODO
 )
 
+var IndexList []*Index
+
 type Indexer interface {
-	//Select(key uint32, n int) []uintptr
-	//Insert(key uint32, value uintptr) *msg.Msg
-	//InsertBat(key, value []uint, base []uintptr) msg.Msg
-	//Recovery()
+	Select(key uint32) cursor.Cursor
+	Insert(k uint32, v uintptr)
+	Delete(k uint32)
+	Recovery()
 }
 
 type Index struct {
@@ -24,8 +27,6 @@ type Index struct {
 	Key      string
 	I        Indexer
 }
-
-var IndexTable map[uintptr]*Index
 
 func CreateIndex(kind int, database string, table string, key string) *Index {
 	i := &Index{
@@ -40,5 +41,6 @@ func CreateIndex(kind int, database string, table string, key string) *Index {
 	case UNIQUE:
 		i.I = csbt.NewDCSBT()
 	}
+	IndexList = append(IndexList, i)
 	return i
 }

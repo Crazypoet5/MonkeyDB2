@@ -4,6 +4,7 @@ import (
 	"os"
 	"os/signal"
 
+	"../index"
 	"../log"
 	"../memory"
 	"../table"
@@ -30,4 +31,5 @@ func Restore() {
 	defer log.WriteLog("sys", "Restore Finished.")
 	memory.Restore()
 	table.Restore()
+	index.Restore()
 }

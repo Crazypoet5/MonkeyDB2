@@ -4,6 +4,7 @@ import (
 	"unsafe"
 
 	"../exe"
+	"../index"
 	"../memory"
 )
 
@@ -21,8 +22,8 @@ type Page struct {
 // This struct is only to refrence to programer
 type page struct {
 	table uintptr
-	prev  uintptr
-	next  uintptr
+	prev  uintptr //DataBlock RawPtr
+	next  uintptr //DataBlock RawPtr
 	fp    uint
 }
 
@@ -44,19 +45,29 @@ func (t *Table) NewPage() *Page {
 
 func (p *Page) NextPage() *Page {
 	ptr, _ := p.Read(NEXT_OFFSET, 8)
-	return (*Page)(unsafe.Pointer(uintptr(bytes2uint(ptr))))
+	if bytes2uint(ptr) == 0 {
+		return nil
+	}
+	return &Page{
+		DataBlock: *(memory.DataBlockTable[uintptr(bytes2uint(ptr))]),
+	}
 }
 
 func (p *Page) PrevPage() *Page {
 	ptr, _ := p.Read(PREV_OFFSET, 8)
-	return (*Page)(unsafe.Pointer(uintptr(bytes2uint(ptr))))
+	if bytes2uint(ptr) == 0 {
+		return nil
+	}
+	return &Page{
+		DataBlock: *(memory.DataBlockTable[uintptr(bytes2uint(ptr))]),
+	}
 }
 
 func (p *Page) AppendPage() {
 	t := p.GetTable()
 	pNew := t.NewPage()
-	p.Write(NEXT_OFFSET, uint2bytes(uint(uintptr(unsafe.Pointer(pNew)))))
-	pNew.Write(PREV_OFFSET, uint2bytes(uint(uintptr(unsafe.Pointer(p)))))
+	p.Write(NEXT_OFFSET, uint2bytes(uint(uintptr(pNew.RawPtr))))
+	pNew.Write(PREV_OFFSET, uint2bytes(uint(uintptr(p.RawPtr))))
 }
 
 func (p *Page) GetFreePos() uint {
@@ -81,6 +92,13 @@ func (p *Page) AppendField(f *Field, data []byte) {
 	}
 	if !f.FixedSize {
 		p.Append(uint322bytes(uint32(len(data))))
+	}
+	if f.Index != nil {
+		ptr := uint(p.RawPtr)
+		ptr <<= 24
+		fp := p.GetFreePos()
+		ptr |= fp
+		f.Index.I.Insert(index.BKDRHash(data), uintptr(ptr))
 	}
 	p.Append(data)
 }

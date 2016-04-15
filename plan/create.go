@@ -7,7 +7,6 @@ import (
 	"../exe"
 
 	"../index"
-	"../index/csbt"
 	"../table"
 
 	"../sql/syntax"
@@ -46,7 +45,7 @@ func CreatePlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 		}
 		t.AddFiled(string(v[0].Raw), fixed, size, tp, index.PRIMARY)
 	}
-	csbt.NewDCSBT()
+
 	result.SetResult(0)
 	return nil, result, nil
 }

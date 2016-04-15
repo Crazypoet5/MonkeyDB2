@@ -4,43 +4,43 @@
 package csbt
 
 import (
-    "../mem"
+	"../mem"
 )
 
 type leaf struct {
-    isLeaf      byte
-    keyNum      byte
-    reserved    uint16
-    key         [3]uint32
-    value       [3]uintptr
-    left,right  uint
-    reserved2   uint
+	isLeaf      byte
+	keyNum      byte
+	reserved    uint16
+	key         [3]uint32
+	value       [3]uintptr
+	left, right uint
+	reserved2   uint
 }
 
 type Node struct {
-    IsLeaf      byte
-    Reversed    byte
-    KeyNum      uint16
-    Key         [13]uint32
-    Child       uint
+	IsLeaf   byte
+	Reversed byte
+	KeyNum   uint16
+	Key      [13]uint32
+	Child    uint
 }
 
 type Header struct {
-    Root        uint
-    Min, Max    uint
+	Root     uint
+	Min, Max uint
 }
 
 type DCSBT struct {
-    mb          *mem.ManagedBlock
+	MB *mem.ManagedBlock
 }
 
 func NewDCSBT() *DCSBT {
-    t := &DCSBT {
-        mb:         mem.NewManagedBlock(),
-    }
-    leaf := t.mb.NewLeaves(1)
-    t.mb.SetRoot(leaf)
-    t.mb.SetMin(leaf)
-    t.mb.SetMax(leaf)
-    return t
+	t := &DCSBT{
+		MB: mem.NewManagedBlock(),
+	}
+	leaf := t.MB.NewLeaves(1)
+	t.MB.SetRoot(leaf)
+	t.MB.SetMin(leaf)
+	t.MB.SetMax(leaf)
+	return t
 }

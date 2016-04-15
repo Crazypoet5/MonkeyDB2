@@ -96,6 +96,7 @@ func LoadImage(filename string) *DataBlock {
 	d := *(*[]byte)(unsafe.Pointer(&header))
 	copy(d, data)
 	ImageTable[ip.RawPtr] = filename
+	DataBlockTable[ip.RawPtr] = ip
 	DataBlockList.PushBack(ip)
 	return ip
 }

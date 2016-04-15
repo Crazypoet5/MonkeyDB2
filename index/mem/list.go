@@ -7,7 +7,7 @@ import (
 
 const (
 	MAX_POWER      = 14
-	NORMAL_SIZE    = 24 + 16*1024*32
+	NORMAL_SIZE    = 16 * 1024 * 32
 	NORMAL_SIZE_2X = 2 * NORMAL_SIZE
 )
 
@@ -19,7 +19,7 @@ type ManagedBlock struct {
 type header struct {
 	root uint
 	min  uint
-	max  uint
+	max  uint //Not used now
 	//freeList [MAX_POWER]uint //duplicated
 	fp uint
 }
