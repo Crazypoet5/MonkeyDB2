@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"os"
 	"strings"
@@ -11,6 +12,9 @@ import (
 	"./sql/lex"
 	"./sql/syntax"
 )
+
+var lexSwitch = flag.Bool("L", false, "Show the lex parser result.")
+var syntaxSwitch = flag.Bool("S", false, "Show the syntax parser result.")
 
 func welcome() {
 	fmt.Println("MonkeyDB2 @ 2016")
@@ -33,15 +37,20 @@ func loop() bool {
 	if strings.Contains(command, "quit;") {
 		return false
 	}
-	//	fmt.Println(command)
+
 	ts, _ := lex.Parse(*lex.NewByteReader([]byte(command)))
-	//	fmt.Println(ts)
+	if *lexSwitch {
+		fmt.Println(command)
+		fmt.Println(ts)
+	}
 	stn, err := syntax.Parser(syntax.NewTokenReader(ts))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())
 		return true
 	}
-	//	stn.Print(1)
+	if *syntaxSwitch {
+		stn.Print(1)
+	}
 	r, re, err := plan.DirectPlan(stn)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())
@@ -58,6 +67,7 @@ func bye() {
 }
 
 func main() {
+	flag.Parse()
 	welcome()
 	for loop() {
 	}

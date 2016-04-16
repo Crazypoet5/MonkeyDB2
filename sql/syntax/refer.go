@@ -17,7 +17,7 @@ func referParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 			errors.New("You have a syntax error near:" + string(t.Raw))
 	}
 	return &SyntaxTreeNode{
-		Name:      "refer",
+		Name:      "indentical",
 		Value:     raws,
 		ValueType: NAME,
 	}, nil

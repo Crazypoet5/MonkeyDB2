@@ -22,7 +22,7 @@ func (r *TokenReader) Read() lex.Token {
 }
 
 func (r *TokenReader) Empty() bool {
-	return r.pos >= len(r.data)
+	return r.pos >= len(r.data)-1
 }
 
 func (r *TokenReader) Fork() *TokenReader {

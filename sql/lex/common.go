@@ -2,7 +2,7 @@ package lex
 
 func digitNfa() *nfa {
 	nfas := make([]*nfa, 0)
-	for i := 0; i < 9; i++ {
+	for i := 0; i <= 9; i++ {
 		nfas = append(nfas, single(byte(int('0')+i)))
 	}
 	return or(nfas...)
@@ -28,5 +28,5 @@ func letterNfa() *nfa {
 }
 
 func identicalNfa() *nfa {
-	return links(or(single('_'), letterNfa()), chosable(repeat(letterNfa())))
+	return links(or(single('_'), letterNfa()), chosable(repeat(or(letterNfa(), digitNfa()))))
 }

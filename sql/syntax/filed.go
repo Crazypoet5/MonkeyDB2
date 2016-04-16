@@ -5,7 +5,7 @@ import (
 )
 
 //Duplicated
-func expressionParser(tr *TokenReader) (*SyntaxTreeNode, error) {
+func expressionParser_duplicated(tr *TokenReader) (*SyntaxTreeNode, error) {
 	fork := tr.Fork()
 	t := fork.Read()
 	if t.Kind == "identical" {
@@ -43,7 +43,7 @@ func expressionParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 func filedParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 	fork := tr.Fork()
 	t := fork.Read()
-	if t.Kind == "identical" {
+	if t.Kind == "identical" || (t.Kind == "wildcard" && string(t.Raw) == "*") {
 		tr.Next(1)
 		pre := fork.Read()
 		if pre.Kind == "structs" && string(pre.Raw) == "." {
