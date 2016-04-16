@@ -116,3 +116,19 @@
 [ 2016-04-16 18:57:19.3399787 +0800 CST ] Recovery 2 Tables.
 [ 2016-04-16 18:58:17.5464156 +0800 CST ] Begin Restore.
 [ 2016-04-16 18:58:17.548426 +0800 CST ] Save image table to file.
+[ 2016-04-16 19:50:47.287414 +0800 CST ] Recovery 5 image files.
+[ 2016-04-16 19:50:47.3014124 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-16 19:50:48.062779 +0800 CST ] Get Signal:interrupt, Safe Exiting...
+[ 2016-04-16 19:50:48.062779 +0800 CST ] Begin Restore.
+[ 2016-04-16 19:50:48.0637795 +0800 CST ] Save image table to file.
+[ 2016-04-16 19:50:48.0677815 +0800 CST ] Restore Finished.
+[ 2016-04-16 19:50:52.1134586 +0800 CST ] Begin Restore.
+[ 2016-04-16 19:50:52.1134586 +0800 CST ] Save image table to file.
+[ 2016-04-16 19:51:04.4860827 +0800 CST ] Recovery 5 image files.
+[ 2016-04-16 19:51:04.4960938 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-16 19:53:32.3729086 +0800 CST ] Begin Restore.
+[ 2016-04-16 19:53:32.3739096 +0800 CST ] Save image table to file.
+[ 2016-04-16 19:53:49.6696405 +0800 CST ] Recovery 5 image files.
+[ 2016-04-16 19:53:49.6806941 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-16 19:54:41.3033241 +0800 CST ] Begin Restore.
+[ 2016-04-16 19:54:41.3043362 +0800 CST ] Save image table to file.
