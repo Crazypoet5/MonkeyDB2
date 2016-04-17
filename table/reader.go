@@ -50,6 +50,12 @@ func (p *Reader) DumpPage() *exe.Relation {
 	oldP := p.currentPtr
 	p.currentPtr = 32
 	ret := exe.NewRelation()
+	tab := p.currentPage.GetTable()
+	columns := make([]string, 0)
+	for i := 0; i < len(tab.Fields); i++ {
+		columns = append(columns, tab.Fields[i].Name)
+	}
+	ret.SetColumnNames(columns)
 	//	v, _ := p.currentPage.Read(0, 512)
 	//	fmt.Println(v)
 	for p.currentPtr < p.currentPage.GetFreePos() {

@@ -9,6 +9,7 @@ import (
 	"../table"
 )
 
+//Unensuarble
 func insertPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	re := NewResult()
 	if stn.Name != "insert" {
@@ -46,6 +47,7 @@ func insertPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	return rel, re, nil
 }
 
+//Unensurable
 func fieldsPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	re := NewResult()
 	r := exe.NewRelation()
@@ -69,6 +71,7 @@ func fieldsPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	return r, re, nil
 }
 
+//Unensurable
 func rowsPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	re := NewResult()
 	if stn.Name != "rows" {

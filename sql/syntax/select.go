@@ -4,6 +4,7 @@ import (
 	"errors"
 )
 
+//Unensurable
 func selectParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 	t := tr.Read()
 	if t.Kind != "keyword" || string(t.Raw) != "select" {
@@ -31,6 +32,7 @@ func selectParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 	}, nil
 }
 
+//Unensurable
 func selectFiledsParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 	vs := make([]*SyntaxTreeNode, 0)
 	for {

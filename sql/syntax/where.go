@@ -4,6 +4,7 @@ import (
 	"errors"
 )
 
+//Unensurable
 func whereParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 	t := tr.Read()
 	if t.Kind != "keyword" && string(t.Raw) != "where" {
@@ -19,6 +20,7 @@ func whereParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 	}, nil
 }
 
+//duplicated
 func logicalParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 	fork := tr.Fork()
 	t := fork.Read()
