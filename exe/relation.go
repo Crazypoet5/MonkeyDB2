@@ -65,15 +65,15 @@ func NewValue(kind int, raw []byte) Value {
 
 func StringToType(s string) int {
 	switch s {
-	case "INT":
+	case "INT", "int":
 		return INT
-	case "FLOAT":
+	case "FLOAT", "float":
 		return FLOAT
-	case "STRING":
+	case "STRING", "string":
 		return STRING
-	case "ARRAY":
+	case "ARRAY", "array":
 		return ARRAY
-	case "OBJECT":
+	case "OBJECT", "object":
 		return OBJECT
 	}
 	return STRING

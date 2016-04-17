@@ -30,7 +30,7 @@ func CreatePlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	for _, v := range r.Rows {
 		tp, _ := strconv.Atoi(string(v[1].Raw))
 		size := 0
-		fixed := false
+		fixed := true
 		switch tp {
 		case exe.INT:
 			size = 8
@@ -43,6 +43,7 @@ func CreatePlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 		case exe.OBJECT:
 			size = 8
 		}
+		//TODO
 		t.AddFiled(string(v[0].Raw), fixed, size, tp, index.PRIMARY)
 	}
 

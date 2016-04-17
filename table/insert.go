@@ -10,7 +10,7 @@ func (t *Table) Insert(columnNames []string, data [][][]byte) {
 				columnNamesP < len(columnNames) && columnNames[columnNamesP] == fields[i].Name {
 				t.LastPage.AppendField(&fields[i], row[columnNamesP])
 				columnNamesP++
-				if columnNamesP >= len(columnNames) {
+				if len(columnNames) != 0 && columnNames != nil && columnNamesP >= len(columnNames) {
 					break
 				}
 			} else {

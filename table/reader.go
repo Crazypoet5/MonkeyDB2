@@ -1,8 +1,6 @@
 package table
 
 import (
-	//	"fmt"
-
 	"../exe"
 )
 
