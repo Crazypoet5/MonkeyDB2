@@ -22,6 +22,9 @@ func CreatePlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 		return nil, nil, err
 	}
 	tableName := string(r.Rows[0][0].Raw)
+	if table.GetTableByName(tableName) != nil {
+		return nil, nil, errors.New("Table exists.")
+	}
 	t := table.CreateTable(tableName)
 	r, _, err = ColumnDefinesPlan(stn.Child[1])
 	if err != nil {

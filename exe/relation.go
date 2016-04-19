@@ -29,7 +29,7 @@ func (r *Relation) AddRow(row Row) {
 }
 
 func (r *Relation) SetColumnNames(strs []string) {
-	copy(r.ColumnNames, strs)
+	r.ColumnNames = append([]string{}, strs...)
 }
 
 func (r *Relation) SetColumnNameAlias(n int, alias string) {

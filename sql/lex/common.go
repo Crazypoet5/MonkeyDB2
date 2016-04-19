@@ -9,11 +9,11 @@ func digitNfa() *nfa {
 }
 
 func integerNfa() *nfa {
-	return repeat(digitNfa())
+	return links(chosable(single('-')), repeat(digitNfa()))
 }
 
 func floatNfa() *nfa {
-	return links(integerNfa(), single('.'), integerNfa())
+	return links(chosable(single('-')), integerNfa(), single('.'), integerNfa())
 }
 
 func letterNfa() *nfa {

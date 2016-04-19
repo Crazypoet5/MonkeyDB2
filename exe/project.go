@@ -1,6 +1,7 @@
 package exe
 
 func (r *Relation) Project(columnNames []string) *Relation {
+
 	ids := make([]int, 0)
 	for i := 0; i < len(columnNames); i++ {
 		for k, v := range r.ColumnNames {
@@ -10,7 +11,7 @@ func (r *Relation) Project(columnNames []string) *Relation {
 		}
 	}
 	newR := NewRelation()
-	newR.ColumnNames = r.ColumnNames
+	newR.SetColumnNames(columnNames)
 	for _, r := range r.Rows {
 		row := []Value{}
 		for i := 0; i < len(ids); i++ {

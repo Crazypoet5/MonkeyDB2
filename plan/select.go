@@ -27,6 +27,15 @@ func selectPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	} else {
 		//TODO: Join
 	}
+	if tab == nil {
+		return nil, nil, errors.New("Table not found.")
+	}
+	if len(projects) == 1 && projects[0] == "*" {
+		projects = []string{}
+		for i := 0; i < len(tab.Fields); i++ {
+			projects = append(projects, tab.Fields[i].Name)
+		}
+	}
 	reader := tab.FirstPage.NewReader()
 	rel := reader.DumpPage()
 	if stn.Child[2] == nil {

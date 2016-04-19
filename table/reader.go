@@ -54,6 +54,7 @@ func (p *Reader) DumpPage() *exe.Relation {
 		columns = append(columns, tab.Fields[i].Name)
 	}
 	ret.SetColumnNames(columns)
+
 	//	v, _ := p.currentPage.Read(0, 512)
 	//	fmt.Println(v)
 	for p.currentPtr < p.currentPage.GetFreePos() {
