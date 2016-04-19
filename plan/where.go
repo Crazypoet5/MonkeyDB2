@@ -11,7 +11,10 @@ import (
 type WhereClause func(*exe.Relation) []int //Return sorted
 
 func wherePlan(stn *syntax.SyntaxTreeNode) (WhereClause, error) {
-	logical, err := logicalPlan(stn)
+	if stn.Name != "where" {
+		return nil, errors.New("Expected where but get:" + stn.Name)
+	}
+	logical, err := logicalPlan(stn.Child[0])
 	if err != nil {
 		return nil, err
 	}

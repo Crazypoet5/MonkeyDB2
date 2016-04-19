@@ -35,7 +35,9 @@ func (v *Value) StrLen() int {
 }
 
 func (r *Relation) Print() {
-
+	if r == nil {
+		return
+	}
 	var maxLen []int
 	var colN int
 
