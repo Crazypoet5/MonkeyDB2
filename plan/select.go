@@ -48,11 +48,14 @@ func selectPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 		}
 		ids := where(rel)
 		relN := exe.NewRelation()
-		for _, v := range ids {
-			relN.AddRow(rel.Rows[v])
+		relN.SetColumnNames(rel.ColumnNames)
+		for i := 0; i < ids.Len(); i++ {
+			if ids.Get(i) {
+				relN.AddRow(rel.Rows[i])
+			}
 		}
 		res.SetResult(len(relN.Rows))
-		return rel.Project(projects), res, nil
+		return relN.Project(projects), res, nil
 	}
 }
 

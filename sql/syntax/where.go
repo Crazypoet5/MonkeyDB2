@@ -121,11 +121,7 @@ func notParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 		return nil, err
 	}
 	tr.pos = fork.pos
-	return &SyntaxTreeNode{
-		Name:  "logical",
-		Value: t.Raw,
-		Child: []*SyntaxTreeNode{relation},
-	}, nil
+	return relation, nil
 }
 
 //Ensuable
@@ -191,7 +187,7 @@ func orParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 //Ensurable
 func andParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 	fork := tr.Fork()
-	relation, err := relationParser(fork)
+	relation, err := notParser(fork)
 	if err != nil {
 		return nil, err
 	}

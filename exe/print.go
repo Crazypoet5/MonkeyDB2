@@ -35,6 +35,7 @@ func (v *Value) StrLen() int {
 }
 
 func (r *Relation) Print() {
+
 	if r == nil {
 		return
 	}
@@ -57,15 +58,18 @@ func (r *Relation) Print() {
 				}
 			}
 		}
+
 	}
 	if r.ColumnNames != nil && len(r.ColumnNames) != 0 {
+		if maxLen == nil || len(maxLen) == 0 {
+			maxLen = make([]int, colN)
+		}
 		for i := 0; i < colN; i++ {
 			if l := len([]byte(r.ColumnNames[i])); l > maxLen[i] {
 				maxLen[i] = l
 			}
 		}
 	}
-
 	if r.ColumnNames != nil && len(r.ColumnNames) != 0 {
 		fmt.Print("_")
 		for i := 0; i < colN; i++ {

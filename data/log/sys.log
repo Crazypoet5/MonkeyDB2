@@ -264,3 +264,68 @@
 [ 2016-04-20 00:11:07.6037873 +0800 CST ] Recovery 2 Tables.
 [ 2016-04-20 00:11:48.5760244 +0800 CST ] Begin Restore.
 [ 2016-04-20 00:11:48.5780276 +0800 CST ] Save image table to file.
+[ 2016-04-20 00:13:35.6039511 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 00:13:35.6139471 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 20:03:30.0419101 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 20:03:30.0979567 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 20:05:27.9668582 +0800 CST ] Begin Restore.
+[ 2016-04-20 20:05:27.9698463 +0800 CST ] Save image table to file.
+[ 2016-04-20 20:05:36.5894829 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 20:05:36.6014781 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 20:22:13.0493187 +0800 CST ] Begin Restore.
+[ 2016-04-20 20:22:13.0523197 +0800 CST ] Save image table to file.
+[ 2016-04-20 20:22:44.109274 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 20:22:44.122259 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 20:30:13.0008699 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 20:30:13.0108498 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 20:38:24.5199528 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 20:38:24.5309444 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 20:41:21.7930299 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 20:41:21.8040152 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 20:42:38.3668006 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 20:42:38.3797865 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 20:43:54.9421493 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 20:43:54.9541409 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 20:53:09.8121972 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 20:53:09.8261996 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 22:07:06.3236897 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 22:07:06.3336915 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 22:08:14.9622259 +0800 CST ] Begin Restore.
+[ 2016-04-20 22:08:14.9652261 +0800 CST ] Save image table to file.
+[ 2016-04-20 22:08:23.7566623 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 22:08:23.7686771 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 22:10:39.743975 +0800 CST ] Begin Restore.
+[ 2016-04-20 22:10:39.747964 +0800 CST ] Save image table to file.
+[ 2016-04-20 22:10:48.1187718 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 22:10:48.1287571 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 22:13:35.1854824 +0800 CST ] Begin Restore.
+[ 2016-04-20 22:13:35.1874834 +0800 CST ] Save image table to file.
+[ 2016-04-20 22:13:56.392566 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 22:13:56.402566 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 22:15:31.7091305 +0800 CST ] Begin Restore.
+[ 2016-04-20 22:15:31.7121315 +0800 CST ] Save image table to file.
+[ 2016-04-20 22:15:43.4219243 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 22:15:43.4339248 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 22:26:31.0191043 +0800 CST ] Begin Restore.
+[ 2016-04-20 22:26:31.0231054 +0800 CST ] Save image table to file.
+[ 2016-04-20 22:27:12.6845944 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 22:27:12.6955766 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 22:32:10.1430433 +0800 CST ] Begin Restore.
+[ 2016-04-20 22:32:10.1460113 +0800 CST ] Save image table to file.
+[ 2016-04-20 22:32:10.1600128 +0800 CST ] Restore Finished.
+[ 2016-04-20 22:32:24.0725257 +0800 CST ] Recovery 6 image files.
+[ 2016-04-20 22:32:24.0865258 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-20 22:35:25.0699258 +0800 CST ] Begin Restore.
+[ 2016-04-20 22:35:25.0738956 +0800 CST ] Save image table to file.
+[ 2016-04-20 22:35:32.2439955 +0800 CST ] Recovery 9 image files.
+[ 2016-04-20 22:35:32.2539772 +0800 CST ] Recovery 3 Tables.
+[ 2016-04-20 22:36:27.4660922 +0800 CST ] Begin Restore.
+[ 2016-04-20 22:36:27.4691191 +0800 CST ] Save image table to file.
+[ 2016-04-20 22:36:41.1174415 +0800 CST ] Recovery 9 image files.
+[ 2016-04-20 22:36:41.1274161 +0800 CST ] Recovery 3 Tables.
+[ 2016-04-20 22:36:59.5460591 +0800 CST ] Begin Restore.
+[ 2016-04-20 22:36:59.5480592 +0800 CST ] Save image table to file.
+[ 2016-04-20 22:41:46.0546775 +0800 CST ] Recovery 9 image files.
+[ 2016-04-20 22:41:46.0656811 +0800 CST ] Recovery 3 Tables.
+[ 2016-04-20 22:42:18.9770811 +0800 CST ] Begin Restore.
+[ 2016-04-20 22:42:18.9790744 +0800 CST ] Save image table to file.
