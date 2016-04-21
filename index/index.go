@@ -29,6 +29,9 @@ type Index struct {
 }
 
 func CreateIndex(kind int, database string, table string, key string) *Index {
+	if kind == -1 {
+		return nil
+	}
 	i := &Index{
 		Kind:     kind,
 		Database: database,

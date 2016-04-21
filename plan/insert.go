@@ -32,6 +32,7 @@ func insertPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	for i := 0; len(r.Rows) > 0 && i < len(r.Rows[0]); i++ {
 		columnNames = append(columnNames, string(r.Rows[0][i].Raw))
 	}
+
 	datas := make([][][]byte, 0)
 	r, _, err = rowsPlan(stn.Child[2])
 	for _, row := range r.Rows {
@@ -41,7 +42,36 @@ func insertPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 		}
 		datas = append(datas, rowD)
 	}
-	table.Insert(columnNames, datas)
+	if len(columnNames) == 0 {
+		for i := 0; i < len(datas[0]); i++ {
+			columnNames = append(columnNames, table.Fields[i].Name)
+		}
+	}
+	for i := 0; i < len(datas); i++ {
+		if len(columnNames) != len(datas[i]) {
+			return nil, nil, errors.New("Insert fields does not match data row")
+		}
+	}
+	fieldMap := make(map[int]int)
+	n := 0
+	for fk, f := range table.Fields {
+		for dk, v := range columnNames {
+			if v == f.Name {
+				fieldMap[fk] = dk
+				n++
+				continue
+			}
+		}
+	}
+	for k, f := range table.Fields {
+		if _, ok := fieldMap[k]; f.Index != nil && !ok {
+			return nil, nil, errors.New(f.Name + " field is a index, but you give no value.")
+		}
+	}
+	if n != len(columnNames) {
+		return nil, nil, errors.New("Insert fields error, maybe repeat or not exist in table")
+	}
+	table.Insert(fieldMap, datas)
 	rel := exe.NewRelation()
 	re.SetResult(len(stn.Child[2].Child))
 	return rel, re, nil

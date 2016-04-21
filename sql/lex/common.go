@@ -9,11 +9,12 @@ func digitNfa() *nfa {
 }
 
 func integerNfa() *nfa {
-	return links(chosable(single('-')), repeat(digitNfa()))
+	return or(repeat(digitNfa()),
+		links(single('-'), repeat(digitNfa())))
 }
 
 func floatNfa() *nfa {
-	return links(chosable(single('-')), integerNfa(), single('.'), integerNfa())
+	return links(integerNfa(), single('.'), repeat(digitNfa()))
 }
 
 func letterNfa() *nfa {
@@ -28,5 +29,5 @@ func letterNfa() *nfa {
 }
 
 func identicalNfa() *nfa {
-	return links(or(single('_'), letterNfa()), chosable(repeat(or(letterNfa(), digitNfa()))))
+	return links(or(single('_'), letterNfa()), chosable(repeat(or(letterNfa(), digitNfa(), single('_')))))
 }

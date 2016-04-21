@@ -46,8 +46,19 @@ func CreatePlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 		case exe.OBJECT:
 			size = 8
 		}
-		//TODO
-		t.AddFiled(string(v[0].Raw), fixed, size, tp, index.PRIMARY)
+		if len(v) > 2 {
+			keyS := string(v[2].Raw)
+			switch keyS {
+			case "primary key":
+				t.AddFiled(string(v[0].Raw), fixed, size, tp, index.PRIMARY)
+			case "unique":
+				t.AddFiled(string(v[0].Raw), fixed, size, tp, index.UNIQUE)
+			default:
+				t.AddFiled(string(v[0].Raw), fixed, size, tp, -1)
+			}
+		} else {
+			t.AddFiled(string(v[0].Raw), fixed, size, tp, -1)
+		}
 	}
 
 	result.SetResult(0)
@@ -73,11 +84,15 @@ func ColumnDefinesPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, erro
 		return relation, result, nil
 	case "attributes":
 		relation, r, err := ColumnDefinesPlan(stn.Child[0])
+		newR := exe.NewRelation()
 		if err != nil {
 			return nil, nil, err
 		}
+		for _, v := range relation.Rows {
+			newR.AddRow(append(v, exe.NewValue(exe.STRING, stn.Value.([]byte))))
+		}
 		result.SetResult(r.AffectedRows)
-		return relation, result, nil
+		return newR, result, nil
 	case "dot":
 		r, re, err := ColumnDefinesPlan((stn.Child[0]))
 		if err != nil {

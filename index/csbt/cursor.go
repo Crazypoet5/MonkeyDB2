@@ -53,7 +53,7 @@ func (c *Cursor) Prev() cursor.Cursor {
 func (c *Cursor) Read() (uintptr, uint) {
 	i := uint(c.tree.MB.GetLeafValue(c.leaf, c.offset))
 	p := uint(uintptr(i >> 24))
-	offset := i & 0x0000000000111111 // < 1MB
+	offset := i & 0x0000000000111111 // < 16MB
 	return uintptr(p), offset
 }
 
