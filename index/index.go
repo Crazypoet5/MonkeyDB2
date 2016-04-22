@@ -50,8 +50,9 @@ func CreateIndex(kind int, database string, table string, key string) *Index {
 
 func (i *Index) Delete() {
 	for k, v := range IndexList {
-		if v == i {
+		if v.Database == i.Database && v.Key == i.Key && v.Table == i.Table {
 			IndexList = append(IndexList[0:k], IndexList[k+1:]...)
+			v.I.(*csbt.DCSBT).MB.Delete() //HASH
 			return
 		}
 	}

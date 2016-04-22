@@ -22,5 +22,8 @@ func Parser(tr *TokenReader) (*SyntaxTreeNode, error) {
 	if t.Kind == "keyword" && string(t.Raw) == "delete" {
 		return deleteParser(tr)
 	}
+	if t.Kind == "keyword" && string(t.Raw) == "drop" {
+		return dropParser(tr)
+	}
 	return nil, errors.New("Unsupported syntax!")
 }

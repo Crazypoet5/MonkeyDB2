@@ -61,7 +61,7 @@ func SaveImageTable() {
 }
 
 func SignalBackup() {
-	startBackup <- true
+	//startBackup <- true
 }
 
 func BackupRoutine() {

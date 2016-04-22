@@ -1,8 +1,6 @@
 package csbt
 
 import (
-	"fmt"
-
 	"../cursor"
 )
 
@@ -55,7 +53,6 @@ func (c *Cursor) Prev() cursor.Cursor {
 func (c *Cursor) Read() (uintptr, uint) {
 
 	i := uint(c.tree.MB.GetLeafValue(c.leaf, c.offset))
-	fmt.Println(i)
 	p := uint(uintptr(i >> 24))
 	offset := i & 0x0000000000ffffff // < 16MB
 	return uintptr(p), offset
