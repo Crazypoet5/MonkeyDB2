@@ -31,6 +31,7 @@ func (t *Table) Insert_dunplicated(columnNames []string, data [][][]byte) {
 	}
 }
 
+//Map Table -> Data
 func (t *Table) Insert(fieldMap map[int]int, data [][][]byte) error {
 	fields := t.Fields
 	for _, row := range data {

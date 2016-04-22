@@ -22,7 +22,7 @@ func NewBasic() *statedNfa {
 	ret.level["identical"] = 0
 	ret.appendToken("intval", 1, integerNfa())
 	ret.appendToken("floatval", 0, floatNfa())
-	keyword := stringsToken("select", "from", "where", "update", "delete", "create", "insert", "into", "table", "order", "by", "values", "dump", "set", "drop")
+	keyword := stringsToken("select", "from", "where", "update", "delete", "create", "insert", "into", "table", "order", "by", "values", "dump", "set", "drop", "index", "on")
 	logical := stringsToken("and", "or", "not")
 	structs := stringsToken("(", ")", ";", ",", ".")
 	split := stringsToken(" ", "\t", "\n", "\r\n", "\r")

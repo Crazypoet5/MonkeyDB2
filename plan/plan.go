@@ -29,5 +29,8 @@ func DirectPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	if stn.Name == "drop" {
 		return dropPlan(stn)
 	}
+	if stn.Name == "update" {
+		return updatePlan(stn)
+	}
 	return nil, nil, errors.New("Unsopprted plan.")
 }
