@@ -3,7 +3,6 @@ package table
 import (
 	"strconv"
 	"time"
-	"unsafe"
 
 	"../common"
 
@@ -42,7 +41,7 @@ func (t *Table) Insert(fieldMap map[int]int, data [][][]byte) error {
 			if k, ok := fieldMap[i]; ok {
 				if fields[i].Index != nil {
 					var p uint
-					p = uint(uintptr(unsafe.Pointer(t.LastPage))) << 24
+					p = uint(t.LastPage.RawPtr) << 24
 					p = p | pos
 					start := time.Now().UnixNano()
 					key := index.BKDRHash(row[k])

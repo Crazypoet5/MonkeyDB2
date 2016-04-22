@@ -3,11 +3,14 @@ package plan
 import (
 	"errors"
 
+	"../recovery"
+
 	"../exe"
 	"../sql/syntax"
 )
 
 func DirectPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
+	defer recovery.RestoreFrame()
 	if stn.Name == "createtable" {
 		return CreatePlan(stn)
 	}
@@ -19,6 +22,9 @@ func DirectPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	}
 	if stn.Name == "select" {
 		return selectPlan(stn)
+	}
+	if stn.Name == "delete" {
+		return deletePlan(stn)
 	}
 	return nil, nil, errors.New("Unsopprted plan.")
 }

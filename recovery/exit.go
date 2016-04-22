@@ -10,6 +10,8 @@ import (
 	"../table"
 )
 
+var Restoring = 0
+
 func SafeExit() {
 	Restore()
 }
@@ -27,9 +29,11 @@ func init() {
 }
 
 func Restore() {
+	Restoring = 1
 	log.WriteLog("sys", "Begin Restore.")
 	defer log.WriteLog("sys", "Restore Finished.")
 	memory.Restore()
 	table.Restore()
 	index.Restore()
+	Restoring = 0
 }

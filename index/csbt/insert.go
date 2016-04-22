@@ -212,7 +212,7 @@ func (t *DCSBT) Insert(k uint32, v uintptr) error {
 	if c := t.Select(k); c != nil {
 		if a, b := c.Read(); a == 0 && b == 0 { //Deleted
 			p := uintptr(uint(v) >> 24)
-			offset := uint(v) & 0x0000000000111111
+			offset := uint(v) & 0x0000000000ffffff
 			c.Write(p, offset)
 			return nil
 		}

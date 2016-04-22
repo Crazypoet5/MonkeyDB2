@@ -17,11 +17,12 @@ func (p *Page) NewReader() *Reader {
 }
 
 func (p *Reader) PeekRecord() *exe.Relation {
-	if p.currentPtr == p.currentPage.GetEOP() {
-		p.currentPage = p.currentPage.NextPage()
-		p.currentPtr = 64
-	}
+	//	if p.currentPtr == p.currentPage.GetEOP() {
+	//		p.currentPage = p.currentPage.NextPage()
+	//		p.currentPtr = 64
+	//	}
 	v, _ := p.currentPage.Read(p.currentPtr, 8)
+	p.currentPtr += 8
 	skip := bytes2uint(v)
 	if skip != 0 {
 		p.currentPtr += skip
@@ -46,6 +47,34 @@ func (p *Reader) PeekRecord() *exe.Relation {
 	}
 	ret.AddRow(row)
 	return ret
+}
+
+func (p *Reader) NextRecord() {
+	//	if p.currentPtr == p.currentPage.GetEOP() {
+	//		p.currentPage = p.currentPage.NextPage()
+	//		p.currentPtr = 64
+	//		p.NextRecord()
+	//		return
+	//	}
+	v, _ := p.currentPage.Read(p.currentPtr, 8)
+	p.currentPtr += 8
+	skip := bytes2uint(v)
+	if skip != 0 {
+		p.currentPtr += skip
+		p.NextRecord()
+		return
+	}
+	table := p.currentPage.GetTable()
+	for _, f := range table.Fields {
+		if f.FixedSize {
+			p.currentPtr += uint(f.Size)
+		} else {
+			data, _ := p.currentPage.Read(p.currentPtr, 4)
+			size := bytes2uint32(data)
+			p.currentPtr += 4
+			p.currentPtr += uint(size)
+		}
+	}
 }
 
 func (p *Reader) DumpPage() *exe.Relation {

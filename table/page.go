@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	NORMAL_PAGE_SIZE = 1024
+	NORMAL_PAGE_SIZE = 1024 * 1024
 	PREV_OFFSET      = 8
 	NEXT_OFFSET      = 16
 	FREE_P_OFFSET    = 24
@@ -38,7 +38,7 @@ func (t *Table) NewPage() *Page {
 	db.Write(0, uint2bytes(uint(uintptr(unsafe.Pointer(t)))))
 	db.Write(PREV_OFFSET, uint2bytes(0))
 	db.Write(NEXT_OFFSET, uint2bytes(0))
-	db.Write(END_OF_PAGE, uint2bytes(64))
+	//	db.Write(END_OF_PAGE, uint2bytes(64)) //BUG
 	db.Write(FREE_P_OFFSET, uint2bytes(64))
 	return &Page{
 		DataBlock: *db,
@@ -77,10 +77,10 @@ func (p *Page) GetFreePos() uint {
 	return bytes2uint(data)
 }
 
-func (p *Page) GetEOP() uint {
-	data, _ := p.Read(END_OF_PAGE, 8)
-	return bytes2uint(data)
-}
+//func (p *Page) GetEOP() uint {
+//	data, _ := p.Read(END_OF_PAGE, 8)
+//	return bytes2uint(data)
+//}
 
 func (p *Page) ForwardFreePos(i uint) {
 	fp := p.GetFreePos()
