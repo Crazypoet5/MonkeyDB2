@@ -8,7 +8,16 @@ func Parser(tr *TokenReader) (*SyntaxTreeNode, error) {
 	fork := tr.Fork()
 	t := fork.Read()
 	if t.Kind == "keyword" && string(t.Raw) == "create" {
-		return createtableParser(tr)
+		fork2 := tr.Fork()
+		stn, err := createtableParser(fork2)
+		if err != nil {
+			stn, err := createIndexParser(tr)
+			if err != nil {
+				return nil, err
+			}
+			return stn, nil
+		}
+		return stn, nil
 	}
 	if t.Kind == "keyword" && string(t.Raw) == "insert" {
 		return insertParser(tr)
@@ -23,7 +32,16 @@ func Parser(tr *TokenReader) (*SyntaxTreeNode, error) {
 		return deleteParser(tr)
 	}
 	if t.Kind == "keyword" && string(t.Raw) == "drop" {
-		return dropParser(tr)
+		fork2 := tr.Fork()
+		stn, err := dropParser(fork2)
+		if err != nil {
+			stn, err := dropIndexParser(tr)
+			if err != nil {
+				return nil, err
+			}
+			return stn, nil
+		}
+		return stn, nil
 	}
 	if t.Kind == "keyword" && string(t.Raw) == "update" {
 		return updateParser(tr)

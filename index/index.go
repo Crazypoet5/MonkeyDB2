@@ -21,6 +21,7 @@ type Indexer interface {
 }
 
 type Index struct {
+	Name     string
 	Kind     int
 	Database string
 	Table    string

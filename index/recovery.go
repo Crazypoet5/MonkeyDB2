@@ -20,6 +20,7 @@ type savedIndex struct {
 	Database  string
 	Table     string
 	Key       string
+	Name      string
 	I         uint
 	Implement string
 	OldPtr    uint
@@ -32,6 +33,7 @@ func Restore() {
 			Kind:     v.Kind,
 			Database: v.Database,
 			Table:    v.Table,
+			Name:     v.Name,
 			Key:      v.Key,
 			OldPtr:   uint(uintptr(unsafe.Pointer(v))),
 		}
@@ -58,6 +60,7 @@ func Recovery() {
 			Database: v["Database"].(string),
 			Table:    v["Table"].(string),
 			Key:      v["Key"].(string),
+			Name:     v["Name"].(string),
 		}
 		if v["Implement"].(string) == "dcsbt" {
 			i.I = &csbt.DCSBT{
