@@ -11,12 +11,16 @@ type Reader struct {
 
 func (p *Page) NewReader() *Reader {
 	return &Reader{
-		currentPtr:  32,
+		currentPtr:  64,
 		currentPage: p,
 	}
 }
 
 func (p *Reader) PeekRecord() *exe.Relation {
+	if p.currentPtr == p.currentPage.GetEOP() {
+		p.currentPage = p.currentPage.NextPage()
+		p.currentPtr = 64
+	}
 	v, _ := p.currentPage.Read(p.currentPtr, 8)
 	skip := bytes2uint(v)
 	if skip != 0 {
@@ -46,7 +50,7 @@ func (p *Reader) PeekRecord() *exe.Relation {
 
 func (p *Reader) DumpPage() *exe.Relation {
 	oldP := p.currentPtr
-	p.currentPtr = 32
+	p.currentPtr = 64
 	ret := exe.NewRelation()
 	tab := p.currentPage.GetTable()
 	columns := make([]string, 0)
@@ -88,5 +92,21 @@ func (p *Reader) DumpPage() *exe.Relation {
 		ret.AddRow(row)
 	}
 	p.currentPtr = oldP
+	return ret
+}
+
+func (p *Reader) DumpTable() *exe.Relation {
+	oldPage := p.currentPage
+	oldPtr := p.currentPtr
+	ret := exe.NewRelation()
+	for p.currentPage != nil {
+		p.currentPtr = 0
+		r := p.DumpPage()
+		ret.Rows = append([]exe.Row{}, r.Rows...)
+		ret.SetColumnNames(r.ColumnNames)
+		p.currentPage = p.currentPage.NextPage()
+	}
+	p.currentPage = oldPage
+	p.currentPtr = oldPtr
 	return ret
 }

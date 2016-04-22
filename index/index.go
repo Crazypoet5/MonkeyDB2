@@ -15,7 +15,7 @@ var IndexList []*Index
 
 type Indexer interface {
 	Select(key uint32) cursor.Cursor
-	Insert(k uint32, v uintptr)
+	Insert(k uint32, v uintptr) error
 	Delete(k uint32)
 	Recovery()
 }
@@ -46,4 +46,13 @@ func CreateIndex(kind int, database string, table string, key string) *Index {
 	}
 	IndexList = append(IndexList, i)
 	return i
+}
+
+func (i *Index) Delete() {
+	for k, v := range IndexList {
+		if v == i {
+			IndexList = append(IndexList[0:k], IndexList[k+1:]...)
+			return
+		}
+	}
 }

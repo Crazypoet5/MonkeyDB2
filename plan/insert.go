@@ -71,7 +71,10 @@ func insertPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	if n != len(columnNames) {
 		return nil, nil, errors.New("Insert fields error, maybe repeat or not exist in table")
 	}
-	table.Insert(fieldMap, datas)
+	err = table.Insert(fieldMap, datas)
+	if err != nil {
+		return nil, nil, err
+	}
 	rel := exe.NewRelation()
 	re.SetResult(len(stn.Child[2].Child))
 	return rel, re, nil

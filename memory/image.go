@@ -85,6 +85,12 @@ func ReleaseImage(ip *DataBlock) (err error) {
 	RemoveBlock(ip)
 	C.free(unsafe.Pointer(ip.RawPtr))
 	delete(ImageTable, ip.RawPtr)
+	delete(DataBlockTable, ip.RawPtr)
+	for l := DataBlockList.Front(); l != nil; l = l.Next() {
+		if l.Value.(*DataBlock) == ip {
+			DataBlockList.Remove(l)
+		}
+	}
 	return
 }
 

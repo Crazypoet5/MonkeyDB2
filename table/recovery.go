@@ -25,6 +25,7 @@ type SavedTable struct {
 	Fields    []SavedField
 	FirstPage uint
 	LastPage  uint
+	Primary   int
 }
 
 func syncTablesToFile() {
@@ -34,6 +35,7 @@ func syncTablesToFile() {
 			Name:      v.Name,
 			FirstPage: uint(v.FirstPage.RawPtr),
 			LastPage:  uint(v.LastPage.RawPtr),
+			Primary:   v.Primary,
 		}
 		for _, f := range v.Fields {
 			sf := SavedField{
@@ -71,7 +73,8 @@ func Recovery() {
 	}
 	for _, v := range svt {
 		t := &Table{
-			Name: v["Name"].(string),
+			Name:    v["Name"].(string),
+			Primary: int(v["Primary"].(float64)),
 		}
 		for _, f := range v["Fields"].([]interface{}) {
 			fd := f.(map[string]interface{})

@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 
+	"./common"
 	"./plan"
 	"./recovery"
 	"./sql/lex"
@@ -15,6 +16,7 @@ import (
 
 var lexSwitch = flag.Bool("L", false, "Show the lex parser result.")
 var syntaxSwitch = flag.Bool("S", false, "Show the syntax parser result.")
+var performanceSwitch = flag.Bool("P", false, "Show the performance informations.")
 
 func welcome() {
 	fmt.Println("MonkeyDB2 @ 2016")
@@ -68,6 +70,9 @@ func bye() {
 
 func main() {
 	flag.Parse()
+	if *performanceSwitch {
+		common.PRINT2 = true
+	}
 	welcome()
 	for loop() {
 	}

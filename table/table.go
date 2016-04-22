@@ -29,6 +29,7 @@ type Table struct {
 	Fields    []Field
 	FirstPage *Page
 	LastPage  *Page
+	Primary   int
 }
 
 type Index struct {

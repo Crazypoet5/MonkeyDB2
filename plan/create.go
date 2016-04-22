@@ -46,18 +46,23 @@ func CreatePlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 		case exe.OBJECT:
 			size = 8
 		}
+		var err error
 		if len(v) > 2 {
 			keyS := string(v[2].Raw)
 			switch keyS {
 			case "primary key":
-				t.AddFiled(string(v[0].Raw), fixed, size, tp, index.PRIMARY)
+				err = t.AddFiled(string(v[0].Raw), fixed, size, tp, index.PRIMARY)
 			case "unique":
-				t.AddFiled(string(v[0].Raw), fixed, size, tp, index.UNIQUE)
+				err = t.AddFiled(string(v[0].Raw), fixed, size, tp, index.UNIQUE)
 			default:
-				t.AddFiled(string(v[0].Raw), fixed, size, tp, -1)
+				err = t.AddFiled(string(v[0].Raw), fixed, size, tp, -1)
 			}
 		} else {
-			t.AddFiled(string(v[0].Raw), fixed, size, tp, -1)
+			err = t.AddFiled(string(v[0].Raw), fixed, size, tp, -1)
+		}
+		if err != nil {
+			t.Drop()
+			return nil, nil, err
 		}
 	}
 

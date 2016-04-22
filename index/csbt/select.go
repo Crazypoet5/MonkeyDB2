@@ -8,7 +8,7 @@ import (
 func (t *DCSBT) Select(k uint32) cursor.Cursor {
 	var l uint
 	n := t.FindLeaf(k, false)
-	if n.node == 0 {
+	if n.level == 0 {
 		l = t.MB.GetRoot()
 	} else {
 		l = t.MB.GetChild(n.node, n.offset)

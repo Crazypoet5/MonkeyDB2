@@ -2,6 +2,8 @@ package csbt
 
 import (
 	"container/list"
+	"errors"
+	"strconv"
 )
 
 type _node_id struct {
@@ -205,10 +207,16 @@ func (t *DCSBT) Find(k uint32) uintptr {
 	return 0
 }
 
-func (t *DCSBT) Insert(k uint32, v uintptr) {
+func (t *DCSBT) Insert(k uint32, v uintptr) error {
 	//Check if the key already exists
-	if t.MB.GetRoot() != 0 && t.Find(k) != 0 {
-		return
+	if c := t.Select(k); c != nil {
+		if a, b := c.Read(); a == 0 && b == 0 { //Deleted
+			p := uintptr(uint(v) >> 24)
+			offset := uint(v) & 0x0000000000111111
+			c.Write(p, offset)
+			return nil
+		}
+		return errors.New("Key " + strconv.Itoa(int(k)) + " already exists.")
 	}
 
 	// Check if the tree is blank
@@ -221,7 +229,7 @@ func (t *DCSBT) Insert(k uint32, v uintptr) {
 		t.MB.SetLeafValue(n, 0, v)
 		t.MB.SetRoot(n)
 		t.MB.SetMin(n)
-		return
+		return nil
 	}
 
 	// Find the first parent node of the leaf
@@ -245,6 +253,8 @@ func (t *DCSBT) Insert(k uint32, v uintptr) {
 		// Enter the splitting process
 		t.InsertIntoLeafAfterSplitting(id.path, leaf, k, v)
 	}
+
+	return nil
 
 }
 

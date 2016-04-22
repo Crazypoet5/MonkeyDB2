@@ -1,387 +1,42 @@
-[ 2016-04-13 23:00:15.5098786 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
-[ 2016-04-13 23:00:15.5198465 +0800 CST ] Tables recovery interrupt with an error :open c:\users\inszva\monkeydb2\data\tables.json: The system cannot find the file specified.
-[ 2016-04-13 23:00:44.9023953 +0800 CST ] Begin Restore.
-[ 2016-04-13 23:00:44.907395 +0800 CST ] Save image table to file.
-[ 2016-04-13 23:03:50.3709666 +0800 CST ] Recovery 3 image files.
-[ 2016-04-13 23:27:54.6381319 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
-[ 2016-04-13 23:27:54.6511164 +0800 CST ] Tables recovery interrupt with an error :open c:\users\inszva\monkeydb2\data\tables.json: The system cannot find the file specified.
-[ 2016-04-13 23:28:33.7114033 +0800 CST ] Get Signal:interrupt, Safe Exiting...
-[ 2016-04-13 23:28:33.7133967 +0800 CST ] Begin Restore.
-[ 2016-04-13 23:28:33.7164147 +0800 CST ] Save image table to file.
-[ 2016-04-13 23:30:42.6821285 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
-[ 2016-04-13 23:30:42.6941286 +0800 CST ] Tables recovery interrupt with an error :open c:\users\inszva\monkeydb2\data\tables.json: The system cannot find the file specified.
-[ 2016-04-13 23:31:23.4306707 +0800 CST ] Begin Restore.
-[ 2016-04-13 23:31:23.4326721 +0800 CST ] Save image table to file.
-[ 2016-04-13 23:43:50.3087791 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
-[ 2016-04-13 23:43:50.3447807 +0800 CST ] Tables recovery interrupt with an error :open c:\users\inszva\monkeydb2\data\tables.json: The system cannot find the file specified.
-[ 2016-04-13 23:44:14.8658711 +0800 CST ] Begin Restore.
-[ 2016-04-13 23:44:14.8708699 +0800 CST ] Save image table to file.
-[ 2016-04-13 23:49:03.7487414 +0800 CST ] Recovery 3 image files.
-[ 2016-04-13 23:49:03.7737429 +0800 CST ] Recovery 1 Tables.
-[ 2016-04-13 23:49:47.9944961 +0800 CST ] Begin Restore.
-[ 2016-04-13 23:49:47.9985052 +0800 CST ] Save image table to file.
-[ 2016-04-13 23:54:15.4389298 +0800 CST ] Recovery 3 image files.
-[ 2016-04-13 23:54:15.477903 +0800 CST ] Recovery 1 Tables.
-[ 2016-04-13 23:54:36.9504357 +0800 CST ] Begin Restore.
-[ 2016-04-13 23:54:36.9544359 +0800 CST ] Save image table to file.
-[ 2016-04-13 23:54:46.2966812 +0800 CST ] Recovery 3 image files.
-[ 2016-04-13 23:54:46.3196916 +0800 CST ] Recovery 1 Tables.
-[ 2016-04-13 23:55:50.975443 +0800 CST ] Begin Restore.
-[ 2016-04-13 23:55:50.9794423 +0800 CST ] Save image table to file.
-[ 2016-04-14 12:36:55.8965421 +0800 CST ] Recovery 3 image files.
-[ 2016-04-14 12:36:55.8965421 +0800 CST ] Recovery 1 Tables.
-[ 2016-04-14 12:37:25.4337012 +0800 CST ] Begin Restore.
-[ 2016-04-14 12:37:29.403263 +0800 CST ] Recovery 3 image files.
-[ 2016-04-14 12:37:29.403263 +0800 CST ] Recovery 1 Tables.
-[ 2016-04-14 12:37:42.0308135 +0800 CST ] Begin Restore.
-[ 2016-04-15 00:23:06.7213202 +0800 CST ] Recovery 3 image files.
-[ 2016-04-15 00:23:06.7368845 +0800 CST ] Recovery 1 Tables.
-[ 2016-04-15 21:48:25.9890766 +0800 CST ] Recovery 3 image files.
-[ 2016-04-15 21:48:26.0000913 +0800 CST ] Recovery 1 Tables.
-[ 2016-04-15 21:48:59.7163422 +0800 CST ] Begin Restore.
-[ 2016-04-15 21:48:59.71734 +0800 CST ] Save image table to file.
-[ 2016-04-15 21:49:46.6924344 +0800 CST ] Recovery 5 image files.
-[ 2016-04-15 21:49:46.7044131 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-15 21:50:04.7951082 +0800 CST ] Begin Restore.
-[ 2016-04-15 21:50:04.7971074 +0800 CST ] Save image table to file.
-[ 2016-04-15 22:07:11.718029 +0800 CST ] Recovery 5 image files.
-[ 2016-04-15 22:07:11.728029 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-15 22:07:31.1808127 +0800 CST ] Begin Restore.
-[ 2016-04-15 22:07:31.1828141 +0800 CST ] Save image table to file.
-[ 2016-04-15 22:07:35.710121 +0800 CST ] Recovery 5 image files.
-[ 2016-04-15 22:07:35.7211157 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-15 22:08:20.3923797 +0800 CST ] Begin Restore.
-[ 2016-04-15 22:08:20.3943803 +0800 CST ] Save image table to file.
-[ 2016-04-16 17:24:59.7099178 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 17:24:59.7459386 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 17:31:05.2144066 +0800 CST ] Begin Restore.
-[ 2016-04-16 17:31:05.2154062 +0800 CST ] Save image table to file.
-[ 2016-04-16 17:31:17.4154016 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 17:31:17.4264141 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 17:32:32.4981138 +0800 CST ] Begin Restore.
-[ 2016-04-16 17:32:32.4991143 +0800 CST ] Save image table to file.
-[ 2016-04-16 17:32:44.9080215 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 17:32:44.9180215 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 17:38:31.9762253 +0800 CST ] Begin Restore.
-[ 2016-04-16 17:38:31.9782249 +0800 CST ] Save image table to file.
-[ 2016-04-16 17:38:44.2036114 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 17:38:44.2145784 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 17:47:50.3794017 +0800 CST ] Begin Restore.
-[ 2016-04-16 17:47:50.3794017 +0800 CST ] Save image table to file.
-[ 2016-04-16 17:48:53.7465262 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 17:48:53.7584955 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 18:20:17.9325571 +0800 CST ] Begin Restore.
-[ 2016-04-16 18:20:17.933562 +0800 CST ] Save image table to file.
-[ 2016-04-16 18:20:49.863766 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 18:20:49.8747661 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 18:24:57.2724568 +0800 CST ] Begin Restore.
-[ 2016-04-16 18:24:57.2724568 +0800 CST ] Save image table to file.
-[ 2016-04-16 18:25:57.1495965 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 18:25:57.163593 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 18:31:51.773227 +0800 CST ] Begin Restore.
-[ 2016-04-16 18:31:51.7742226 +0800 CST ] Save image table to file.
-[ 2016-04-16 18:32:03.6951326 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 18:32:03.7061281 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 18:34:47.5093748 +0800 CST ] Begin Restore.
-[ 2016-04-16 18:34:47.5103735 +0800 CST ] Save image table to file.
-[ 2016-04-16 18:35:00.2405437 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 18:35:00.2515563 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 18:35:47.774506 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 18:35:47.7875159 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 18:38:18.1801381 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 18:38:18.1911364 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 18:39:50.3121475 +0800 CST ] Begin Restore.
-[ 2016-04-16 18:39:50.3131498 +0800 CST ] Save image table to file.
-[ 2016-04-16 18:40:00.7930806 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 18:40:00.8040766 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 18:40:54.1734681 +0800 CST ] Begin Restore.
-[ 2016-04-16 18:40:54.1744677 +0800 CST ] Save image table to file.
-[ 2016-04-16 18:41:07.0496179 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 18:41:07.0606421 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 18:42:42.1375865 +0800 CST ] Begin Restore.
-[ 2016-04-16 18:42:42.1385875 +0800 CST ] Save image table to file.
-[ 2016-04-16 18:43:00.6892764 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 18:43:00.7002769 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 18:45:07.3051012 +0800 CST ] Begin Restore.
-[ 2016-04-16 18:45:07.3081031 +0800 CST ] Save image table to file.
-[ 2016-04-16 18:45:18.1303818 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 18:45:18.1413676 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 18:52:27.3811237 +0800 CST ] Begin Restore.
-[ 2016-04-16 18:52:27.3831546 +0800 CST ] Save image table to file.
-[ 2016-04-16 18:52:50.5602761 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 18:52:50.5742736 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 18:57:01.2490746 +0800 CST ] Begin Restore.
-[ 2016-04-16 18:57:01.250076 +0800 CST ] Save image table to file.
-[ 2016-04-16 18:57:19.3289974 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 18:57:19.3399787 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 18:58:17.5464156 +0800 CST ] Begin Restore.
-[ 2016-04-16 18:58:17.548426 +0800 CST ] Save image table to file.
-[ 2016-04-16 19:50:47.287414 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 19:50:47.3014124 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 19:50:48.062779 +0800 CST ] Get Signal:interrupt, Safe Exiting...
-[ 2016-04-16 19:50:48.062779 +0800 CST ] Begin Restore.
-[ 2016-04-16 19:50:48.0637795 +0800 CST ] Save image table to file.
-[ 2016-04-16 19:50:48.0677815 +0800 CST ] Restore Finished.
-[ 2016-04-16 19:50:52.1134586 +0800 CST ] Begin Restore.
-[ 2016-04-16 19:50:52.1134586 +0800 CST ] Save image table to file.
-[ 2016-04-16 19:51:04.4860827 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 19:51:04.4960938 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 19:53:32.3729086 +0800 CST ] Begin Restore.
-[ 2016-04-16 19:53:32.3739096 +0800 CST ] Save image table to file.
-[ 2016-04-16 19:53:49.6696405 +0800 CST ] Recovery 5 image files.
-[ 2016-04-16 19:53:49.6806941 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-16 19:54:41.3033241 +0800 CST ] Begin Restore.
-[ 2016-04-16 19:54:41.3043362 +0800 CST ] Save image table to file.
-[ 2016-04-17 15:44:50.4825812 +0800 CST ] Recovery 5 image files.
-[ 2016-04-17 15:44:50.5487866 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-17 16:04:53.5414762 +0800 CST ] Begin Restore.
-[ 2016-04-17 16:04:53.5444977 +0800 CST ] Save image table to file.
-[ 2016-04-17 20:38:07.3842618 +0800 CST ] Recovery 5 image files.
-[ 2016-04-17 20:38:07.3952462 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-17 20:50:51.5682199 +0800 CST ] Begin Restore.
-[ 2016-04-17 20:50:51.5712347 +0800 CST ] Save image table to file.
-[ 2016-04-17 21:02:50.4502892 +0800 CST ] Recovery 5 image files.
-[ 2016-04-17 21:02:50.462304 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-17 21:06:10.5674563 +0800 CST ] Begin Restore.
-[ 2016-04-17 21:06:10.5694595 +0800 CST ] Save image table to file.
-[ 2016-04-17 21:06:54.393122 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
-[ 2016-04-17 21:06:54.4041002 +0800 CST ] Tables recovery interrupt with an error :open c:\users\inszva\monkeydb2\data\tables.json: The system cannot find the file specified.
-[ 2016-04-17 21:08:51.41602 +0800 CST ] Begin Restore.
-[ 2016-04-17 21:08:51.4170213 +0800 CST ] Save image table to file.
-[ 2016-04-17 21:15:48.6697669 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
-[ 2016-04-17 21:15:48.6817281 +0800 CST ] Tables recovery interrupt with an error :open c:\users\inszva\monkeydb2\data\tables.json: The system cannot find the file specified.
-[ 2016-04-17 21:16:01.6195683 +0800 CST ] Begin Restore.
-[ 2016-04-17 21:16:01.6245762 +0800 CST ] Save image table to file.
-[ 2016-04-17 21:16:39.3757027 +0800 CST ] Recovery 3 image files.
-[ 2016-04-17 21:16:39.3877072 +0800 CST ] Recovery 1 Tables.
-[ 2016-04-17 21:17:53.9701718 +0800 CST ] Begin Restore.
-[ 2016-04-17 21:17:53.9741715 +0800 CST ] Save image table to file.
-[ 2016-04-17 21:18:10.822654 +0800 CST ] Recovery 3 image files.
-[ 2016-04-17 21:18:10.8345983 +0800 CST ] Recovery 1 Tables.
-[ 2016-04-17 21:21:47.9482266 +0800 CST ] Begin Restore.
-[ 2016-04-17 21:21:47.9522263 +0800 CST ] Save image table to file.
-[ 2016-04-17 21:21:58.9145585 +0800 CST ] Recovery 3 image files.
-[ 2016-04-17 21:21:58.9255456 +0800 CST ] Recovery 1 Tables.
-[ 2016-04-17 21:23:45.5016225 +0800 CST ] Begin Restore.
-[ 2016-04-17 21:23:45.5055906 +0800 CST ] Save image table to file.
-[ 2016-04-17 21:23:56.2533056 +0800 CST ] Recovery 3 image files.
-[ 2016-04-17 21:23:56.2643234 +0800 CST ] Recovery 1 Tables.
-[ 2016-04-17 21:26:54.2509239 +0800 CST ] Begin Restore.
-[ 2016-04-17 21:26:54.2549178 +0800 CST ] Save image table to file.
-[ 2016-04-17 21:30:33.5849153 +0800 CST ] Recovery 6 image files.
-[ 2016-04-17 21:30:33.5958917 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-17 21:30:48.1216621 +0800 CST ] Begin Restore.
-[ 2016-04-17 21:30:48.1256654 +0800 CST ] Save image table to file.
-[ 2016-04-19 22:45:07.2471181 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 22:45:07.2971163 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 22:47:31.4499409 +0800 CST ] Get Signal:interrupt, Safe Exiting...
-[ 2016-04-19 22:47:31.4519098 +0800 CST ] Begin Restore.
-[ 2016-04-19 22:47:31.4529411 +0800 CST ] Save image table to file.
-[ 2016-04-19 22:47:31.4649411 +0800 CST ] Restore Finished.
-[ 2016-04-19 22:47:38.6624995 +0800 CST ] Begin Restore.
-[ 2016-04-19 22:47:38.6654997 +0800 CST ] Save image table to file.
-[ 2016-04-19 22:47:46.8616698 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 22:47:46.8716608 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 22:49:39.0659487 +0800 CST ] Begin Restore.
-[ 2016-04-19 22:49:39.0689385 +0800 CST ] Save image table to file.
-[ 2016-04-19 22:49:47.313408 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 22:49:47.3234062 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:07:48.2448311 +0800 CST ] Begin Restore.
-[ 2016-04-19 23:07:48.2488103 +0800 CST ] Save image table to file.
-[ 2016-04-19 23:07:56.345935 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:07:56.3569493 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:09:41.8699874 +0800 CST ] Begin Restore.
-[ 2016-04-19 23:09:41.8719866 +0800 CST ] Save image table to file.
-[ 2016-04-19 23:09:50.3929527 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:09:50.402958 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:11:14.0627588 +0800 CST ] Begin Restore.
-[ 2016-04-19 23:11:14.0657518 +0800 CST ] Save image table to file.
-[ 2016-04-19 23:11:22.0251262 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:11:22.0351213 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:12:15.6669303 +0800 CST ] Begin Restore.
-[ 2016-04-19 23:12:15.6699398 +0800 CST ] Save image table to file.
-[ 2016-04-19 23:12:24.2932089 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:12:24.3071966 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:13:24.4918343 +0800 CST ] Begin Restore.
-[ 2016-04-19 23:13:24.4948246 +0800 CST ] Save image table to file.
-[ 2016-04-19 23:13:45.6691138 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:13:45.6800986 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:16:30.6994797 +0800 CST ] Begin Restore.
-[ 2016-04-19 23:16:30.7024776 +0800 CST ] Save image table to file.
-[ 2016-04-19 23:16:39.19049 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:16:39.2014905 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:23:48.9485387 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:23:48.958541 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:37:20.340891 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:37:20.3508928 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:37:58.0980624 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:37:58.1090629 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:41:52.6317948 +0800 CST ] Begin Restore.
-[ 2016-04-19 23:41:52.6348159 +0800 CST ] Save image table to file.
-[ 2016-04-19 23:42:01.1380097 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:42:01.1490178 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:42:09.0169277 +0800 CST ] Begin Restore.
-[ 2016-04-19 23:42:09.0199046 +0800 CST ] Save image table to file.
-[ 2016-04-19 23:43:43.4422836 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:43:43.4522667 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:44:01.5809149 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:44:01.5909158 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:45:23.8895415 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:45:23.8995183 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:46:52.5647196 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:46:52.5777594 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:48:10.3902622 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:48:10.4002613 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:48:50.4371763 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:48:50.4481764 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:49:28.5102567 +0800 CST ] Begin Restore.
-[ 2016-04-19 23:49:28.513276 +0800 CST ] Save image table to file.
-[ 2016-04-19 23:50:13.9145702 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:50:13.9255698 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:51:07.5593151 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:51:07.5733286 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:59:09.2745958 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:59:09.2865691 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-19 23:59:43.8573303 +0800 CST ] Begin Restore.
-[ 2016-04-19 23:59:43.8603336 +0800 CST ] Save image table to file.
-[ 2016-04-19 23:59:53.6562243 +0800 CST ] Recovery 6 image files.
-[ 2016-04-19 23:59:53.6661988 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 00:00:05.9511881 +0800 CST ] Begin Restore.
-[ 2016-04-20 00:00:05.95519 +0800 CST ] Save image table to file.
-[ 2016-04-20 00:02:10.7655195 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 00:02:10.7775308 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 00:06:12.2539773 +0800 CST ] Begin Restore.
-[ 2016-04-20 00:06:12.2569578 +0800 CST ] Save image table to file.
-[ 2016-04-20 00:06:21.5280303 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 00:06:21.5390272 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 00:07:43.5415303 +0800 CST ] Begin Restore.
-[ 2016-04-20 00:07:43.5435299 +0800 CST ] Save image table to file.
-[ 2016-04-20 00:08:14.1949457 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 00:08:14.204939 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 00:10:28.8609302 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 00:10:28.8709351 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 00:11:07.5937882 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 00:11:07.6037873 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 00:11:48.5760244 +0800 CST ] Begin Restore.
-[ 2016-04-20 00:11:48.5780276 +0800 CST ] Save image table to file.
-[ 2016-04-20 00:13:35.6039511 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 00:13:35.6139471 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 20:03:30.0419101 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 20:03:30.0979567 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 20:05:27.9668582 +0800 CST ] Begin Restore.
-[ 2016-04-20 20:05:27.9698463 +0800 CST ] Save image table to file.
-[ 2016-04-20 20:05:36.5894829 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 20:05:36.6014781 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 20:22:13.0493187 +0800 CST ] Begin Restore.
-[ 2016-04-20 20:22:13.0523197 +0800 CST ] Save image table to file.
-[ 2016-04-20 20:22:44.109274 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 20:22:44.122259 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 20:30:13.0008699 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 20:30:13.0108498 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 20:38:24.5199528 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 20:38:24.5309444 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 20:41:21.7930299 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 20:41:21.8040152 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 20:42:38.3668006 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 20:42:38.3797865 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 20:43:54.9421493 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 20:43:54.9541409 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 20:53:09.8121972 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 20:53:09.8261996 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 22:07:06.3236897 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 22:07:06.3336915 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 22:08:14.9622259 +0800 CST ] Begin Restore.
-[ 2016-04-20 22:08:14.9652261 +0800 CST ] Save image table to file.
-[ 2016-04-20 22:08:23.7566623 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 22:08:23.7686771 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 22:10:39.743975 +0800 CST ] Begin Restore.
-[ 2016-04-20 22:10:39.747964 +0800 CST ] Save image table to file.
-[ 2016-04-20 22:10:48.1187718 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 22:10:48.1287571 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 22:13:35.1854824 +0800 CST ] Begin Restore.
-[ 2016-04-20 22:13:35.1874834 +0800 CST ] Save image table to file.
-[ 2016-04-20 22:13:56.392566 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 22:13:56.402566 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 22:15:31.7091305 +0800 CST ] Begin Restore.
-[ 2016-04-20 22:15:31.7121315 +0800 CST ] Save image table to file.
-[ 2016-04-20 22:15:43.4219243 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 22:15:43.4339248 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 22:26:31.0191043 +0800 CST ] Begin Restore.
-[ 2016-04-20 22:26:31.0231054 +0800 CST ] Save image table to file.
-[ 2016-04-20 22:27:12.6845944 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 22:27:12.6955766 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 22:32:10.1430433 +0800 CST ] Begin Restore.
-[ 2016-04-20 22:32:10.1460113 +0800 CST ] Save image table to file.
-[ 2016-04-20 22:32:10.1600128 +0800 CST ] Restore Finished.
-[ 2016-04-20 22:32:24.0725257 +0800 CST ] Recovery 6 image files.
-[ 2016-04-20 22:32:24.0865258 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-20 22:35:25.0699258 +0800 CST ] Begin Restore.
-[ 2016-04-20 22:35:25.0738956 +0800 CST ] Save image table to file.
-[ 2016-04-20 22:35:32.2439955 +0800 CST ] Recovery 9 image files.
-[ 2016-04-20 22:35:32.2539772 +0800 CST ] Recovery 3 Tables.
-[ 2016-04-20 22:36:27.4660922 +0800 CST ] Begin Restore.
-[ 2016-04-20 22:36:27.4691191 +0800 CST ] Save image table to file.
-[ 2016-04-20 22:36:41.1174415 +0800 CST ] Recovery 9 image files.
-[ 2016-04-20 22:36:41.1274161 +0800 CST ] Recovery 3 Tables.
-[ 2016-04-20 22:36:59.5460591 +0800 CST ] Begin Restore.
-[ 2016-04-20 22:36:59.5480592 +0800 CST ] Save image table to file.
-[ 2016-04-20 22:41:46.0546775 +0800 CST ] Recovery 9 image files.
-[ 2016-04-20 22:41:46.0656811 +0800 CST ] Recovery 3 Tables.
-[ 2016-04-20 22:42:18.9770811 +0800 CST ] Begin Restore.
-[ 2016-04-20 22:42:18.9790744 +0800 CST ] Save image table to file.
-[ 2016-04-21 12:59:33.4774368 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
-[ 2016-04-21 12:59:33.4964461 +0800 CST ] Tables recovery interrupt with an error :open c:\users\inszva\monkeydb2\data\tables.json: The system cannot find the file specified.
-[ 2016-04-21 13:00:01.117388 +0800 CST ] Begin Restore.
-[ 2016-04-21 13:00:01.1213886 +0800 CST ] Save image table to file.
-[ 2016-04-21 13:00:19.8493687 +0800 CST ] Recovery 0 image files.
-[ 2016-04-21 13:00:19.8593535 +0800 CST ] Recovery 0 Tables.
-[ 2016-04-21 13:02:56.8936567 +0800 CST ] Begin Restore.
-[ 2016-04-21 13:02:56.8976626 +0800 CST ] Save image table to file.
-[ 2016-04-21 13:11:29.1086317 +0800 CST ] Recovery 0 image files.
-[ 2016-04-21 13:11:29.1196304 +0800 CST ] Recovery 0 Tables.
-[ 2016-04-21 13:13:02.628986 +0800 CST ] Begin Restore.
-[ 2016-04-21 13:13:02.6319839 +0800 CST ] Save image table to file.
-[ 2016-04-21 14:03:55.620359 +0800 CST ] Recovery 5 image files.
-[ 2016-04-21 14:03:55.6323123 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-21 14:04:34.1925523 +0800 CST ] Begin Restore.
-[ 2016-04-21 14:04:34.1955649 +0800 CST ] Save image table to file.
-[ 2016-04-21 15:01:14.2844384 +0800 CST ] Recovery 5 image files.
-[ 2016-04-21 15:01:14.2954041 +0800 CST ] Recovery 2 Tables.
-[ 2016-04-21 16:08:28.7242331 +0800 CST ] Begin Restore.
-[ 2016-04-21 16:08:28.725222 +0800 CST ] Save image table to file.
-[ 2016-04-21 16:09:57.3365285 +0800 CST ] Recovery 7 image files.
-[ 2016-04-21 16:09:57.353511 +0800 CST ] Recovery 3 Tables.
-[ 2016-04-21 17:49:20.9551944 +0800 CST ] Begin Restore.
-[ 2016-04-21 17:49:20.9581986 +0800 CST ] Save image table to file.
-[ 2016-04-21 17:51:51.7646912 +0800 CST ] Recovery 11 image files.
-[ 2016-04-21 17:51:51.7816781 +0800 CST ] Recovery 4 Tables.
-[ 2016-04-21 17:54:30.441748 +0800 CST ] Begin Restore.
-[ 2016-04-21 17:54:30.4437396 +0800 CST ] Save image table to file.
-[ 2016-04-21 17:54:41.939656 +0800 CST ] Recovery 14 image files.
-[ 2016-04-21 17:54:41.9576568 +0800 CST ] Recovery 5 Tables.
-[ 2016-04-21 17:55:43.5701285 +0800 CST ] Begin Restore.
-[ 2016-04-21 17:55:43.572133 +0800 CST ] Save image table to file.
-[ 2016-04-21 17:56:41.9989576 +0800 CST ] Recovery 14 image files.
-[ 2016-04-21 17:56:42.0129569 +0800 CST ] Recovery 5 Tables.
-[ 2016-04-21 17:56:43.4062811 +0800 CST ] Begin Restore.
-[ 2016-04-21 17:56:43.4102933 +0800 CST ] Save image table to file.
-[ 2016-04-21 17:57:03.1836337 +0800 CST ] Recovery 14 image files.
-[ 2016-04-21 17:57:03.194619 +0800 CST ] Recovery 5 Tables.
-[ 2016-04-21 17:57:06.0707787 +0800 CST ] Begin Restore.
-[ 2016-04-21 17:57:06.0727819 +0800 CST ] Save image table to file.
-[ 2016-04-21 17:59:18.9114843 +0800 CST ] Recovery 14 image files.
-[ 2016-04-21 17:59:18.923492 +0800 CST ] Recovery 5 Tables.
-[ 2016-04-21 17:59:26.0796827 +0800 CST ] Begin Restore.
-[ 2016-04-21 17:59:26.0806773 +0800 CST ] Save image table to file.
-[ 2016-04-21 18:22:42.3856041 +0800 CST ] Recovery 14 image files.
-[ 2016-04-21 18:22:42.3966046 +0800 CST ] Recovery 5 Tables.
-[ 2016-04-21 18:23:27.3974547 +0800 CST ] Begin Restore.
-[ 2016-04-21 18:23:27.3994556 +0800 CST ] Save image table to file.
-[ 2016-04-21 19:06:33.034353 +0800 CST ] Recovery 14 image files.
-[ 2016-04-21 19:06:33.0483528 +0800 CST ] Recovery 5 Tables.
-[ 2016-04-21 20:15:06.9460332 +0800 CST ] Begin Restore.
-[ 2016-04-21 20:15:06.9500012 +0800 CST ] Save image table to file.
-[ 2016-04-21 20:15:16.352623 +0800 CST ] Recovery 14 image files.
-[ 2016-04-21 20:15:16.3635985 +0800 CST ] Recovery 5 Tables.
-[ 2016-04-21 20:22:28.0976301 +0800 CST ] Begin Restore.
-[ 2016-04-21 20:22:28.1016428 +0800 CST ] Save image table to file.
+[ 2016-04-21 21:06:57.0268778 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
+[ 2016-04-21 21:06:57.0368639 +0800 CST ] Tables recovery interrupt with an error :open c:\users\inszva\monkeydb2\data\tables.json: The system cannot find the file specified.
+[ 2016-04-21 21:07:43.41566 +0800 CST ] Begin Restore.
+[ 2016-04-21 21:07:43.4196397 +0800 CST ] Save image table to file.
+[ 2016-04-21 21:07:52.7617367 +0800 CST ] Recovery 3 image files.
+[ 2016-04-21 21:07:52.7737234 +0800 CST ] Recovery 1 Tables.
+[ 2016-04-21 21:10:46.9297905 +0800 CST ] Begin Restore.
+[ 2016-04-21 21:10:46.9327902 +0800 CST ] Save image table to file.
+[ 2016-04-22 14:33:39.8050713 +0800 CST ] Recovery 6 image files.
+[ 2016-04-22 14:33:39.8240913 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-22 14:43:38.7410051 +0800 CST ] Begin Restore.
+[ 2016-04-22 14:43:38.7410051 +0800 CST ] Save image table to file.
+[ 2016-04-22 14:44:00.8131666 +0800 CST ] Recovery 6 image files.
+[ 2016-04-22 14:44:00.8231403 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-22 14:50:23.2182852 +0800 CST ] Begin Restore.
+[ 2016-04-22 14:50:23.2182852 +0800 CST ] Save image table to file.
+[ 2016-04-22 14:50:32.4314043 +0800 CST ] Recovery 6 image files.
+[ 2016-04-22 14:50:32.4413815 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-22 14:50:45.6743899 +0800 CST ] Begin Restore.
+[ 2016-04-22 14:50:45.6743899 +0800 CST ] Save image table to file.
+[ 2016-04-22 15:27:02.7526521 +0800 CST ] Recovery 6 image files.
+[ 2016-04-22 15:27:02.7626467 +0800 CST ] Recovery 2 Tables.
+[ 2016-04-22 15:27:30.2775805 +0800 CST ] Begin Restore.
+[ 2016-04-22 15:27:30.2795779 +0800 CST ] Save image table to file.
+[ 2016-04-22 16:00:12.9941807 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
+[ 2016-04-22 16:00:13.0051258 +0800 CST ] Tables recovery interrupt with an error :open c:\users\inszva\monkeydb2\data\tables.json: The system cannot find the file specified.
+[ 2016-04-22 16:01:37.3285532 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
+[ 2016-04-22 16:01:37.3385518 +0800 CST ] Tables recovery interrupt with an error :open c:\users\inszva\monkeydb2\data\tables.json: The system cannot find the file specified.
+[ 2016-04-22 16:02:32.8015524 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
+[ 2016-04-22 16:02:32.8115408 +0800 CST ] Tables recovery interrupt with an error :open c:\users\inszva\monkeydb2\data\tables.json: The system cannot find the file specified.
+[ 2016-04-22 16:04:05.0077391 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
+[ 2016-04-22 16:04:05.0177114 +0800 CST ] Tables recovery interrupt with an error :open c:\users\inszva\monkeydb2\data\tables.json: The system cannot find the file specified.
+[ 2016-04-22 16:04:21.0433444 +0800 CST ] Begin Restore.
+[ 2016-04-22 16:04:21.0443457 +0800 CST ] Save image table to file.
+[ 2016-04-22 16:04:51.5736696 +0800 CST ] Recovery 2 image files.
+[ 2016-04-22 16:04:51.5846509 +0800 CST ] Recovery 1 Tables.
+[ 2016-04-22 16:05:18.265222 +0800 CST ] Begin Restore.
+[ 2016-04-22 16:05:18.265222 +0800 CST ] Save image table to file.
+[ 2016-04-22 16:05:27.422987 +0800 CST ] Recovery 2 image files.
+[ 2016-04-22 16:05:27.4339634 +0800 CST ] Recovery 1 Tables.
+[ 2016-04-22 16:05:52.2870043 +0800 CST ] Begin Restore.
+[ 2016-04-22 16:05:52.2890173 +0800 CST ] Save image table to file.

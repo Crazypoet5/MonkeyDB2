@@ -65,3 +65,7 @@ func Copy(dst, src *DataBlock) (int, error) {
 	delete(CopyTable, src)
 	return dst.Write(0, data)
 }
+
+func (b *DataBlock) Delete() {
+	ReleaseImage(b)
+}

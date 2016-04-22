@@ -37,7 +37,7 @@ func selectPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 		}
 	}
 	reader := tab.FirstPage.NewReader()
-	rel := reader.DumpPage()
+	rel := reader.DumpTable()
 	if stn.Child[2] == nil {
 		res.SetResult(len(rel.Rows))
 		return rel.Project(projects), res, nil
