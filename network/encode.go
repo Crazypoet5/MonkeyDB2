@@ -23,7 +23,7 @@ const (
 	RESPONSE
 )
 
-func Encode(rel *exe.Relation, res *plan.Result) *Pack {
+func Encode(rel *exe.Relation, res *plan.Result, err error) *Pack {
 	relJson := "["
 	if rel != nil && len(rel.Rows) != 0 {
 		for r := 0; r < len(rel.Rows); r++ {
@@ -56,12 +56,30 @@ func Encode(rel *exe.Relation, res *plan.Result) *Pack {
 	}
 	relJson += "]"
 	resJson := "{\"affectedRows\":%d,\"usedTime\":%d}"
-	resJson = fmt.Sprintf(resJson, res.AffectedRows, res.UsedTime)
-	json := []byte(fmt.Sprintf("{\"relation\":%s,\"result\":%s}", relJson, resJson))
+	if res == nil {
+		resJson = fmt.Sprintf(resJson, 0, 0)
+	} else {
+		resJson = fmt.Sprintf(resJson, res.AffectedRows, res.UsedTime)
+	}
+
+	errStr := "null"
+	if err != nil {
+		errStr = err.Error()
+	}
+	json := []byte(fmt.Sprintf("{\"relation\":%s,\"result\":%s,\"error\":%s}", relJson, resJson, errStr))
 	return &Pack{
 		Head: 2016,
 		Len:  uint32(len(json) + 12),
 		Type: RESPONSE,
 		Data: json,
+	}
+}
+
+func MakePack(tp uint32, data []byte) *Pack {
+	return &Pack{
+		Head: 2016,
+		Len:  uint32(len(data) + 12),
+		Type: tp,
+		Data: data,
 	}
 }

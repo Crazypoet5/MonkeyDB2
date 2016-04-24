@@ -1,6 +1,15 @@
 package network
 
-import "net"
+import (
+	"bufio"
+	"bytes"
+	"fmt"
+	"net"
+
+	"../plan"
+	"../sql/lex"
+	"../sql/syntax"
+)
 
 func uint322bytes(u uint32) []byte {
 	b := make([]byte, 4)
@@ -37,6 +46,9 @@ func (s *TCPSession) SendPack(p *Pack) {
 		s.Closed = true
 		return
 	}
+	if p.Data == nil {
+		return
+	}
 	offset := 0
 	for len(p.Data) > 1024 {
 		_, err = s.Conn.Write(p.Data[offset : offset+1024])
@@ -54,8 +66,10 @@ func (s *TCPSession) SendPack(p *Pack) {
 }
 
 func (s *TCPSession) RecvPack() *Pack {
+
 	var buff = make([]byte, 12)
 	readed, err := s.Conn.Read(buff)
+
 	if err != nil {
 		s.Closed = true
 		return nil
@@ -88,6 +102,12 @@ func (s *TCPSession) RecvPack() *Pack {
 	return ret
 }
 
+func NewTCPSession(tcpConn *net.TCPConn) *TCPSession {
+	return &TCPSession{
+		Conn: tcpConn,
+	}
+}
+
 func Listen() {
 	tcpAddr, err := net.ResolveTCPAddr("tcp4", ":2016")
 	if err != nil {
@@ -100,6 +120,58 @@ func Listen() {
 	fmt.Println("Server started.")
 	for {
 		conn, err := l.AcceptTCP()
-		//TODO
+		if err != nil {
+			continue
+		}
+		reader := bufio.NewReader(bytes.NewReader([]byte(conn.RemoteAddr().String())))
+		ip, _ := reader.ReadBytes(':')
+		ip = ip[:len(ip)-1]
+		if string(ip) != "127.0.0.1" {
+			//Refused
+			conn.Close()
+			continue
+		}
+		tcpSession := NewTCPSession(conn)
+		go Handler(tcpSession)
 	}
+}
+
+func Handler(tcpSession *TCPSession) {
+	for {
+		p := tcpSession.RecvPack()
+		if p == nil {
+			return
+		}
+		if p.Head != 2016 {
+			continue
+		}
+
+		switch p.Type {
+		case DIRECT_QUERY:
+			command := p.Data
+			ts, _ := lex.Parse(*lex.NewByteReader([]byte(command)))
+			stn, err := syntax.Parser(syntax.NewTokenReader(ts))
+			if err != nil {
+				pack := Encode(nil, nil, err)
+				tcpSession.SendPack(pack)
+				continue
+			}
+			r, re, err := plan.DirectPlan(stn)
+			pack := Encode(r, re, err)
+			tcpSession.SendPack(pack)
+		}
+	}
+}
+
+func Dial(addr string) *TCPSession {
+	tcpAddr, err := net.ResolveTCPAddr("tcp4", addr)
+	if err != nil {
+		panic(err)
+	}
+	conn, err := net.DialTCP("tcp", nil, tcpAddr)
+	if err != nil {
+		panic(err)
+	}
+	tcpSession := NewTCPSession(conn)
+	return tcpSession
 }
