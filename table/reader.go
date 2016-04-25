@@ -2,6 +2,7 @@ package table
 
 import (
 	"../exe"
+	"../index"
 )
 
 type Reader struct {
@@ -138,4 +139,54 @@ func (p *Reader) DumpTable() *exe.Relation {
 	p.currentPage = oldPage
 	p.currentPtr = oldPtr
 	return ret
+}
+
+func (p *Reader) LoadIndex(i *index.Index, kField int) error {
+	oldPage := p.currentPage
+	oldPtr := p.currentPtr
+	for p.currentPage != nil {
+		p.currentPtr = 64
+		for p.currentPtr < p.currentPage.GetFreePos() {
+			pos := p.currentPage.RawPtr
+			v, _ := p.currentPage.Read(p.currentPtr, 8)
+			p.currentPtr += 8
+			skip := bytes2uint(v)
+			if skip != 0 {
+				p.currentPtr += skip
+				continue
+			}
+			ptr := uint(pos)
+			ptr <<= 24
+			ptr |= p.currentPtr
+			table := p.currentPage.GetTable()
+			for k, f := range table.Fields {
+				if f.FixedSize {
+					if kField == k {
+						v, _ := p.currentPage.Read(p.currentPtr, uint(f.Size))
+						err := i.I.Insert(index.BKDRHash(v), uintptr(ptr))
+						if err != nil {
+							return err
+						}
+					}
+					p.currentPtr += uint(f.Size)
+				} else {
+					data, _ := p.currentPage.Read(p.currentPtr, 4)
+					size := bytes2uint32(data)
+					p.currentPtr += 4
+					if kField == k {
+						v, _ := p.currentPage.Read(p.currentPtr, uint(size))
+						err := i.I.Insert(index.BKDRHash(v), uintptr(ptr))
+						if err != nil {
+							return err
+						}
+					}
+					p.currentPtr += uint(size)
+				}
+			}
+		}
+		p.currentPage = p.currentPage.NextPage()
+	}
+	p.currentPage = oldPage
+	p.currentPtr = oldPtr
+	return nil
 }

@@ -48,7 +48,7 @@ func Encode(rel *exe.Relation, res *plan.Result, err error) *Pack {
 					f := *(*float64)((unsafe.Pointer)(&rel.Rows[r][i].Raw[0]))
 					relJson += strconv.FormatFloat(f, 'f', -1, 64)
 				default: //exe.STRING
-					relJson += "\"" + string(rel.Rows[r][i].Raw) + "\""
+					relJson += "\"" + escape(string(rel.Rows[r][i].Raw)) + "\""
 				}
 			}
 			relJson += "}"
@@ -64,7 +64,7 @@ func Encode(rel *exe.Relation, res *plan.Result, err error) *Pack {
 
 	errStr := "null"
 	if err != nil {
-		errStr = err.Error()
+		errStr = escape(err.Error())
 	}
 	json := []byte(fmt.Sprintf("{\"relation\":%s,\"result\":%s,\"error\":%s}", relJson, resJson, errStr))
 	return &Pack{
@@ -82,4 +82,24 @@ func MakePack(tp uint32, data []byte) *Pack {
 		Type: tp,
 		Data: data,
 	}
+}
+
+func escape(raw string) string {
+	var ret string
+	bytes := []byte(raw)
+	for i := 0; i < len(bytes); i++ {
+		switch bytes[i] {
+		case 10:
+			ret += "\\n"
+		case 13:
+			ret += "\\r"
+		case '\t':
+			ret += "\\t"
+		case '"':
+			ret += "\""
+		default:
+			ret += string(bytes[i])
+		}
+	}
+	return ret
 }
