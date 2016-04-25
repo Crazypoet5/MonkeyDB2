@@ -17,6 +17,7 @@ import (
 var lexSwitch = flag.Bool("L", false, "Show the lex parser result.")
 var syntaxSwitch = flag.Bool("S", false, "Show the syntax parser result.")
 var performanceSwitch = flag.Bool("P", false, "Show the performance informations.")
+var inReader = bufio.NewReader(os.Stdin)
 
 func welcome() {
 	fmt.Println("MonkeyDB2 @ 2016")
@@ -26,7 +27,7 @@ func welcome() {
 func loop() bool {
 	fmt.Print("Monkey>>")
 	command := ""
-	inReader := bufio.NewReader(os.Stdin)
+
 	i := 0
 	for !strings.Contains(command, ";") {
 		if i > 0 {
