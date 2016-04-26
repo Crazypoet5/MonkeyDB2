@@ -1,6 +1,6 @@
 package lex
 
-//import "fmt"
+import "errors"
 
 type statedDfa struct {
 	class  []int
@@ -51,15 +51,22 @@ func (d *statedDfa) Parse(input ByteReader) ([]Token, error) {
 			pos:  in.pos,
 		}
 		tc, _ := fork2.Read()
-		if tc > 127 {
+		if tc == '\'' {
 			b := make([]byte, 0)
-			b = append(b, tc)
 			tc, _ = fork2.Read()
-			b = append(b, tc)
-			tc, _ = fork2.Read()
-			b = append(b, tc)
+			for tc != '\'' || b[len(b)-1] == '\\' {
+				if tc == '\'' {
+					b[len(b)-1] = '\''
+				} else {
+					b = append(b, tc)
+				}
+				tc, _ = fork2.Read()
+			}
+			if tc == 0 {
+				return nil, errors.New("No string end.")
+			}
 			token := Token{
-				Kind: "UTF",
+				Kind: "string",
 				Raw:  b,
 			}
 			t = append(t, token)

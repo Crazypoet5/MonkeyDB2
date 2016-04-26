@@ -23,7 +23,7 @@ func valueParser(tr *TokenReader) (*SyntaxTreeNode, error) {
 			ValueType: FLOAT,
 		}, nil
 	}
-	if t.Kind == "reference" {
+	if t.Kind == "string" {
 		str, err := stringParser(tr)
 		if err != nil {
 			return nil, err

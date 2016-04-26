@@ -24,12 +24,14 @@ func (v *Value) StrLen() int {
 	switch v.Kind {
 	case INT:
 		i := *(*int)(unsafe.Pointer(&v.Raw[0]))
-		return len([]byte(strconv.Itoa(i)))
+		return len((strconv.Itoa(i)))
 	case FLOAT:
 		f := *(*float64)(unsafe.Pointer(&v.Raw[0]))
-		return len([]byte(strconv.FormatFloat(f, 'f', -1, 64)))
+		return len((strconv.FormatFloat(f, 'f', -1, 64)))
 	case STRING:
-		return len(v.Raw)
+		runeLen := len([]rune(string(v.Raw)))
+		rawLen := len(v.Raw)
+		return (runeLen + rawLen) / 2
 	}
 	return 8
 }

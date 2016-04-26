@@ -13,23 +13,58 @@ func Parser(tr *TokenReader) (*SyntaxTreeNode, error) {
 		if err != nil {
 			stn, err := createIndexParser(tr)
 			if err != nil {
+				if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+					return nil, errors.New("Unexpect end:" + string(t.Raw))
+				}
 				return nil, err
 			}
 			return stn, nil
 		}
+		tr.pos = fork2.pos
+		if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+			return nil, errors.New("Unexpect end:" + string(t.Raw))
+		}
 		return stn, nil
 	}
 	if t.Kind == "keyword" && string(t.Raw) == "insert" {
-		return insertParser(tr)
+		stn, err := insertParser(tr)
+		if err != nil {
+			return nil, err
+		}
+		if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+			return nil, errors.New("Unexpect end:" + string(t.Raw))
+		}
+		return stn, nil
 	}
 	if t.Kind == "keyword" && string(t.Raw) == "dump" {
-		return dumpParser(tr)
+		stn, err := dumpParser(tr)
+		if err != nil {
+			return nil, err
+		}
+		if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+			return nil, errors.New("Unexpect end:" + string(t.Raw))
+		}
+		return stn, nil
 	}
 	if t.Kind == "keyword" && string(t.Raw) == "select" {
-		return selectParser(tr)
+		stn, err := selectParser(tr)
+		if err != nil {
+			return nil, err
+		}
+		if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+			return nil, errors.New("Unexpect end:" + string(t.Raw))
+		}
+		return stn, nil
 	}
 	if t.Kind == "keyword" && string(t.Raw) == "delete" {
-		return deleteParser(tr)
+		stn, err := deleteParser(tr)
+		if err != nil {
+			return nil, err
+		}
+		if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+			return nil, errors.New("Unexpect end:" + string(t.Raw))
+		}
+		return stn, nil
 	}
 	if t.Kind == "keyword" && string(t.Raw) == "drop" {
 		fork2 := tr.Fork()
@@ -39,12 +74,26 @@ func Parser(tr *TokenReader) (*SyntaxTreeNode, error) {
 			if err != nil {
 				return nil, err
 			}
+			if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+				return nil, errors.New("Unexpect end:" + string(t.Raw))
+			}
 			return stn, nil
+		}
+		tr.pos = fork2.pos
+		if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+			return nil, errors.New("Unexpect end:" + string(t.Raw))
 		}
 		return stn, nil
 	}
 	if t.Kind == "keyword" && string(t.Raw) == "update" {
-		return updateParser(tr)
+		stn, err := updateParser(tr)
+		if err != nil {
+			return nil, err
+		}
+		if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+			return nil, errors.New("Unexpect end:" + string(t.Raw))
+		}
+		return stn, nil
 	}
 	return nil, errors.New("Unsupported syntax!")
 }
