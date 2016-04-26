@@ -30,6 +30,7 @@ func NewBasic() *statedNfa {
 	types := stringsToken("int", "float", "string", "object", "array")
 	attributes := stringsToken("primary key", "unique")
 	wildcard := stringsToken("*", "%")
+	escape := stringsToken("\\'")
 	ret.appendToken("keyword", 2, keyword)
 	ret.appendToken("types", 4, types)
 	ret.appendToken("logical", 4, logical)
@@ -40,6 +41,7 @@ func NewBasic() *statedNfa {
 	ret.appendToken("reference", 4, single('\''))
 	ret.appendToken("attributes", 4, attributes)
 	ret.appendToken("wildcard", 4, wildcard)
+	ret.appendToken("escape", 4, escape)
 	return ret
 }
 

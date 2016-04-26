@@ -21,6 +21,14 @@ func (r *TokenReader) Read() lex.Token {
 	}
 }
 
+func (r *TokenReader) DirectRead() lex.Token {
+	r.pos++
+	if r.pos > len(r.data) {
+		return lex.Token{}
+	}
+	return r.data[r.pos-1]
+}
+
 func (r *TokenReader) Empty() bool {
 	return r.pos >= len(r.data)-1
 }
