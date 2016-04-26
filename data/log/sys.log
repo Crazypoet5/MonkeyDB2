@@ -9,3 +9,16 @@
 [ 2016-04-25 23:21:52.9837301 +0800 CST ] Recovery 1 Tables.
 [ 2016-04-25 23:21:53.0077303 +0800 CST ] Begin Restore.
 [ 2016-04-25 23:21:53.014731 +0800 CST ] Save image table to file.
+[ 2016-04-26 15:31:02.1873992 +0800 CST ] Recovery abort:open c:\users\inszva\monkeydb2\data\image\count: The system cannot find the file specified.
+[ 2016-04-26 15:31:02.1983903 +0800 CST ] Tables recovery interrupt with an error :open c:\users\inszva\monkeydb2\data\tables.json: The system cannot find the file specified.
+[ 2016-04-26 15:31:17.2788136 +0800 CST ] Begin Restore.
+[ 2016-04-26 15:31:17.2798119 +0800 CST ] Save image table to file.
+[ 2016-04-26 15:31:17.2818146 +0800 CST ] Restore Finished.
+[ 2016-04-26 15:31:28.0945072 +0800 CST ] Begin Restore.
+[ 2016-04-26 15:31:28.0945072 +0800 CST ] Save image table to file.
+[ 2016-04-26 15:31:28.0965095 +0800 CST ] Restore Finished.
+[ 2016-04-26 15:31:37.9529683 +0800 CST ] Begin Restore.
+[ 2016-04-26 15:31:37.9529683 +0800 CST ] Save image table to file.
+[ 2016-04-26 15:31:37.9549863 +0800 CST ] Restore Finished.
+[ 2016-04-26 15:32:35.5153222 +0800 CST ] Begin Restore.
+[ 2016-04-26 15:32:35.5172803 +0800 CST ] Save image table to file.

@@ -46,6 +46,26 @@ func (d *statedDfa) Parse(input ByteReader) ([]Token, error) {
 			data: input.data,
 			pos:  in.pos,
 		}
+		fork2 := ByteReader{
+			data: input.data,
+			pos:  in.pos,
+		}
+		tc, _ := fork2.Read()
+		if tc > 127 {
+			b := make([]byte, 0)
+			b = append(b, tc)
+			tc, _ = fork2.Read()
+			b = append(b, tc)
+			tc, _ = fork2.Read()
+			b = append(b, tc)
+			token := Token{
+				Kind: "UTF",
+				Raw:  b,
+			}
+			t = append(t, token)
+			in.pos = fork2.pos
+			continue
+		}
 		s, b, err := RunDFA(d.class, d.array, d.accept, fork)
 		if b == nil {
 			break
