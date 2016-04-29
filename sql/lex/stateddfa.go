@@ -54,7 +54,7 @@ func (d *statedDfa) Parse(input ByteReader) ([]Token, error) {
 		if tc == '\'' {
 			b := make([]byte, 0)
 			tc, _ = fork2.Read()
-			for tc != '\'' || b[len(b)-1] == '\\' {
+			for tc != '\'' || (len(b) > 0 && b[len(b)-1] == '\\') {
 				if tc == '\'' {
 					b[len(b)-1] = '\''
 				} else {

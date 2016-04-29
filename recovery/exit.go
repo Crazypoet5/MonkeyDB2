@@ -14,6 +14,7 @@ var Restoring = 0
 
 func SafeExit() {
 	Restore()
+	os.Exit(0)
 }
 
 func init() {

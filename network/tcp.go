@@ -50,7 +50,7 @@ func (s *TCPSession) SendPack(p *Pack) {
 		return
 	}
 	offset := 0
-	for len(p.Data) > 1024 {
+	for len(p.Data)-offset > 1024 {
 		_, err = s.Conn.Write(p.Data[offset : offset+1024])
 		if err != nil {
 			s.Closed = true
