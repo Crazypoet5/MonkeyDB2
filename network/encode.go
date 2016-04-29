@@ -64,7 +64,7 @@ func Encode(rel *exe.Relation, res *plan.Result, err error) *Pack {
 
 	errStr := "null"
 	if err != nil {
-		errStr = escape(err.Error())
+		errStr = "\"" + escape(err.Error()) + "\""
 	}
 	json := []byte(fmt.Sprintf("{\"relation\":%s,\"result\":%s,\"error\":%s}", relJson, resJson, errStr))
 	return &Pack{
