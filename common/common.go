@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	COMMON_DIR = "c:\\users\\inszva\\monkeydb2\\data"
+	COMMON_DIR = "c:\\monkeydb2\\data"
 )
 
 func GetCurrentDirectory() string {
