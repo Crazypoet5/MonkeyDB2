@@ -20,7 +20,7 @@ var count = 0                              // Windows only support 100ns level
 // CreateImage creates a image file and returns the address
 func CreateImage(size int) (ip *DataBlock, err error) {
 	defer SignalBackup()
-	filename := common.COMMON_DIR + "\\image\\" + strconv.Itoa(count)
+	filename := common.COMMON_DIR + "/image/" + strconv.Itoa(count)
 	count++
 	ip = &DataBlock{
 		RawPtr: uintptr(C.malloc(C.size_t(size))),
@@ -44,7 +44,7 @@ func CreateImage(size int) (ip *DataBlock, err error) {
 // ReallocImage creates a new bigger image file and returns the new address with copying data
 func ReallocImage(ip *DataBlock, size int) (*DataBlock, error) {
 	defer SignalBackup()
-	filename := common.COMMON_DIR + "\\image\\" + strconv.Itoa(count)
+	filename := common.COMMON_DIR + "/image/" + strconv.Itoa(count)
 	count++
 	os.Remove(ImageTable[ip.RawPtr])
 	ipNew := &DataBlock{

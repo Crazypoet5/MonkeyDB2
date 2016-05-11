@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const (
+var (
 	COMMON_DIR = "c:\\monkeydb2\\data"
 )
 
@@ -24,4 +24,10 @@ func FixPath(s string) string {
 		return s
 	}
 	return strings.Replace(s, "\\", "/", -1)
+}
+
+func init() {
+	if runtime.GOOS != "windows" {
+		COMMON_DIR = "/var/local/monkeydb2/data"
+	}
 }

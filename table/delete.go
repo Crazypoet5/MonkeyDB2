@@ -21,14 +21,17 @@ func (t *Table) Delete(ids *exe.BitSet) {
 	}
 }
 
+func (p *Page) DeleteFromOffset(offset uint) {
+	reader := p.NewReader()
+	reader.currentPtr = offset
+	reader.NextRecord()
+	end := reader.currentPtr
+	skip := end - offset
+	p.Write(offset, uint2bytes(skip))
+}
+
 //Delete current record Index and goto next record
 func (p *Reader) DeleteRecordIndex() {
-	//	if p.currentPtr == p.currentPage.GetEOP() {
-	//		p.currentPage = p.currentPage.NextPage()
-	//		p.currentPtr = 64
-	//		p.NextRecord()
-	//		return
-	//	}
 	v, _ := p.currentPage.Read(p.currentPtr, 8)
 	p.currentPtr += 8
 	skip := bytes2uint(v)

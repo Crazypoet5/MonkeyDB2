@@ -5,6 +5,8 @@ import (
 	"../index"
 )
 
+var RECORD_MAX_LENGTH = 4096
+
 type Reader struct {
 	currentPtr  uint
 	currentPage *Page

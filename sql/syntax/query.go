@@ -26,6 +26,46 @@ func Parser(tr *TokenReader) (*SyntaxTreeNode, error) {
 		}
 		return stn, nil
 	}
+	if t.Kind == "keyword" && string(t.Raw) == "createkv" {
+		stn, err := createKVParser(tr)
+		if err != nil {
+			return nil, err
+		}
+		if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+			return nil, errors.New("Unexpect end:" + string(t.Raw))
+		}
+		return stn, nil
+	}
+	if t.Kind == "keyword" && string(t.Raw) == "set" {
+		stn, err := setKVParser(tr)
+		if err != nil {
+			return nil, err
+		}
+		if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+			return nil, errors.New("Unexpect end:" + string(t.Raw))
+		}
+		return stn, nil
+	}
+	if t.Kind == "keyword" && string(t.Raw) == "get" {
+		stn, err := getParser(tr)
+		if err != nil {
+			return nil, err
+		}
+		if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+			return nil, errors.New("Unexpect end:" + string(t.Raw))
+		}
+		return stn, nil
+	}
+	if t.Kind == "keyword" && string(t.Raw) == "remove" {
+		stn, err := removeParser(tr)
+		if err != nil {
+			return nil, err
+		}
+		if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+			return nil, errors.New("Unexpect end:" + string(t.Raw))
+		}
+		return stn, nil
+	}
 	if t.Kind == "keyword" && string(t.Raw) == "insert" {
 		stn, err := insertParser(tr)
 		if err != nil {

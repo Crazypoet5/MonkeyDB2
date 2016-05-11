@@ -13,6 +13,7 @@ func calculateInt(raw []byte) int {
 }
 
 func calculateFloat(raw []byte) float64 {
+	//TODO : Other way to detect '.'
 	f, err := strconv.ParseFloat(string(raw), 64)
 	if err != nil {
 		fI, err := (strconv.Atoi(string(raw)))
