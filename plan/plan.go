@@ -66,6 +66,8 @@ func DirectPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 		return setKVPlan(stn)
 	case "getkv":
 		return getKVPlan(stn)
+	case "removekv":
+		return removeKVPlan(stn)
 	}
 	return nil, nil, errors.New("Unsopprted plan.")
 }

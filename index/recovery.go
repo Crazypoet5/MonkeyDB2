@@ -68,6 +68,7 @@ func Recovery() {
 					DataBlock: *(memory.RecoveryTable[uintptr(uint(v["I"].(float64)))]),
 				},
 			}
+			i.I.Recovery()
 		}
 		RecoveryTable[uintptr(uint(v["OldPtr"].(float64)))] = i
 		IndexList = append(IndexList, i)

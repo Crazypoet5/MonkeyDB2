@@ -2,6 +2,7 @@ package plan
 
 import (
 	"errors"
+	"unsafe"
 
 	"../exe"
 	"../sql/syntax"
@@ -18,7 +19,25 @@ func removeKVPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	if t == nil {
 		return nil, nil, errors.New("table not exist")
 	}
-	k := stn.Child[0].Value.([]byte)
+	var k []byte
+	switch stn.Child[0].ValueType {
+	case syntax.INT:
+		k = make([]byte, 8)
+		i := stn.Child[0].Value.(int)
+		p_bytes := *(*[8]byte)(unsafe.Pointer(&i))
+		for t := 0; t < 8; t++ {
+			k[t] = p_bytes[t]
+		}
+	case syntax.FLOAT:
+		k = make([]byte, 8)
+		i := stn.Child[0].Value.(float64)
+		p_bytes := *(*[8]byte)(unsafe.Pointer(&i))
+		for t := 0; t < 8; t++ {
+			k[t] = p_bytes[t]
+		}
+	default:
+		k = stn.Child[0].Value.([]byte)
+	}
 	err := t.KVRemove(k)
 	if err != nil {
 		return nil, nil, err

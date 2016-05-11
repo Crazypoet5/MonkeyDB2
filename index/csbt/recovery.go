@@ -13,7 +13,7 @@ func (t *DCSBT) Recovery() {
 		for i := 0; i < keyNum; i++ {
 			oldPtr := t.MB.GetLeafValue(l, i)
 			p := uint(oldPtr) >> 24
-			offset := uint(oldPtr) & 0x0000000000111111
+			offset := uint(oldPtr) & 0x0000000000ffffff
 			newPtr, ok := memory.RecoveryTable[uintptr(p)]
 			if !ok {
 				log.WriteLog("err", "Recovery index error: "+strconv.Itoa(int(oldPtr)))

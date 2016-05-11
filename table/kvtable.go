@@ -55,6 +55,7 @@ func (t *Table) KVGetValue(key []byte) ([]byte, error) {
 		DataBlock: *memory.DataBlockTable[ptr],
 	}
 	reader := p.NewReader()
+
 	reader.currentPtr = offset
 	rel := reader.PeekRecord()
 	return rel.Rows[0][1].Raw, nil
