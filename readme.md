@@ -4,8 +4,11 @@
 
 ### Beigin
 
-First, you should run the `monkeyd` server:  
-``` ./monkeyd [-port 2016] ```  
+First, you should install and run the `monkeyd` server:  
+``` 
+./install.cmd (For windows) or ./install.sh (For linux)
+./monkeyd [-port 2016]
+```  
 Then, you can use `monkey` shell to manage it:
 ``` ./monkey [-port 2016] ```
 > Sorry, MonkeyDB2 only support local access up to now.  
