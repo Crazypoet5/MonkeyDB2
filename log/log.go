@@ -26,7 +26,7 @@ func checkFileIsExist(filename string) (bool) {
 func writeLog(kind string, content interface{}) {
     var f *os.File
     var err error
-    filename := common.COMMON_DIR + "\\log\\" + kind + ".log"
+    filename := common.COMMON_DIR + "/log/" + kind + ".log"
     if checkFileIsExist(filename) {
         f, err = os.OpenFile(filename, os.O_APPEND, 0666)
     }else {
