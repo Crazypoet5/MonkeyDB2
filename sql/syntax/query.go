@@ -135,5 +135,15 @@ func Parser(tr *TokenReader) (*SyntaxTreeNode, error) {
 		}
 		return stn, nil
 	}
+	if t.Kind == "keyword" && string(t.Raw) == "show" {
+		stn, err := showParser(tr)
+		if err != nil {
+			return nil, err
+		}
+		if t := tr.Read(); t.Kind != "" && string(t.Raw) != ";" {
+			return nil, errors.New("Unexpect end:" + string(t.Raw))
+		}
+		return stn, nil
+	}
 	return nil, errors.New("Unsupported syntax!")
 }

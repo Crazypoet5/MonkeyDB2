@@ -3,18 +3,34 @@ package table
 import (
 	"unsafe"
 
+	"../config"
 	"../exe"
 	"../index"
 	"../memory"
 )
 
-const (
-	NORMAL_PAGE_SIZE = 192 //Test
-	PREV_OFFSET      = 8
-	NEXT_OFFSET      = 16
-	FREE_P_OFFSET    = 24
-	END_OF_PAGE      = 32
+var (
+	NORMAL_PAGE_SIZE = 1024 * 1024 //Test
 )
+
+const (
+	PREV_OFFSET   = 8
+	NEXT_OFFSET   = 16
+	FREE_P_OFFSET = 24
+	END_OF_PAGE   = 32
+)
+
+func init() {
+	m := config.LoadConfig("page")
+	if m == nil {
+		return
+	}
+	size, ok := m["page_size"].(float64)
+	if !ok {
+		return
+	}
+	NORMAL_PAGE_SIZE = int(size)
+}
 
 type Page struct {
 	memory.DataBlock

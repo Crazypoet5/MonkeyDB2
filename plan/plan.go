@@ -11,36 +11,6 @@ import (
 
 func DirectPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 	defer recovery.RestoreFrame()
-	//	if stn.Name == "createtable" {
-	//		return CreatePlan(stn)
-	//	}
-	//	if stn.Name == "createkv" {
-	//		return CreateKVPlan(stn)
-	//	}
-	//	if stn.Name == "createindex" {
-	//		return CreateIndexPlan(stn)
-	//	}
-	//	if stn.Name == "insert" {
-	//		return insertPlan(stn)
-	//	}
-	//	if stn.Name == "dump" {
-	//		return dumpPlan(stn)
-	//	}
-	//	if stn.Name == "select" {
-	//		return selectPlan(stn)
-	//	}
-	//	if stn.Name == "delete" {
-	//		return deletePlan(stn)
-	//	}
-	//	if stn.Name == "drop" {
-	//		return dropPlan(stn)
-	//	}
-	//	if stn.Name == "dropindex" {
-	//		return dropIndexPlan(stn)
-	//	}
-	//	if stn.Name == "update" {
-	//		return updatePlan(stn)
-	//	}
 	switch stn.Name {
 	case "createtable":
 		return CreatePlan(stn)
@@ -68,6 +38,10 @@ func DirectPlan(stn *syntax.SyntaxTreeNode) (*exe.Relation, *Result, error) {
 		return getKVPlan(stn)
 	case "removekv":
 		return removeKVPlan(stn)
+	case "showtable":
+		return showTablePlan(stn)
+	case "showtables":
+		return showTablesPlan(stn)
 	}
 	return nil, nil, errors.New("Unsopprted plan.")
 }

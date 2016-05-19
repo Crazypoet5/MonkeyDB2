@@ -78,3 +78,19 @@ func StringToType(s string) int {
 	}
 	return STRING
 }
+
+func TypeToString(i int) string {
+	switch i {
+	case INT:
+		return "INT"
+	case FLOAT:
+		return "FLOAT"
+	case STRING:
+		return "STRING"
+	case ARRAY:
+		return "ARRAY"
+	case OBJECT:
+		return "OBJECT"
+	}
+	return "UNKOWN"
+}
