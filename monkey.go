@@ -2,12 +2,15 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"os"
 	"strings"
 
 	"./network"
 )
+
+var port = flag.String("port", "2016", "Dial port")
 
 func loop(tcpSession *network.TCPSession) bool {
 	fmt.Print("Monkey>>")
@@ -35,7 +38,8 @@ func loop(tcpSession *network.TCPSession) bool {
 }
 
 func main() {
-	tcpSession := network.Dial("127.0.0.1:2016")
+	flag.Parse()
+	tcpSession := network.Dial("127.0.0.1:" + *port)
 	for loop(tcpSession) {
 
 	}

@@ -108,8 +108,8 @@ func NewTCPSession(tcpConn *net.TCPConn) *TCPSession {
 	}
 }
 
-func Listen() {
-	tcpAddr, err := net.ResolveTCPAddr("tcp4", ":2016")
+func Listen(port string) {
+	tcpAddr, err := net.ResolveTCPAddr("tcp4", ":"+port)
 	if err != nil {
 		panic(err)
 	}

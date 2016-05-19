@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 
 	"./recovery"
@@ -8,12 +9,15 @@ import (
 	"./network"
 )
 
+var port = flag.String("port", "2016", "Listen port.")
+
 func bye() {
 	recovery.SafeExit()
 	fmt.Println("Bye!")
 }
 
 func main() {
-	network.Listen()
+	flag.Parse()
+	network.Listen(*port)
 	bye()
 }
