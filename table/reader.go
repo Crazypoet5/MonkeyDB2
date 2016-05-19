@@ -19,11 +19,19 @@ func (p *Page) NewReader() *Reader {
 	}
 }
 
+func (p *Reader) CheckPage() {
+	if p.currentPtr >= p.currentPage.GetFreePos() && p.currentPage.NextPage() != nil && p.currentPage.NextPage() != p.currentPage {
+		p.currentPage = p.currentPage.NextPage()
+		p.currentPtr = 64
+	}
+}
+
 func (p *Reader) PeekRecord() *exe.Relation {
 	//	if p.currentPtr == p.currentPage.GetEOP() {
 	//		p.currentPage = p.currentPage.NextPage()
 	//		p.currentPtr = 64
 	//	}
+	p.CheckPage()
 	v, _ := p.currentPage.Read(p.currentPtr, 8)
 	p.currentPtr += 8
 	skip := bytes2uint(v)
@@ -53,12 +61,7 @@ func (p *Reader) PeekRecord() *exe.Relation {
 }
 
 func (p *Reader) NextRecord() {
-	//	if p.currentPtr == p.currentPage.GetEOP() {
-	//		p.currentPage = p.currentPage.NextPage()
-	//		p.currentPtr = 64
-	//		p.NextRecord()
-	//		return
-	//	}
+	p.CheckPage()
 	v, _ := p.currentPage.Read(p.currentPtr, 8)
 	p.currentPtr += 8
 	skip := bytes2uint(v)
@@ -132,9 +135,9 @@ func (p *Reader) DumpTable() *exe.Relation {
 	oldPtr := p.currentPtr
 	ret := exe.NewRelation()
 	for p.currentPage != nil {
-		p.currentPtr = 0
+		p.currentPtr = 64
 		r := p.DumpPage()
-		ret.Rows = append([]exe.Row{}, r.Rows...)
+		ret.Rows = append(ret.Rows, r.Rows...)
 		ret.SetColumnNames(r.ColumnNames)
 		p.currentPage = p.currentPage.NextPage()
 	}

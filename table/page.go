@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	NORMAL_PAGE_SIZE = 1024 * 1024
+	NORMAL_PAGE_SIZE = 192 //Test
 	PREV_OFFSET      = 8
 	NEXT_OFFSET      = 16
 	FREE_P_OFFSET    = 24
@@ -70,6 +70,9 @@ func (p *Page) AppendPage() {
 	pNew := t.NewPage()
 	p.Write(NEXT_OFFSET, uint2bytes(uint(uintptr(pNew.RawPtr))))
 	pNew.Write(PREV_OFFSET, uint2bytes(uint(uintptr(p.RawPtr))))
+	if t.LastPage == p {
+		t.LastPage = pNew
+	}
 }
 
 func (p *Page) GetFreePos() uint {

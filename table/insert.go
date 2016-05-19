@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"../common"
-
 	"../index"
 )
 
@@ -35,6 +34,18 @@ func (t *Table) Insert_dunplicated(columnNames []string, data [][][]byte) {
 func (t *Table) Insert(fieldMap map[int]int, data [][][]byte) error {
 	fields := t.Fields
 	for _, row := range data {
+		//check free space
+		freeS := t.LastPage.Size - t.LastPage.GetFreePos()
+		rowProvided := len(fieldMap)
+		autoFill := (len(t.Fields) - rowProvided) * 16
+		needSpace := autoFill + 8 + rowProvided*8
+		for _, v := range row {
+			needSpace += len(v)
+		}
+		if freeS < uint(needSpace) {
+			t.LastPage.AppendPage()
+		}
+
 		pos := t.LastPage.GetFreePos()
 		var indexLog = make(map[index.Indexer]uint32)
 		t.LastPage.Append(uint2bytes(0)) //Skip

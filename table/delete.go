@@ -1,6 +1,8 @@
 package table
 
 import (
+	"log"
+
 	"../exe"
 	"../index"
 )
@@ -13,8 +15,17 @@ func (t *Table) Delete(ids *exe.BitSet) {
 
 		if ids.Get(i) {
 			reader.DeleteRecordIndex()
-			skip := reader.currentPtr - pos - 8
-			page.Write(pos, uint2bytes(skip))
+			var skip uint
+			if page == reader.currentPage {
+				skip = reader.currentPtr - pos - 8
+				page.Write(pos, uint2bytes(skip))
+				log.Println("in-page delete")
+			} else {
+				skip = reader.currentPtr - 72
+				reader.currentPage.Write(64, uint2bytes(skip))
+				log.Println("out-page delete")
+			}
+
 		} else {
 			reader.NextRecord()
 		}
@@ -32,6 +43,11 @@ func (p *Page) DeleteFromOffset(offset uint) {
 
 //Delete current record Index and goto next record
 func (p *Reader) DeleteRecordIndex() {
+	p.CheckPage()
+	if p.currentPage == nil {
+		log.Println("attempt to delete from nil page")
+		return
+	}
 	v, _ := p.currentPage.Read(p.currentPtr, 8)
 	p.currentPtr += 8
 	skip := bytes2uint(v)
